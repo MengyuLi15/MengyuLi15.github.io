@@ -9,9 +9,11 @@ redirect_from:
 
 ## Welcome！
 
-I am a Postdoctoral Researcher at the Institute of Marine Sciences (CNR-ISMAR), National Research Council of Italy, based in Rome. 
+I am a Postdoctoral Researcher at CNR ISMAR in Rome, working on marine bio optics, BGC Argo observations, and ocean biogeochemistry.
 
-I focus on the analysis of marine bio-optical and biogeochemical processes by integrating multi-platform meteo-oceanographic datasets. My recent work studies the optical properties of marine particles and quantifies organic carbon across estuarine, coastal, and open-ocean environments. My work combines in situ observations, including BGC-Argo floats, with satellite remote sensing and model outputs to investigate marine ecosystems and carbon cycling under climate variability. I also have experience in developing empirical and semi-analytical models to characterize bio-optical regimes and biogeochemical processes in the global ocean.
+My research focuses on understanding how the optical properties of seawater relate to phytoplankton dynamics and carbon export processes across different oceanic regimes. 
+
+I focus on analyzing marine bio-optical and biogeochemical processes by integrating multi-platform meteo-oceanographic datasets. My recent work studies the optical properties of marine particles and quantifies organic carbon across estuarine, coastal, and open-ocean environments. My work combines in situ observations, including BGC-Argo floats, with satellite remote sensing and model outputs to investigate marine ecosystems and carbon cycling under climate variability. I also have experience in developing empirical and semi-analytical models to characterize bio-optical regimes and biogeochemical processes in the global ocean.
 
 ---
 
@@ -20,27 +22,22 @@ I focus on the analysis of marine bio-optical and biogeochemical processes by in
 My work lies at the intersection of ocean optics, biogeochemistry, and autonomous observations.
 
 **Marine bio optics and ocean color**  
-Understanding the variability of optical properties and their relationship with biogeochemical processes.
+Quantifying relationships between chlorophyll, light attenuation, and optical depth metrics across different water types.
 
 **BGC Argo observations**  
-Using multi-sensor float observations to investigate vertical structure and temporal variability of the ocean.
+Using multi-sensor float observations to resolve vertical structure and variability of bio-optical and biogeochemical properties.
 
 **Carbon export and biogeochemical processes**  
-Studying the coupling between biological production, particulate export, and microbial carbon processing.
-
----
+Investigating the coupling between particulate export and microbial carbon processing in the ocean.
 
 ## Selected research topics
 
 - Relationships between chlorophyll and light attenuation  
-- Euphotic depth and optical depth metrics  
 - Evaluation and refitting of bio-optical models  
-- Integration of floats, satellite data, and physical reconstructions  
-- Carbon export efficiency in oligotrophic oceans  
+- Integration of floats, satellite data, and model outputs  
+- Carbon export in oligotrophic oceans  
 
----
-
-## Selected publications
+## Publications
 
 A full list of publications can be found on the [Publications](/publications/) page.
 
