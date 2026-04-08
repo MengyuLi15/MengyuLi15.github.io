@@ -25,11 +25,11 @@ author:
   # Biographic information
   avatar           : "profile.jpg"
   name             : "Mengyu Li"
-  pronouns         : # example: "she/her"  
-  bio              : "Postdoctoral Researcher at CNR-ISMAR working on marine bio-optics, BGC-Argo, ocean color, and carbon processes."
+  pronouns         : "she/her"  
+  bio              : "Postdoctoral Researcher at CNR-ISMAR.\nMarine bio-optics, BGC-Argo observations, ocean colour, and carbon cycling."
   location         : "Rome, Italy"
-  employer         : "Consiglio Nazionale delle Ricerche"
-  uri              : # URL
+  employer         : "CNR-ISMAR"
+  uri              : "https://mengyuli15.github.io/"
   email            : "mengyuli@cnr.it" 
 
   # Academic websites
