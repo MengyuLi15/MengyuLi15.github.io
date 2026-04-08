@@ -9,6 +9,13 @@ redirect_from:
 
 {% include base_path %}
 
+## Work Experience
+
+**Postdoctoral Researcher**  
+*National Research Council of Italy (CNR), Institute of Marine Sciences (ISMAR), Rome, Italy*  
+Dec 2024 – Present  
+Supervisor: Dr. Emanuele Organelli
+
 ## Education
 
 **Doctor of Science in Physical Oceanography (Direct-to-PhD Program)**  
@@ -27,6 +34,3 @@ Supervisors: Prof. Shuguo Chen & Prof. Ge Chen
 *National Research Council of Italy (CNR), Institute of Marine Sciences (ISMAR), Rome, Italy*  
 Oct 2022 – Oct 2023  
 Co-supervisor: Dr. Emanuele Organelli  
-- Studied optical properties of suspended particles and particulate organic carbon in coastal and shelf seas  
-- Conducted scattering simulations and bio-optical analyses  
-- Investigated ecological responses to marine heatwaves in the northwestern Mediterranean Sea using BGC-Argo observations  
