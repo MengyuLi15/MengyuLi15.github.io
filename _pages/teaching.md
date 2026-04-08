@@ -29,6 +29,7 @@ author_profile: true
 - Performed onboard data processing, quality control, and preliminary analysis of optical datasets  
 
 
+
 #### National Natural Science Foundation of China Cruises  
 <sub>East China Sea · Bohai Sea · Yellow Sea · Yangtze River Estuary · 2019–2020</sub>  
 
@@ -46,6 +47,7 @@ author_profile: true
 - Contributed to cross-cruise data standardization for bio-optical and biogeochemical applications  
 
 
+
 ### 💻 Data Analysis & Technical Experience
 
 #### Data Analysis Internship  
@@ -58,6 +60,7 @@ North China Sea Marine Forecasting Center
 - Supported data harmonization for marine forecasting and environmental applications  
 
 <sub><i>Now renamed as North Sea Forecasting and Disaster Mitigation Centre, Ministry of Natural Resources of China (MNR)</i></sub>
+
 
 
 ### 🌐 Scientific Coordination & Service
