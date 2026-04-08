@@ -30,6 +30,15 @@ Sep 2014 – Jun 2018
 GPA: 3.55/4  
 Supervisors: Prof. Shuguo Chen & Prof. Ge Chen  
 
+## Awards
+
+- China Scholarship Council (CSC) Scholarship (Grant No. 202206140082), €16,200 per year, 2022–2023  
+- Outstanding Student Award, East China Normal University, 2021–2022  
+- Outstanding Undergraduate Dissertation Award, Ocean University of China, 2018  
+- Outstanding Student Award, Ocean University of China, 2016–2017  
+- Scholarship for Excellence in Academic Work, Ocean University of China, 2014–2017  
+- Scholarship for Participation in Social Activities, Ocean University of China, 2016–2017
+
 **Visiting PhD (China Scholarship Council)**  
 *National Research Council of Italy (CNR), Institute of Marine Sciences (ISMAR), Rome, Italy*  
 Oct 2022 – Oct 2023  
