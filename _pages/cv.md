@@ -48,4 +48,46 @@ redirect_from:
 - Outstanding Undergraduate Dissertation Award, Ocean University of China, 2018  
 - Outstanding Student Award, Ocean University of China, 2016–2017  
 - Scholarship for Excellence in Academic Work, Ocean University of China, 2014–2017  
-- Scholarship for Participation in Social Activities, Ocean University of China, 2016–2017  
+- Scholarship for Participation in Social Activities, Ocean University of China, 2016–2017
+
+---
+
+## Skills
+
+### Languages
+
+- Chinese (Mandarin) <small>(native)</small>  
+- English <small>(proficient)</small>  
+- Italian <small>(conversational)</small>  
+- Japanese <small>(conversational)</small>  
+
+
+### Programming and Software
+
+- MATLAB <small>(advanced)</small>  
+- Python / R <small>(intermediate)</small>  
+- C / C++ / Assembly <small>(basic)</small>  
+
+- Software: ENVI, SNAP, SeaDAS, Adobe Photoshop, Microsoft Office  
+
+
+### Scientific Instruments and Measurements
+
+- LISST-200X (Sequoia Scientific)  
+- HyperSAS (Sea-Bird Scientific)  
+- AC-S / ECO-BB9 / ECO-VSF (WET Labs)  
+- Spectrophotometer (PerkinElmer)  
+- Mastersizer (Malvern)
+
+---
+
+## Certifications
+
+**STCW Certifications**  
+*Tecno Italian Safety and Survival Training S.r.l, Italy*  
+<small>Issued: Mar 2025</small>  
+
+- Personal Survival Techniques  
+- Fire Prevention and Fire Fighting  
+- Elementary First Aid  
+- Personal Safety and Social Responsibilities  
