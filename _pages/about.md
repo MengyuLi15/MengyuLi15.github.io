@@ -7,113 +7,219 @@ redirect_from:
   - /about.html
 ---
 
-<div class="hero-card">
-  <div class="hero-text">
-    <h2>Hi, I’m Mengyu Li</h2>
-    <p>
-      Postdoctoral Researcher at CNR-ISMAR (Rome), working on marine bio-optics,
-      biogeochemistry, and multi-platform ocean observations.
-    </p>
-    <p>
-      My research focuses on ocean carbon cycling and bio-optical processes,
-      combining BGC-Argo observations, satellite remote sensing, and model outputs
-      to understand marine ecosystems under climate variability.
-    </p>
-  </div>
-</div>
+<style>
+.hero-card {
+  background: linear-gradient(135deg, #f7fbff 0%, #eef6fb 100%);
+  border: 1px solid rgba(120, 160, 200, 0.15);
+  border-radius: 22px;
+  padding: 2rem;
+  margin: 1rem 0 2rem 0;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+  animation: fadeUp 0.7s ease-out;
+}
 
----
+.hero-card h2 {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  font-size: 2rem;
+  line-height: 1.2;
+  color: #16324f;
+}
+
+.hero-card p {
+  margin-bottom: 0.8rem;
+  font-size: 1.02rem;
+  line-height: 1.75;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.1rem;
+  margin: 1.2rem 0 2rem 0;
+}
+
+.info-card {
+  background: #ffffff;
+  border: 1px solid rgba(120, 160, 200, 0.12);
+  border-radius: 18px;
+  padding: 1.2rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  animation: fadeUp 0.85s ease-out;
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.10);
+  border-color: rgba(120, 160, 200, 0.28);
+}
+
+.info-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.65rem;
+  font-size: 1.08rem;
+  line-height: 1.35;
+  color: #1f4e79;
+}
+
+.info-card p {
+  margin-bottom: 0;
+  font-size: 0.97rem;
+  line-height: 1.65;
+}
+
+.topic-list {
+  background: #fbfdff;
+  border: 1px solid rgba(120, 160, 200, 0.12);
+  border-radius: 18px;
+  padding: 1.2rem 1.4rem;
+  margin: 1rem 0 2rem 0;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+}
+
+.topic-list ul {
+  margin-bottom: 0;
+}
+
+.pub-box {
+  background: linear-gradient(135deg, #fcfeff 0%, #f4f8fb 100%);
+  border-left: 4px solid #7aa6c7;
+  border-radius: 14px;
+  padding: 1rem 1.2rem;
+  margin-top: 1rem;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-card {
+    padding: 1.4rem 1.2rem;
+    border-radius: 18px;
+  }
+
+  .hero-card h2 {
+    font-size: 1.55rem;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .info-card {
+    padding: 1rem;
+  }
+}
+</style>
+
+<div class="hero-card">
+  <h2>Hi, I’m Mengyu Li</h2>
+  <p>
+    I am a Postdoctoral Researcher at CNR-ISMAR in Rome, working on marine bio-optics,
+    BGC-Argo observations, and ocean biogeochemistry.
+  </p>
+  <p>
+    My research focuses on ocean carbon cycling and bio-optical processes by integrating
+    in situ observations, satellite remote sensing, and model outputs to better understand
+    marine ecosystems under climate variability.
+  </p>
+</div>
 
 ## Research Focus
 
 <div class="card-grid">
-
   <div class="info-card">
-    <h3>🌊 Ocean Carbon Cycling</h3>
+    <h3>🌊 Marine Bio-optics</h3>
     <p>
-      Investigating carbon export processes and the coupling between biological,
-      microbial, and physical carbon pumps across ocean regimes.
-    </p>
-  </div>
-
-  <div class="info-card">
-    <h3>🛰️ Ocean Colour & Remote Sensing</h3>
-    <p>
-      Quantifying relationships between chlorophyll, light attenuation, and
-      optical depth metrics using satellite observations and bio-optical models.
+      Quantifying relationships between chlorophyll, light attenuation, and optical depth
+      metrics across different water types and oceanic regimes.
     </p>
   </div>
 
   <div class="info-card">
     <h3>🤖 BGC-Argo Observations</h3>
     <p>
-      Using multi-sensor float data to resolve vertical variability of
-      bio-optical and biogeochemical properties in the global ocean.
+      Using multi-sensor float observations to resolve the vertical structure and variability
+      of bio-optical and biogeochemical properties.
     </p>
   </div>
 
   <div class="info-card">
-    <h3>🔬 Marine Bio-optics</h3>
+    <h3>🛰️ Remote Sensing</h3>
     <p>
-      Characterizing optical properties of marine particles and linking them to
-      phytoplankton dynamics across coastal and open-ocean environments.
+      Combining satellite ocean-colour products with in situ observations to investigate
+      phytoplankton dynamics, particle properties, and carbon-related processes.
     </p>
   </div>
 
+  <div class="info-card">
+    <h3>🔬 Ocean Carbon Cycling</h3>
+    <p>
+      Investigating particulate export and microbial carbon processing in the ocean,
+      with a focus on carbon sequestration in oligotrophic systems.
+    </p>
+  </div>
 </div>
-
----
 
 ## Technical Expertise
 
 <div class="card-grid">
-
   <div class="info-card">
     <h3>⚙️ Data Processing</h3>
     <p>
-      MATLAB-based pipelines for BGC-Argo processing, radiometric quality control,
-      and multi-source data integration.
+      MATLAB-based workflows for BGC-Argo processing, radiometric quality control,
+      and multi-platform data integration.
     </p>
   </div>
 
   <div class="info-card">
     <h3>📊 Optical Modelling</h3>
     <p>
-      Development and evaluation of empirical and semi-analytical models for
-      Kd, Zeu, and bio-optical relationships.
+      Development and evaluation of empirical and semi-analytical models for Kd,
+      Zeu, and other bio-optical relationships.
     </p>
   </div>
 
   <div class="info-card">
-    <h3>🛰️ Multi-platform Integration</h3>
+    <h3>🧪 Field Measurements</h3>
     <p>
-      Integration of in situ observations, satellite data (OC-CCI, MODIS),
-      and model outputs for large-scale ocean analysis.
+      Experience with HPLC pigments, CDOM absorption, particle absorption,
+      and optical measurements from research cruises.
     </p>
   </div>
 
   <div class="info-card">
-    <h3>🧪 Field & Observational Work</h3>
+    <h3>🌍 Multi-platform Integration</h3>
     <p>
-      Experience with bio-optical measurements including HPLC pigments, CDOM,
-      particle absorption, and optical instrumentation.
+      Integration of floats, satellite observations, and model outputs for
+      large-scale analysis of marine biogeochemical processes.
     </p>
   </div>
-
 </div>
-
----
 
 ## Selected Research Topics
 
-- Bio-optical relationships between chlorophyll and light attenuation  
-- Evaluation and refitting of global bio-optical models  
-- Integration of BGC-Argo, satellite, and model datasets  
-- Carbon export processes in oligotrophic oceans  
-- Marine heatwaves and phytoplankton dynamics  
-
----
+<div class="topic-list">
+  <ul>
+    <li>Relationships between chlorophyll and light attenuation</li>
+    <li>Evaluation and refitting of bio-optical models</li>
+    <li>Integration of BGC-Argo, satellite, and model datasets</li>
+    <li>Carbon export in oligotrophic oceans</li>
+    <li>Marine heatwaves and phytoplankton dynamics</li>
+  </ul>
+</div>
 
 ## Publications
 
-A full list of publications can be found on the [Publications](/publications/) page.
+<div class="pub-box">
+  A full list of publications can be found on the <a href="/publications/">Publications</a> page.
+</div>
