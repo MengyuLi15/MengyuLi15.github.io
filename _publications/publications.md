@@ -29,7 +29,7 @@ https://doi.org/10.1038/s41598-021-91547-y
 ## Co-author publications
 
 Zhang, Y., Shen, F., Li, R., **Li, M.**, Li, Z., & Sun, X. (2026)  
-Global estimation of phytoplankton functional types using PACE OCI hyperspectral data and a deep ensemble learning approach.  
+Global estimation of phytoplankton functional types using PACE OCI hyperspectral data and a novel deep ensemble learning approach.  
 *International Journal of Applied Earth Observation and Geoinformation*  
 https://doi.org/10.1016/j.jag.2026.105225  
 
@@ -64,29 +64,29 @@ https://doi.org/10.5194/essd-2024-122
 
 
 Sun, X., Brewin, R. J., Hacker, C., Viljoen, J. J., & **Li, M.** (2024)  
-Generating 3D phytoplankton models using photogrammetry and SEM.  
+Generating open-source 3D phytoplankton models by integrating photogrammetry with scanning electron microscopy.  
 *Frontiers in Microbiology*  
 https://doi.org/10.3389/fmicb.2024.1429179  
 
 
 Sun, X., Shen, F., Brewin, R. J. W., **Li, M.**, & Zhu, Q. (2022)  
-Light absorption spectra of phytoplankton assemblages.  
+Light absorption spectra of naturally mixed phytoplankton assemblages for retrieval of phytoplankton group composition in coastal oceans.  
 *Limnology and Oceanography*  
 https://doi.org/10.1002/lno.12047  
 
 
 Luo, W., Shen, F., He, Q., Cao, F., Zhao, H., & **Li, M.** (2022)  
-Changes in suspended sediments in the Yangtze River Estuary.  
+Changes in suspended sediments in the Yangtze River Estuary from 1984 to 2020: Responses to basin and estuarine engineering constructions.  
 *Science of The Total Environment*  
 https://doi.org/10.1016/j.scitotenv.2021.150381  
 
 
 Zhu, Q., Shen, F., Shang, P., Pan, Y., & **Li, M.** (2019)  
-Hyperspectral remote sensing of phytoplankton composition.  
+Hyperspectral Remote Sensing of Phytoplankton Species Composition Based on Transfer Learning.  
 *Remote Sensing*  
 https://doi.org/10.3390/rs11172001  
 
 Tang, R., Shen, F., Pan, Y., Liu, K., **Li, M.**, Gao, W., & Zang, C. (2019)  
-Cross-comparison of ocean color products in the Yangtze Estuary.  
-*Lecture Notes in Electrical Engineering*  
+Cross-Comparison of Ocean Color Products Derived from Tiangong-2/WIS and GOCI in the Yangtze Estuary, China.  
+*Proceedings of the Tiangong-2 Remote Sensing Application Conference Lecture Notes in Electrical Engineering*  
 https://doi.org/10.1007/978-981-13-3501-3_19  
