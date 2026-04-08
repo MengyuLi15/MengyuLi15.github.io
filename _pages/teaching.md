@@ -5,63 +5,66 @@ permalink: /teaching/
 author_profile: true
 ---
 
-
-## Editorial and Review Activities
-
-**Reviewer for peer-reviewed journals**
-
-- Progress in Oceanography  
-- Biogeosciences  
+## 🧭 Professional Activities
 
 
-**Guest Editor**
+### 📝 Editorial & Review
 
-- Remote Sensing  
-  <small>Special Issue: Advances in Machine Learning and Multi-Source Remote Sensing for Monitoring Marine Aquatic Environments</small>  
+#### Reviewer for peer-reviewed journals
+- *Progress in Oceanography*  
+- *Biogeosciences*  
+
+#### Guest Editor
+- *Remote Sensing*  
+  <sub>Special Issue: Advances in Machine Learning and Multi-Source Remote Sensing for Monitoring Marine Aquatic Environments</sub>  
 
 ---
 
-### Scientific Cruises
+### 🚢 Scientific Cruises
 
-**ITINERIS’ EYES Cruise (ITINERIS Project)**  
-Mediterranean Sea | 24–29 Jul 2025  
-- Conducted in situ bio-optical measurements, including water sampling for HPLC pigment analysis, CDOM absorption, and particle absorption  
+#### ITINERIS’ EYES Cruise (ITINERIS Project)  
+<sub>Mediterranean Sea · 24–29 Jul 2025</sub>  
+
+- Conducted in situ bio-optical measurements, including HPLC pigment sampling, CDOM absorption, and particle absorption  
 - Performed onboard data processing, quality control, and preliminary analysis of optical datasets  
 
-**National Natural Science Foundation of China Cruises**  
-East China Sea; Bohai Sea; Yellow Sea; Yangtze River Estuary | 2019–2020  
-<small> 13–29 May 2019 (East China Sea) <small>  
-<small> 23 Jul–5 Aug 2019 (Bohai & Yellow Seas)  <small> 
-<small> 27 May–11 Jun 2020 (Bohai & Yellow Seas)  <small> 
-<small> 29 Jun–6 Jul 2020 (Yangtze River Estuary & East China Sea)  <small> 
+
+#### National Natural Science Foundation of China Cruises  
+<sub>East China Sea · Bohai Sea · Yellow Sea · Yangtze River Estuary · 2019–2020</sub>  
+
+<sub>
+13–29 May 2019 (East China Sea) ·  
+23 Jul–5 Aug 2019 (Bohai & Yellow Seas) ·  
+27 May–11 Jun 2020 (Bohai & Yellow Seas) ·  
+29 Jun–6 Jul 2020 (Yangtze River Estuary & East China Sea)
+</sub>
+
 - Performed water sampling and onboard processing for HPLC pigments, total suspended matter (TSM), and particulate organic carbon (POC)  
-- Operated optical instrumentation, including absorption (particles and CDOM), scattering, backscattering, and beam attenuation sensors  
-- Processed and quality-controlled optical datasets, including remote sensing reflectance and inherent optical properties (IOPs)  
+- Operated optical instrumentation including absorption (particles and CDOM), scattering, backscattering, and beam attenuation sensors  
+- Processed and quality-controlled datasets including remote sensing reflectance and inherent optical properties (IOPs)  
 - Analysed particle characteristics such as size distribution, organic fraction, and refractive index  
-- Contributed to multi-cruise data standardization for bio-optical and biogeochemical applications  
+- Contributed to cross-cruise data standardization for bio-optical and biogeochemical applications  
 
----
 
-### Data Analysis & Technical Experience
+### 💻 Data Analysis & Technical Experience
 
-**Data Analysis Internship**  
-North China Sea Marine Forecasting Center, State Oceanic Administration of China  
-Qingdao, China | 1 Nov–12 Dec 2017  
+#### Data Analysis Internship  
+North China Sea Marine Forecasting Center  
+<sub>Qingdao, China · 1 Nov–12 Dec 2017</sub>  
 
 - Collected and organized global marine and atmospheric remote sensing datasets (passive and active)  
-- Integrated multi-source satellite observations, including ocean colour, wind, salinity, sea surface height, and temperature  
+- Integrated multi-source satellite observations including ocean colour, wind, salinity, sea surface height, and temperature  
 - Performed preprocessing and statistical analysis of large-scale datasets  
 - Supported data harmonization for marine forecasting and environmental applications  
 
-*Note: The institution is now the North Sea Forecasting and Disaster Mitigation Centre, Ministry of Natural Resources of China (MNR).*  
+<sub><i>Now renamed as North Sea Forecasting and Disaster Mitigation Centre, Ministry of Natural Resources of China (MNR)</i></sub>
 
----
 
-### Scientific Coordination & Service
+### 🌐 Scientific Coordination & Service
 
-**National Partnership Coordinator**  
+#### National Partnership Coordinator  
 ECOP Programme China Node (UN Ocean Decade)  
-Online | 26 Jun–9 Oct 2023  
+<sub>Online · 26 Jun–9 Oct 2023</sub>  
 
 - Developed and explored national and international collaboration opportunities  
 - Supported the production and dissemination of outreach and promotional materials  
