@@ -228,29 +228,34 @@ redirect_from:
 
 <div style="display:flex; flex-wrap:wrap; gap:24px; align-items:stretch; margin-top:1rem;">
 
-  <div style="flex:1 1 280px; min-width:260px; background:#ffffff; border:1px solid rgba(120,160,200,0.12); border-radius:18px; padding:1.4rem 1.5rem; box-shadow:0 6px 18px rgba(0,0,0,0.06);">
-    <h3 style="margin-top:0; margin-bottom:0.9rem;">📍 Office</h3>
+  <!-- Left: Address card -->
+  <div style="flex:1 1 280px; min-width:260px; background:#ffffff; border:1px solid rgba(120,160,200,0.12); border-radius:18px; padding:1.3rem 1.4rem; box-shadow:0 6px 18px rgba(0,0,0,0.06);">
 
-    <p style="margin:0 0 0.8rem 0;">
-      <strong>Istituto di Scienze Marine – Consiglio Nazionale delle Ricerche</strong><br>
+    <h3 style="margin-top:0; margin-bottom:0.7rem; font-size:1.1rem; color:#1f4e79;">📍 Office</h3>
+
+    <p style="margin:0 0 0.7rem 0; font-size:0.95rem; line-height:1.6;">
+      <strong style="font-size:1rem;">Istituto di Scienze Marine – Consiglio Nazionale delle Ricerche</strong><br>
       Area della Ricerca di Roma 2 – Tor Vergata<br>
       Via del Fosso del Cavaliere 100<br>
       00133 Rome, Italy
     </p>
 
-    <p style="margin:0 0 0.8rem 0;">
+    <p style="margin:0 0 0.7rem 0; font-size:0.92rem;">
       <strong>Affiliation</strong><br>
       CNR-ISMAR, Rome
     </p>
 
-    <p style="margin:0;">
+    <p style="margin:0; font-size:0.92rem;">
       <a href="https://www.google.com/maps?q=Via+del+Fosso+del+Cavaliere+100+Roma" target="_blank">
         Open in Google Maps →
       </a>
     </p>
+
   </div>
 
+  <!-- Right: Map -->
   <div style="flex:1.25 1 360px; min-width:280px; background:#ffffff; border:1px solid rgba(120,160,200,0.12); border-radius:18px; padding:0.8rem; box-shadow:0 6px 18px rgba(0,0,0,0.06);">
+
     <iframe
       src="https://www.google.com/maps?q=Via+del+Fosso+del+Cavaliere+100+Roma&output=embed"
       width="100%"
@@ -259,6 +264,7 @@ redirect_from:
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade">
     </iframe>
+
   </div>
 
 </div>
