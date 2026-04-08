@@ -4,20 +4,7 @@ title: "Publications"
 permalink: /publications/
 author_profile: true
 ---
-## Editorial and Review Activities
 
-**Reviewer for peer-reviewed journals**
-
-- Progress in Oceanography  
-- Biogeosciences  
-
-
-**Guest Editor**
-
-- Remote Sensing  
-  <small>Special Issue: Advances in Machine Learning and Multi-Source Remote Sensing for Monitoring Marine Aquatic Environments</small>  
-
----
 ## First-author publications
 
 **Li, M.**, Organelli, E., Serva, F., Bellacicco, M., Landolfi, A., Pisano, A., Marullo, S., Shen, F., Mignot, A., van Gennip, S., Santoleri, R. (2024)  
