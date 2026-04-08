@@ -5,8 +5,6 @@ permalink: /teaching/
 author_profile: true
 ---
 
-{% include base_path %}
-
 ## Activities
 
 ## Editorial and Review Activities
