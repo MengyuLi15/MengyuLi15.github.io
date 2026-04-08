@@ -1,40 +1,118 @@
 ---
 permalink: /
-title: "Mengyu Li @ GitHub"
+title: "Mengyu Li @ CNR-ISMAR"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
 
-## Welcome！
+<div class="hero-card">
+  <div class="hero-text">
+    <h2>Hi, I’m Mengyu Li</h2>
+    <p>
+      Postdoctoral Researcher at CNR-ISMAR (Rome), working on marine bio-optics,
+      biogeochemistry, and multi-platform ocean observations.
+    </p>
+    <p>
+      My research focuses on ocean carbon cycling and bio-optical processes,
+      combining BGC-Argo observations, satellite remote sensing, and model outputs
+      to understand marine ecosystems under climate variability.
+    </p>
+  </div>
+</div>
 
-I am a Postdoctoral Researcher at CNR ISMAR in Rome, working on marine bio optics, BGC Argo observations, and ocean biogeochemistry.
+---
 
-My research focuses on understanding how the optical properties of seawater relate to phytoplankton dynamics and carbon export processes across different oceanic regimes. 
+## Research Focus
 
-I focus on analyzing marine bio-optical and biogeochemical processes by integrating multi-platform meteo-oceanographic datasets. My recent work studies the optical properties of marine particles and quantifies organic carbon across estuarine, coastal, and open-ocean environments. My work combines in situ observations, including BGC-Argo floats, with satellite remote sensing and model outputs to investigate marine ecosystems and carbon cycling under climate variability. I also have experience in developing empirical and semi-analytical models to characterize bio-optical regimes and biogeochemical processes in the global ocean.
+<div class="card-grid">
 
+  <div class="info-card">
+    <h3>🌊 Ocean Carbon Cycling</h3>
+    <p>
+      Investigating carbon export processes and the coupling between biological,
+      microbial, and physical carbon pumps across ocean regimes.
+    </p>
+  </div>
 
-## Research
+  <div class="info-card">
+    <h3>🛰️ Ocean Colour & Remote Sensing</h3>
+    <p>
+      Quantifying relationships between chlorophyll, light attenuation, and
+      optical depth metrics using satellite observations and bio-optical models.
+    </p>
+  </div>
 
-My work lies at the intersection of ocean optics, biogeochemistry, and autonomous observations.
+  <div class="info-card">
+    <h3>🤖 BGC-Argo Observations</h3>
+    <p>
+      Using multi-sensor float data to resolve vertical variability of
+      bio-optical and biogeochemical properties in the global ocean.
+    </p>
+  </div>
 
-**Marine bio optics and ocean color**  
-Quantifying relationships between chlorophyll, light attenuation, and optical depth metrics across different water types.
+  <div class="info-card">
+    <h3>🔬 Marine Bio-optics</h3>
+    <p>
+      Characterizing optical properties of marine particles and linking them to
+      phytoplankton dynamics across coastal and open-ocean environments.
+    </p>
+  </div>
 
-**BGC Argo observations**  
-Using multi-sensor float observations to resolve vertical structure and variability of bio-optical and biogeochemical properties.
+</div>
 
-**Carbon export and biogeochemical processes**  
-Investigating the coupling between particulate export and microbial carbon processing in the ocean.
+---
 
-## Selected research topics
+## Technical Expertise
 
-- Relationships between chlorophyll and light attenuation  
-- Evaluation and refitting of bio-optical models  
-- Integration of floats, satellite data, and model outputs  
-- Carbon export in oligotrophic oceans  
+<div class="card-grid">
+
+  <div class="info-card">
+    <h3>⚙️ Data Processing</h3>
+    <p>
+      MATLAB-based pipelines for BGC-Argo processing, radiometric quality control,
+      and multi-source data integration.
+    </p>
+  </div>
+
+  <div class="info-card">
+    <h3>📊 Optical Modelling</h3>
+    <p>
+      Development and evaluation of empirical and semi-analytical models for
+      Kd, Zeu, and bio-optical relationships.
+    </p>
+  </div>
+
+  <div class="info-card">
+    <h3>🛰️ Multi-platform Integration</h3>
+    <p>
+      Integration of in situ observations, satellite data (OC-CCI, MODIS),
+      and model outputs for large-scale ocean analysis.
+    </p>
+  </div>
+
+  <div class="info-card">
+    <h3>🧪 Field & Observational Work</h3>
+    <p>
+      Experience with bio-optical measurements including HPLC pigments, CDOM,
+      particle absorption, and optical instrumentation.
+    </p>
+  </div>
+
+</div>
+
+---
+
+## Selected Research Topics
+
+- Bio-optical relationships between chlorophyll and light attenuation  
+- Evaluation and refitting of global bio-optical models  
+- Integration of BGC-Argo, satellite, and model datasets  
+- Carbon export processes in oligotrophic oceans  
+- Marine heatwaves and phytoplankton dynamics  
+
+---
 
 ## Publications
 
