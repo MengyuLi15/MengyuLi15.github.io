@@ -5,7 +5,6 @@ permalink: /teaching/
 author_profile: true
 ---
 
-## Activities
 
 ## Editorial and Review Activities
 
@@ -31,11 +30,10 @@ Mediterranean Sea | 24–29 Jul 2025
 
 **National Natural Science Foundation of China Cruises**  
 East China Sea; Bohai Sea; Yellow Sea; Yangtze River Estuary | 2019–2020  
-- 13–29 May 2019 (East China Sea)  
-- 23 Jul–5 Aug 2019 (Bohai & Yellow Seas)  
-- 27 May–11 Jun 2020 (Bohai & Yellow Seas)  
-- 29 Jun–6 Jul 2020 (Yangtze River Estuary & East China Sea)  
-
+<small> 13–29 May 2019 (East China Sea) <small>  
+<small> 23 Jul–5 Aug 2019 (Bohai & Yellow Seas)  <small> 
+<small> 27 May–11 Jun 2020 (Bohai & Yellow Seas)  <small> 
+<small> 29 Jun–6 Jul 2020 (Yangtze River Estuary & East China Sea)  <small> 
 - Performed water sampling and onboard processing for HPLC pigments, total suspended matter (TSM), and particulate organic carbon (POC)  
 - Operated optical instrumentation, including absorption (particles and CDOM), scattering, backscattering, and beam attenuation sensors  
 - Processed and quality-controlled optical datasets, including remote sensing reflectance and inherent optical properties (IOPs)  
