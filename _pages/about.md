@@ -39,8 +39,3 @@ Investigating the coupling between particulate export and microbial carbon proce
 ## Publications
 
 A full list of publications can be found on the [Publications](/publications/) page.
-
-
-## CV
-
-You can find my [CV](/cv/) here. 
