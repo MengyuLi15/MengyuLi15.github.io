@@ -4,9 +4,6 @@ title: "Conferences"
 permalink: /talks/
 author_profile: true
 ---
-
-## Conferences
-
 ### 2026
 
 **2026 Ocean Sciences Meeting (AGU)**  
