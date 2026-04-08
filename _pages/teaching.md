@@ -21,6 +21,7 @@ author_profile: true
   <small>Special Issue: Advances in Machine Learning and Multi-Source Remote Sensing for Monitoring Marine Aquatic Environments</small>  
 
 ---
+
 ### Scientific Cruises
 
 **ITINERIS’ EYES Cruise (ITINERIS Project)**  
