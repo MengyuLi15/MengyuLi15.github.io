@@ -5,9 +5,6 @@ permalink: /teaching/
 author_profile: true
 ---
 
-## 🧭 Professional Activities
-
-
 ### 📝 Editorial & Review
 
 #### Reviewer for peer-reviewed journals
