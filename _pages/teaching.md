@@ -46,7 +46,7 @@ author_profile: true
 - Analysed particle characteristics such as size distribution, organic fraction, and refractive index  
 - Contributed to cross-cruise data standardization for bio-optical and biogeochemical applications  
 
-
+---
 
 ### 💻 Data Analysis & Technical Experience
 
@@ -61,7 +61,7 @@ North China Sea Marine Forecasting Center
 
 <sub><i>Now renamed as North Sea Forecasting and Disaster Mitigation Centre, Ministry of Natural Resources of China (MNR)</i></sub>
 
-
+---
 
 ### 🌐 Scientific Coordination & Service
 
