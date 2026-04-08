@@ -9,13 +9,14 @@ redirect_from:
 
 <style>
 .hero-card {
-  background: linear-gradient(135deg, #f7fbff 0%, #eef6fb 100%);
-  border: 1px solid rgba(120, 160, 200, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(120, 160, 200, 0.22);
   border-radius: 22px;
   padding: 2rem;
   margin: 1rem 0 2rem 0;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
   animation: fadeUp 0.7s ease-out;
+  color: inherit;
 }
 
 .hero-card h2 {
@@ -23,13 +24,13 @@ redirect_from:
   margin-bottom: 0.8rem;
   font-size: 2rem;
   line-height: 1.2;
-  color: #16324f;
 }
 
 .hero-card p {
   margin-bottom: 0.8rem;
   font-size: 1.02rem;
   line-height: 1.75;
+  color: inherit;
 }
 
 .card-grid {
@@ -40,19 +41,20 @@ redirect_from:
 }
 
 .info-card {
-  background: #ffffff;
-  border: 1px solid rgba(120, 160, 200, 0.12);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(120, 160, 200, 0.22);
   border-radius: 18px;
   padding: 1.2rem;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
   transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
   animation: fadeUp 0.85s ease-out;
+  color: inherit;
 }
 
 .info-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.10);
-  border-color: rgba(120, 160, 200, 0.28);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  border-color: rgba(120, 160, 200, 0.35);
 }
 
 .info-card h3 {
@@ -60,22 +62,23 @@ redirect_from:
   margin-bottom: 0.65rem;
   font-size: 1.08rem;
   line-height: 1.35;
-  color: #1f4e79;
 }
 
 .info-card p {
   margin-bottom: 0;
   font-size: 0.97rem;
   line-height: 1.65;
+  color: inherit;
 }
 
 .topic-list {
-  background: #fbfdff;
-  border: 1px solid rgba(120, 160, 200, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(120, 160, 200, 0.20);
   border-radius: 18px;
   padding: 1.2rem 1.4rem;
   margin: 1rem 0 2rem 0;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  color: inherit;
 }
 
 .topic-list ul {
@@ -83,11 +86,70 @@ redirect_from:
 }
 
 .pub-box {
-  background: linear-gradient(135deg, #fcfeff 0%, #f4f8fb 100%);
-  border-left: 4px solid #7aa6c7;
+  background: rgba(255, 255, 255, 0.06);
+  border-left: 4px solid #5fa8d3;
   border-radius: 14px;
   padding: 1rem 1.2rem;
   margin-top: 1rem;
+  color: inherit;
+}
+
+.address-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: stretch;
+  margin-top: 1rem;
+}
+
+.address-card {
+  flex: 1 1 280px;
+  min-width: 260px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(120, 160, 200, 0.22);
+  border-radius: 18px;
+  padding: 1.3rem 1.4rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  color: inherit;
+}
+
+.address-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.7rem;
+  font-size: 1.1rem;
+}
+
+.address-card p {
+  margin: 0 0 0.7rem 0;
+  color: inherit;
+}
+
+.address-main {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.address-main strong {
+  font-size: 1rem;
+}
+
+.address-meta {
+  font-size: 0.92rem;
+}
+
+.map-card {
+  flex: 1.25 1 360px;
+  min-width: 280px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(120, 160, 200, 0.22);
+  border-radius: 18px;
+  padding: 0.8rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.map-card iframe {
+  border: 0;
+  border-radius: 12px;
 }
 
 @keyframes fadeUp {
@@ -98,6 +160,51 @@ redirect_from:
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .hero-card,
+  .info-card,
+  .address-card,
+  .map-card {
+    background: #ffffff;
+    color: #2f2f2f;
+  }
+
+  .topic-list,
+  .pub-box {
+    background: #fbfdff;
+    color: #2f2f2f;
+  }
+
+  .hero-card h2 {
+    color: #16324f;
+  }
+
+  .info-card h3,
+  .address-card h3 {
+    color: #1f4e79;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .hero-card,
+  .info-card,
+  .topic-list,
+  .pub-box,
+  .address-card,
+  .map-card {
+    color: #e8edf2;
+  }
+
+  .hero-card h2 {
+    color: #9fd3ff;
+  }
+
+  .info-card h3,
+  .address-card h3 {
+    color: #7fc4ff;
   }
 }
 
@@ -124,7 +231,7 @@ redirect_from:
 <div class="hero-card">
   <h2>Hi, I’m Mengyu Li</h2>
   <p>
-    I am a Postdoctoral Researcher at CNR-ISMAR in Rome, working on marine bio-optics,
+    I am a Postdoctoral Researcher working on marine bio-optics,
     BGC-Argo observations, and ocean biogeochemistry.
   </p>
   <p>
@@ -226,45 +333,38 @@ redirect_from:
 
 ## Address
 
-<div style="display:flex; flex-wrap:wrap; gap:24px; align-items:stretch; margin-top:1rem;">
+<div class="address-wrap">
 
-  <!-- Left: Address card -->
-  <div style="flex:1 1 280px; min-width:260px; background:#ffffff; border:1px solid rgba(120,160,200,0.12); border-radius:18px; padding:1.3rem 1.4rem; box-shadow:0 6px 18px rgba(0,0,0,0.06);">
+  <div class="address-card">
+    <h3>Office</h3>
 
-    <h3 style="margin-top:0; margin-bottom:0.7rem; font-size:1.1rem; color:#1f4e79;">📍 Office</h3>
-
-    <p style="margin:0 0 0.7rem 0; font-size:0.95rem; line-height:1.6;">
-      <strong style="font-size:1rem;">Istituto di Scienze Marine – Consiglio Nazionale delle Ricerche</strong><br>
+    <p class="address-main">
+      <strong>Istituto di Scienze Marine – Consiglio Nazionale delle Ricerche</strong><br>
       Area della Ricerca di Roma 2 – Tor Vergata<br>
       Via del Fosso del Cavaliere 100<br>
       00133 Rome, Italy
     </p>
 
-    <p style="margin:0 0 0.7rem 0; font-size:0.92rem;">
+    <p class="address-meta">
       <strong>Affiliation</strong><br>
       CNR-ISMAR, Rome
     </p>
 
-    <p style="margin:0; font-size:0.92rem;">
+    <p class="address-meta" style="margin-bottom:0;">
       <a href="https://www.google.com/maps?q=Via+del+Fosso+del+Cavaliere+100+Roma" target="_blank">
         Open in Google Maps →
       </a>
     </p>
-
   </div>
 
-  <!-- Right: Map -->
-  <div style="flex:1.25 1 360px; min-width:280px; background:#ffffff; border:1px solid rgba(120,160,200,0.12); border-radius:18px; padding:0.8rem; box-shadow:0 6px 18px rgba(0,0,0,0.06);">
-
+  <div class="map-card">
     <iframe
       src="https://www.google.com/maps?q=Via+del+Fosso+del+Cavaliere+100+Roma&output=embed"
       width="100%"
       height="320"
-      style="border:0; border-radius:12px;"
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade">
     </iframe>
-
   </div>
 
 </div>
