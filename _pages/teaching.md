@@ -75,14 +75,16 @@ Mediterranean Sea · 24–29 Jul 2025 ·
 <h4>National Natural Science Foundation of China Cruises</h4>
 
 <div class="activity-meta">
-East China Sea · Bohai Sea · Yellow Sea · Yangtze River Estuary · 2019–2020
+East China Sea · Bohai Sea · Yellow Sea · Yangtze River Estuary
 </div>
 
 <div class="activity-meta">
-13–29 May 2019 (East China Sea) ·  
-23 Jul–5 Aug 2019 ·  
-27 May–11 Jun 2020 ·  
-29 Jun–6 Jul 2020  
+<ul style="margin:0; padding-left:18px;">
+  <li>13–29 May 2019 (East China Sea)</li>
+  <li>23 Jul–5 Aug 2019 (the Bohai Sea & the Yellow Sea)</li>
+  <li>27 May–11 Jun 2020 (the Bohai Sea & the Yellow Sea)</li>
+  <li>29 Jun–6 Jul 2020 (the Yangtze River Estuary & the East China Sea)</li>
+</ul>
 </div>
 
 <ul>
