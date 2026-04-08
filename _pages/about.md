@@ -15,7 +15,6 @@ My research focuses on understanding how the optical properties of seawater rela
 
 I focus on analyzing marine bio-optical and biogeochemical processes by integrating multi-platform meteo-oceanographic datasets. My recent work studies the optical properties of marine particles and quantifies organic carbon across estuarine, coastal, and open-ocean environments. My work combines in situ observations, including BGC-Argo floats, with satellite remote sensing and model outputs to investigate marine ecosystems and carbon cycling under climate variability. I also have experience in developing empirical and semi-analytical models to characterize bio-optical regimes and biogeochemical processes in the global ocean.
 
----
 
 ## Research
 
@@ -41,9 +40,7 @@ Investigating the coupling between particulate export and microbial carbon proce
 
 A full list of publications can be found on the [Publications](/publications/) page.
 
----
 
 ## CV
 
-You can download my CV here:  
-[Download CV](/files/Mengyu_Li_CV.pdf)
+You can find my [CV](/cv/) here. 
