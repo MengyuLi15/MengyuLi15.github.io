@@ -236,12 +236,17 @@ Via del Fosso del Cavaliere 100<br>
 <br><br>
 
 <iframe 
-  src="https://www.google.com/maps/place/CNR-ARTOV/"
+  src="https://www.google.com/maps?q=Via+del+Fosso+del+Cavaliere+100+Roma&output=embed"
   width="100%" 
   height="250" 
   style="border:0;border-radius:12px;" 
-  allowfullscreen="" 
   loading="lazy">
 </iframe>
 
+<br>
+
+<div style="text-align:right; margin-top:6px;">
+  <a href="https://www.google.com/maps?q=Via+del+Fosso+del+Cavaliere+100+Roma" target="_blank">
+    Open in Google Maps →
+  </a>
 </div>
