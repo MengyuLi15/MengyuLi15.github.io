@@ -224,29 +224,41 @@ redirect_from:
   A full list of publications can be found on the <a href="/publications/">Publications</a> page.
 </div>
 
-## Contact & Address
+## Address
 
-<div style="background:#ffffff;border:1px solid rgba(120,160,200,0.12);border-radius:18px;padding:1.2rem 1.3rem;margin-top:1rem;box-shadow:0 6px 18px rgba(0,0,0,0.06);">
+<div style="display:flex; flex-wrap:wrap; gap:24px; align-items:stretch; margin-top:1rem;">
 
-<strong>Istituto di Scienze Marine – Consiglio Nazionale delle Ricerche</strong><br>
-Area della Ricerca di Roma 2 – Tor Vergata<br>
-Via del Fosso del Cavaliere 100<br>
-00133, Roma, Italy
+  <div style="flex:1 1 280px; min-width:260px; background:#ffffff; border:1px solid rgba(120,160,200,0.12); border-radius:18px; padding:1.4rem 1.5rem; box-shadow:0 6px 18px rgba(0,0,0,0.06);">
+    <h3 style="margin-top:0; margin-bottom:0.9rem;">📍 Office</h3>
 
-<br><br>
+    <p style="margin:0 0 0.8rem 0;">
+      <strong>Istituto di Scienze Marine – Consiglio Nazionale delle Ricerche</strong><br>
+      Area della Ricerca di Roma 2 – Tor Vergata<br>
+      Via del Fosso del Cavaliere 100<br>
+      00133 Rome, Italy
+    </p>
 
-<iframe 
-  src="https://www.google.com/maps?q=Via+del+Fosso+del+Cavaliere+100+Roma&output=embed"
-  width="100%" 
-  height="250" 
-  style="border:0;border-radius:12px;" 
-  loading="lazy">
-</iframe>
+    <p style="margin:0 0 0.8rem 0;">
+      <strong>Affiliation</strong><br>
+      CNR-ISMAR, Rome
+    </p>
 
-<br>
+    <p style="margin:0;">
+      <a href="https://www.google.com/maps?q=Via+del+Fosso+del+Cavaliere+100+Roma" target="_blank">
+        Open in Google Maps →
+      </a>
+    </p>
+  </div>
 
-<div style="text-align:right; margin-top:6px;">
-  <a href="https://www.google.com/maps?q=Via+del+Fosso+del+Cavaliere+100+Roma" target="_blank">
-    Open in Google Maps →
-  </a>
+  <div style="flex:1.25 1 360px; min-width:280px; background:#ffffff; border:1px solid rgba(120,160,200,0.12); border-radius:18px; padding:0.8rem; box-shadow:0 6px 18px rgba(0,0,0,0.06);">
+    <iframe
+      src="https://www.google.com/maps?q=Via+del+Fosso+del+Cavaliere+100+Roma&output=embed"
+      width="100%"
+      height="320"
+      style="border:0; border-radius:12px;"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+
 </div>
