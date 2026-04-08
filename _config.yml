@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-site_theme               : "mint" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
+site_theme               : "air" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
 title                    : "Mengyu Li"
 title_separator          : "|"
 name                     : &name "Mengyu Li"
@@ -26,7 +26,7 @@ author:
   avatar           : "profile.png"
   name             : "Mengyu Li"
   pronouns         : # example: "she/her"  
-  bio              : "Postdoctoral Researcher at CNR-ISMAR working on marine bio-optics, BGC-Argo, ocean color, and carbon export processes."
+  bio              : "Postdoctoral Researcher at CNR-ISMAR working on marine bio-optics, BGC-Argo, ocean color, and carbon processes."
   location         : "Rome, Italy"
   employer         : "Consiglio Nazionale delle Ricerche (CNR)"
   uri              : # URL
@@ -35,7 +35,7 @@ author:
   # Academic websites
   googlescholar    : "https://scholar.google.com.hk/citations?user=_8dj6EAAAAAJ&hl"
   orcid            : "https://orcid.org/0000-0003-0939-7406"
-  rearchgate       : "https://www.researchgate.net/profile/Mengyu-Li-15"  # URL
+  researchgate       : "https://www.researchgate.net/profile/Mengyu-Li-15"  # URL
   scopus           : # URL
   zotero           : # URL
   sciprofiles      : "https://sciprofiles.com/profile/MengyuLi15"
