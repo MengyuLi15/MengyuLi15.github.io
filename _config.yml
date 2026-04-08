@@ -28,16 +28,19 @@ author:
   pronouns         : # example: "she/her"  
   bio              : "Postdoctoral Researcher at CNR-ISMAR working on marine bio-optics, BGC-Argo, ocean color, and carbon export processes."
   location         : "Rome, Italy"
-  employer         : "National Research Council (CNR), Institute of Marine Sciences (ISMAR)"
+  employer         : "Consiglio Nazionale delle Ricerche (CNR)"
   uri              : # URL
   email            : "mengyuli@cnr.it" 
 
   # Academic websites
   googlescholar    : "https://scholar.google.com.hk/citations?user=_8dj6EAAAAAJ&hl"
   orcid            : "https://orcid.org/0000-0003-0939-7406"
-  RearchGate       : "https://www.researchgate.net/profile/Mengyu-Li-15"  # URL
+  rearchgate       : "https://www.researchgate.net/profile/Mengyu-Li-15"  # URL
   scopus           : # URL
   zotero           : # URL
+  sciprofiles      : "https://sciprofiles.com/profile/MengyuLi15"
+  loop             : "https://loop.frontiersin.org/people/2735627/"
+  
 
 
   # Repositories and software development
