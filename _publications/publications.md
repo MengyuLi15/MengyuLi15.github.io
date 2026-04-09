@@ -10,12 +10,12 @@ author_profile: true
 
 **Li, M.**, Organelli, E., Serva, F., Bellacicco, M., Landolfi, A., Pisano, A., Marullo, S., Shen, F., Mignot, A., van Gennip, S., Santoleri, R. (2024)  
 *Phytoplankton spring bloom inhibited by marine heatwaves in the North-Western Mediterranean Sea*  
-*Geophysical Research Letters*   [DOI](https://doi.org/10.1029/2024GL109141) · [ESA coverage](https://www.esa.int/Applications/Observing_the_Earth/How_marine_heatwaves_impact_phytoplankton_and_ocean_health) · [AGU highlight](https://mp.weixin.qq.com/s/iJbXPhNPF5axCJ2trarkgg)
+*Geophysical Research Letters*   [DOI](https://doi.org/10.1029/2024GL109141) · [ESA EO](https://www.esa.int/Applications/Observing_the_Earth/How_marine_heatwaves_impact_phytoplankton_and_ocean_health) · [AGU Chinese Highlight](https://mp.weixin.qq.com/s/iJbXPhNPF5axCJ2trarkgg) · [BGC-Argo Newsletter](https://mailchi.mp/99f82bbef505/biogeochemical-argo-newsletter-12)
 
 
 **Li, M.**, Shen, F., Organelli, E., Luo, W., Li, R., Sun, X., & Wei, X. (2024)  
 *Disentangling Particle Composition to Improve Space-Based Quantification of POC in Optically-Complex Estuarine and Coastal Waters*  
-*IEEE Transactions on Geoscience and Remote Sensing*   [DOI](https://doi.org/10.1109/TGRS.2023.3341462) · [SKLEC coverage](https://mp.weixin.qq.com/s/uwvvv3F0kq3j_tYMjDBvFw)
+*IEEE Transactions on Geoscience and Remote Sensing*   [DOI](https://doi.org/10.1109/TGRS.2023.3341462) · [SKLEC Newsletter](https://mp.weixin.qq.com/s/uwvvv3F0kq3j_tYMjDBvFw)
 
 
 **Li, M.**, Shen, F., & Sun, X. (2021)  
