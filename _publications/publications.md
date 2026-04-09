@@ -10,7 +10,7 @@ author_profile: true
 
 **Li, M.**, Organelli, E., Serva, F., Bellacicco, M., Landolfi, A., Pisano, A., Marullo, S., Shen, F., Mignot, A., van Gennip, S., Santoleri, R. (2024)  
 *Phytoplankton spring bloom inhibited by marine heatwaves in the North-Western Mediterranean Sea*  
-*Geophysical Research Letters*   [DOI](https://doi.org/10.1029/2024GL109141) · [ESA EO](https://www.esa.int/Applications/Observing_the_Earth/How_marine_heatwaves_impact_phytoplankton_and_ocean_health) · [AGU Chinese Highlight](https://mp.weixin.qq.com/s/iJbXPhNPF5axCJ2trarkgg) · [BGC-Argo Newsletter](https://mailchi.mp/99f82bbef505/biogeochemical-argo-newsletter-12)
+*Geophysical Research Letters*   [DOI](https://doi.org/10.1029/2024GL109141) · [ESA Report](https://www.esa.int/Applications/Observing_the_Earth/How_marine_heatwaves_impact_phytoplankton_and_ocean_health) · [AGU Chinese Highlight](https://mp.weixin.qq.com/s/iJbXPhNPF5axCJ2trarkgg) · [BGC-Argo Newsletter](https://mailchi.mp/99f82bbef505/biogeochemical-argo-newsletter-12) · [ECNU Newsletter](http://www.sklec.ecnu.edu.cn/node/7687)
 
 
 **Li, M.**, Shen, F., Organelli, E., Luo, W., Li, R., Sun, X., & Wei, X. (2024)  
