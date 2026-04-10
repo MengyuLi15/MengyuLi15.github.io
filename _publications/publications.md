@@ -5,79 +5,311 @@ permalink: /publications/
 author_profile: true
 ---
 
-## First-author publications
+<style>
+.pub-section-title {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
 
+/* 卡片 */
+.pub-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  padding: 1.2rem;
+  margin: 1.2rem 0;
+  border-radius: 16px;
+  border: 1px solid rgba(120,120,120,0.18);
+  background: var(--global-bg-color, #ffffff);
+  color: var(--global-text-color, #111111);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+}
 
-**Li, M.**, Organelli, E., Serva, F., Bellacicco, M., Landolfi, A., Pisano, A., Marullo, S., Shen, F., Mignot, A., van Gennip, S., Santoleri, R. (2024)  
-*Phytoplankton spring bloom inhibited by marine heatwaves in the North-Western Mediterranean Sea*  
-*Geophysical Research Letters*   [DOI](https://doi.org/10.1029/2024GL109141) · [ESA Report](https://www.esa.int/Applications/Observing_the_Earth/How_marine_heatwaves_impact_phytoplankton_and_ocean_health) · [AGU Chinese Highlight](https://mp.weixin.qq.com/s/iJbXPhNPF5axCJ2trarkgg) · [BGC-Argo Newsletter](https://mailchi.mp/99f82bbef505/biogeochemical-argo-newsletter-12) · [ECNU Newsletter](http://www.sklec.ecnu.edu.cn/node/7687)
+/* 图片区域 */
+.pub-thumb {
+  flex: 0 0 180px;
+  max-width: 180px;
+}
 
+/* 关键：统一比例 */
+.pub-thumb img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+  border: 1px solid rgba(120,120,120,0.15);
+}
 
-**Li, M.**, Shen, F., Organelli, E., Luo, W., Li, R., Sun, X., & Wei, X. (2024)  
-*Disentangling Particle Composition to Improve Space-Based Quantification of POC in Optically-Complex Estuarine and Coastal Waters*  
-*IEEE Transactions on Geoscience and Remote Sensing*   [DOI](https://doi.org/10.1109/TGRS.2023.3341462) · [SKLEC Newsletter](https://mp.weixin.qq.com/s/uwvvv3F0kq3j_tYMjDBvFw)
+/* 内容 */
+.pub-content {
+  flex: 1 1 auto;
+  min-width: 0;
+}
 
+.pub-authors {
+  margin: 0 0 0.35rem 0;
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
 
-**Li, M.**, Shen, F., & Sun, X. (2021)  
-*Australian bushfire air particulate pollution and its impact on the South Pacific Ocean*  
-*Scientific Reports*   [DOI](https://doi.org/10.1038/s41598-021-91547-y)  
-<sub>Top 100 in Earth Science (2021) · Editor’s Choice: Wildfires</sub>
+.pub-title {
+  margin: 0 0 0.4rem 0;
+  font-size: 1.08rem;
+  line-height: 1.45;
+  font-weight: 700;
+}
 
----
+.pub-journal {
+  margin: 0 0 0.5rem 0;
+  font-style: italic;
+  font-size: 0.98rem;
+  opacity: 0.9;
+}
 
-## Co-author publications
+/* 链接 */
+.pub-links {
+  margin: 0.35rem 0 0 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
 
+.pub-links a {
+  text-decoration: none;
+}
 
-Zhang, Y., Shen, F., Li, R., **Li, M.**, Li, Z., & Sun, X. (2026)  
-*Global estimation of phytoplankton functional types using PACE OCI hyperspectral data and a novel deep ensemble learning approach*  
-*International Journal of Applied Earth Observation and Geoinformation*  [DOI](https://doi.org/10.1016/j.jag.2026.105225)
+.pub-links a:hover {
+  text-decoration: underline;
+}
 
+/* note */
+.pub-note {
+  margin-top: 0.45rem;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
 
-Sun, X., Brewin, R. J. W., Sathyendranath, S., Dall’Olmo, G., Antoine, D., Barlow, R., Bracher, A., Kheireddine, M., **Li, M.**, Pitarch, J., Raitsos, D. E., Shen, F., Tilstone, G. H., Vellucci, V., & Zhang, Y. (2026)  
-*Coupling ecological concepts with an ocean-colour model: inversion modelling*  
-*Frontiers in Remote Sensing*  [DOI](https://doi.org/10.3389/frsen.2025.1692306)
+/* 手机端 */
+@media (max-width: 768px) {
+  .pub-card {
+    flex-direction: column;
+  }
 
+  .pub-thumb {
+    max-width: 100%;
+    width: 100%;
+  }
 
-Sun, X., Brewin, R. J., Sathyendranath, S., Dall’Olmo, G., Antoine, D., Barlow, R., Bracher, A., Kheireddine, M., **Li, M.**, & Raitsos, D. E. (2025)  
-*Coupling ecological concepts with an ocean-colour model: Parameterisation and forward modelling*  
-*Remote Sensing of Environment*  [DOI](https://doi.org/10.1016/j.rse.2024.114487)
+  .pub-thumb img {
+    width: 100%;
+  }
+}
+</style>
 
+<div class="pub-section-title">First-author publications</div>
 
-Bellacicco, M., Pitarch, J., Organelli, E., Zoffoli, M. L., Concha, J. A., Falcini, F., **Li, M.**, Marullo, S., Rio, M.-H., & Santoleri, R. (2024)  
-*Near-surface particulate backscattering observations with bio-optical Lagrangian drifters*  
-*Journal of Atmospheric and Oceanic Technology*  [DOI](https://doi.org/10.1175/JTECH-D-23-0161.1)
+<div class="pub-card">
+  <div class="pub-thumb">
+    <img src="/images/GRL.jpg">
+  </div>
+  <div class="pub-content">
+    <p class="pub-authors"><strong>Li, M.</strong>, Organelli, E., Serva, F., Bellacicco, M., Landolfi, A., Pisano, A., Marullo, S., Shen, F., Mignot, A., van Gennip, S., Santoleri, R. (2024)</p>
+    <p class="pub-title">Phytoplankton spring bloom inhibited by marine heatwaves in the North-Western Mediterranean Sea</p>
+    <p class="pub-journal">Geophysical Research Letters</p>
+    <p class="pub-links">
+      <a href="https://doi.org/10.1029/2024GL109141" target="_blank" rel="noopener noreferrer">DOI</a> ·
+      <a href="https://www.esa.int/Applications/Observing_the_Earth/How_marine_heatwaves_impact_phytoplankton_and_ocean_health" target="_blank" rel="noopener noreferrer">ESA Report</a> ·
+      <a href="https://mp.weixin.qq.com/s/iJbXPhNPF5axCJ2trarkgg" target="_blank" rel="noopener noreferrer">AGU Chinese Highlight</a> ·
+      <a href="https://mailchi.mp/99f82bbef505/biogeochemical-argo-newsletter-12" target="_blank" rel="noopener noreferrer">BGC-Argo Newsletter</a> ·
+      <a href="http://www.sklec.ecnu.edu.cn/node/7687" target="_blank" rel="noopener noreferrer">ECNU Newsletter</a>
+    </p>
+  </div>
+</div>
 
+<div class="pub-card">
+  <div class="pub-thumb">
+    <img src="/images/tgrs.jpg">
+  </div>
+  <div class="pub-content">
+    <p class="pub-authors"><strong>Li, M.</strong>, Shen, F., Organelli, E., Luo, W., Li, R., Sun, X., &amp; Wei, X. (2024)</p>
+    <p class="pub-title">Disentangling Particle Composition to Improve Space-Based Quantification of POC in Optically-Complex Estuarine and Coastal Waters</p>
+    <p class="pub-journal">IEEE Transactions on Geoscience and Remote Sensing</p>
+    <p class="pub-links">
+      <a href="https://doi.org/10.1109/TGRS.2023.3341462" target="_blank" rel="noopener noreferrer">DOI</a> ·
+      <a href="https://mp.weixin.qq.com/s/uwvvv3F0kq3j_tYMjDBvFw" target="_blank" rel="noopener noreferrer">SKLEC Newsletter</a>
+    </p>
+  </div>
+</div>
 
-Zhang, Y., Shen, F., Zhao, H., Sun, X., Zhu, Q., **Li, M.** (2024)  
-*Optical distinguishability of phytoplankton species for hyperspectral remote sensing*  
-*Journal of Sea Research*  [DOI](https://doi.org/10.1016/j.seares.2024.102540)
+<div class="pub-card">
+  <div class="pub-thumb">
+    <img src="/images/bushfire.gif">
+  </div>
+  <div class="pub-content">
+    <p class="pub-authors"><strong>Li, M.</strong>, Shen, F., &amp; Sun, X. (2021)</p>
+    <p class="pub-title">Australian bushfire air particulate pollution and its impact on the South Pacific Ocean</p>
+    <p class="pub-journal">Scientific Reports</p>
+    <p class="pub-links">
+      <a href="https://doi.org/10.1038/s41598-021-91547-y" target="_blank" rel="noopener noreferrer">DOI</a>
+    </p>
+    <p class="pub-note">Top 100 in Earth Science (2021) · Editor’s Choice: Wildfires</p>
+  </div>
+</div>
 
+<div class="pub-section-title">Co-author publications</div>
 
-Zhang, Y., Shen, F., Li, R., **Li, M.**, Li, Z., Chen, S., Sun, X. (2024)  
-*AIGD-PFT: AI-driven global daily phytoplankton functional type product*  
-*Earth System Science Data*  [DOI](https://doi.org/10.5194/essd-2024-122)
+<div class="pub-card">
+  <div class="pub-thumb">
+    <img src="/images/ZHANG2026.jpg" alt="Global estimation of phytoplankton functional types using PACE OCI hyperspectral data and a novel deep ensemble learning approach">
+  </div>
+  <div class="pub-content">
+    <p class="pub-authors">Zhang, Y., Shen, F., Li, R., <strong>Li, M.</strong>, Li, Z., &amp; Sun, X. (2026)</p>
+    <p class="pub-title">Global estimation of phytoplankton functional types using PACE OCI hyperspectral data and a novel deep ensemble learning approach</p>
+    <p class="pub-journal">International Journal of Applied Earth Observation and Geoinformation</p>
+    <p class="pub-links">
+      <a href="https://doi.org/10.1016/j.jag.2026.105225" target="_blank">DOI</a>
+    </p>
+  </div>
+</div>
 
+<div class="pub-card">
+  <div class="pub-thumb">
+    <img src="/images/SUN2026.png" alt="Coupling ecological concepts with an ocean-colour model: inversion modelling">
+  </div>
+  <div class="pub-content">
+    <p class="pub-authors">Sun, X., Brewin, R. J. W., Sathyendranath, S., Dall’Olmo, G., Antoine, D., Barlow, R., Bracher, A., Kheireddine, M., <strong>Li, M.</strong>, Pitarch, J., Raitsos, D. E., Shen, F., Tilstone, G. H., Vellucci, V., &amp; Zhang, Y. (2026)</p>
+    <p class="pub-title">Coupling ecological concepts with an ocean-colour model: inversion modelling</p>
+    <p class="pub-journal">Frontiers in Remote Sensing</p>
+    <p class="pub-links">
+      <a href="https://doi.org/10.3389/frsen.2025.1692306" target="_blank">DOI</a>
+    </p>
+  </div>
+</div>
 
-Sun, X., Brewin, R. J., Hacker, C., Viljoen, J. J., & **Li, M.** (2024)  
-*Generating open-source 3D phytoplankton models by integrating photogrammetry with scanning electron microscopy*  
-*Frontiers in Microbiology*  [DOI](https://doi.org/10.3389/fmicb.2024.1429179)
+<div class="pub-card">
+  <div class="pub-thumb">
+    <img src="/images/SUN2025.png" alt="Coupling ecological concepts with an ocean-colour model: Parameterisation and forward modelling">
+  </div>
+  <div class="pub-content">
+    <p class="pub-authors">Sun, X., Brewin, R. J., Sathyendranath, S., Dall’Olmo, G., Antoine, D., Barlow, R., Bracher, A., Kheireddine, M., <strong>Li, M.</strong>, &amp; Raitsos, D. E. (2025)</p>
+    <p class="pub-title">Coupling ecological concepts with an ocean-colour model: Parameterisation and forward modelling</p>
+    <p class="pub-journal">Remote Sensing of Environment</p>
+    <p class="pub-links">
+      <a href="https://doi.org/10.1016/j.rse.2024.114487" target="_blank">DOI</a>
+    </p>
+  </div>
+</div>
 
+<div class="pub-card">
+  <div class="pub-thumb">
+    <img src="/images/BELLACICCO2025.png" alt="Near-surface particulate backscattering observations with bio-optical Lagrangian drifters">
+  </div>
+  <div class="pub-content">
+    <p class="pub-authors">Bellacicco, M., Pitarch, J., Organelli, E., Zoffoli, M. L., Concha, J. A., Falcini, F., <strong>Li, M.</strong>, Marullo, S., Rio, M.-H., &amp; Santoleri, R. (2024)</p>
+    <p class="pub-title">Near-surface particulate backscattering observations with bio-optical Lagrangian drifters</p>
+    <p class="pub-journal">Journal of Atmospheric and Oceanic Technology</p>
+    <p class="pub-links">
+      <a href="https://doi.org/10.1175/JTECH-D-23-0161.1" target="_blank">DOI</a>
+    </p>
+  </div>
+</div>
 
-Sun, X., Shen, F., Brewin, R. J. W., **Li, M.**, & Zhu, Q. (2022)  
-*Light absorption spectra of naturally mixed phytoplankton assemblages for retrieval of phytoplankton group composition in coastal oceans*  
-*Limnology and Oceanography*  [DOI](https://doi.org/10.1002/lno.12047)
+<div class="pub-card">
+  <div class="pub-thumb">
+    <img src="/images/ZHANG2024.png" alt="Optical distinguishability of phytoplankton species for hyperspectral remote sensing">
+  </div>
+  <div class="pub-content">
+    <p class="pub-authors">Zhang, Y., Shen, F., Zhao, H., Sun, X., Zhu, Q., <strong>Li, M.</strong> (2024)</p>
+    <p class="pub-title">Optical distinguishability of phytoplankton species for hyperspectral remote sensing</p>
+    <p class="pub-journal">Journal of Sea Research</p>
+    <p class="pub-links">
+      <a href="https://doi.org/10.1016/j.seares.2024.102540" target="_blank">DOI</a>
+    </p>
+  </div>
+</div>
 
+<div class="pub-card">
+  <div class="pub-thumb">
+    <img src="/images/ZHANG2024ESSD.png" alt="AIGD-PFT: AI-driven global daily phytoplankton functional type product">
+  </div>
+  <div class="pub-content">
+    <p class="pub-authors">Zhang, Y., Shen, F., Li, R., <strong>Li, M.</strong>, Li, Z., Chen, S., Sun, X. (2024)</p>
+    <p class="pub-title">AIGD-PFT: AI-driven global daily phytoplankton functional type product</p>
+    <p class="pub-journal">Earth System Science Data</p>
+    <p class="pub-links">
+      <a href="https://doi.org/10.5194/essd-2024-122" target="_blank">DOI</a>
+    </p>
+  </div>
+</div>
 
-Luo, W., Shen, F., He, Q., Cao, F., Zhao, H., & **Li, M.** (2022)  
-*Changes in suspended sediments in the Yangtze River Estuary from 1984 to 2020: Responses to basin and estuarine engineering constructions*  
-*Science of The Total Environment*  [DOI](https://doi.org/10.1016/j.scitotenv.2021.150381)
+<div class="pub-card">
+  <div class="pub-thumb">
+    <img src="/images/SUN2024.png" alt="Generating open-source 3D phytoplankton models by integrating photogrammetry with scanning electron microscopy">
+  </div>
+  <div class="pub-content">
+    <p class="pub-authors">Sun, X., Brewin, R. J., Hacker, C., Viljoen, J. J., &amp; <strong>Li, M.</strong> (2024)</p>
+    <p class="pub-title">Generating open-source 3D phytoplankton models by integrating photogrammetry with scanning electron microscopy</p>
+    <p class="pub-journal">Frontiers in Microbiology</p>
+    <p class="pub-links">
+      <a href="https://doi.org/10.3389/fmicb.2024.1429179" target="_blank">DOI</a>
+    </p>
+  </div>
+</div>
 
+<div class="pub-card">
+  <div class="pub-thumb">
+    <img src="/images/SUN2022.png" alt="Light absorption spectra of naturally mixed phytoplankton assemblages for retrieval of phytoplankton group composition in coastal oceans">
+  </div>
+  <div class="pub-content">
+    <p class="pub-authors">Sun, X., Shen, F., Brewin, R. J. W., <strong>Li, M.</strong>, &amp; Zhu, Q. (2022)</p>
+    <p class="pub-title">Light absorption spectra of naturally mixed phytoplankton assemblages for retrieval of phytoplankton group composition in coastal oceans</p>
+    <p class="pub-journal">Limnology and Oceanography</p>
+    <p class="pub-links">
+      <a href="https://doi.org/10.1002/lno.12047" target="_blank">DOI</a>
+    </p>
+  </div>
+</div>
 
-Zhu, Q., Shen, F., Shang, P., Pan, Y., & **Li, M.** (2019)  
-*Hyperspectral Remote Sensing of Phytoplankton Species Composition Based on Transfer Learning*  
-*Remote Sensing*  [DOI](https://doi.org/10.3390/rs11172001)
+<div class="pub-card">
+  <div class="pub-thumb">
+    <img src="/images/LUO2022.png" alt="Changes in suspended sediments in the Yangtze River Estuary from 1984 to 2020: Responses to basin and estuarine engineering constructions">
+  </div>
+  <div class="pub-content">
+    <p class="pub-authors">Luo, W., Shen, F., He, Q., Cao, F., Zhao, H., &amp; <strong>Li, M.</strong> (2022)</p>
+    <p class="pub-title">Changes in suspended sediments in the Yangtze River Estuary from 1984 to 2020: Responses to basin and estuarine engineering constructions</p>
+    <p class="pub-journal">Science of The Total Environment</p>
+    <p class="pub-links">
+      <a href="https://doi.org/10.1016/j.scitotenv.2021.150381" target="_blank">DOI</a>
+    </p>
+  </div>
+</div>
 
+<div class="pub-card">
+  <div class="pub-thumb">
+    <img src="/images/ZHU2019.png" alt="Hyperspectral Remote Sensing of Phytoplankton Species Composition Based on Transfer Learning">
+  </div>
+  <div class="pub-content">
+    <p class="pub-authors">Zhu, Q., Shen, F., Shang, P., Pan, Y., &amp; <strong>Li, M.</strong> (2019)</p>
+    <p class="pub-title">Hyperspectral Remote Sensing of Phytoplankton Species Composition Based on Transfer Learning</p>
+    <p class="pub-journal">Remote Sensing</p>
+    <p class="pub-links">
+      <a href="https://doi.org/10.3390/rs11172001" target="_blank">DOI</a>
+    </p>
+  </div>
+</div>
 
-Tang, R., Shen, F., Pan, Y., Liu, K., **Li, M.**, Gao, W., & Zang, C. (2019)  
-*Cross-Comparison of Ocean Color Products Derived from Tiangong-2/WIS and GOCI in the Yangtze Estuary, China*  
-*Lecture Notes in Electrical Engineering*  [DOI](https://doi.org/10.1007/978-981-13-3501-3_19)
+<div class="pub-card">
+  <div class="pub-thumb">
+    <img src="/images/TANG2019.png" alt="Cross-Comparison of Ocean Color Products Derived from Tiangong-2/WIS and GOCI in the Yangtze Estuary, China">
+  </div>
+  <div class="pub-content">
+    <p class="pub-authors">Tang, R., Shen, F., Pan, Y., Liu, K., <strong>Li, M.</strong>, Gao, W., &amp; Zang, C. (2019)</p>
+    <p class="pub-title">Cross-Comparison of Ocean Color Products Derived from Tiangong-2/WIS and GOCI in the Yangtze Estuary, China</p>
+    <p class="pub-journal">Lecture Notes in Electrical Engineering</p>
+    <p class="pub-links">
+      <a href="https://doi.org/10.1007/978-981-13-3501-3_19" target="_blank">DOI</a>
+    </p>
+  </div>
+</div>
