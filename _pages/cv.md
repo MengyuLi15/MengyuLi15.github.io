@@ -179,7 +179,10 @@ html[data-theme="dark"] .cv-list {
       <div class="cv-line">State Key Laboratory of Estuarine and Coastal Research (SKLEC)</div>
       <div class="cv-line">East China Normal University</div>
       <div class="cv-line">Shanghai, China</div>
-      <div class="cv-meta">Sep 2018 – Jun 2024 · GPA: 3.46/4</div>
+      <div class="cv-meta">
+        Sep 2018 – Jun 2024 · GPA: 3.46/4 · 
+        Supervisor: <a href="https://www.researchgate.net/profile/Fang-Shen-6">Prof. Fang Shen</a>
+      </div>
     </div>
   </div>
 
@@ -201,7 +204,10 @@ html[data-theme="dark"] .cv-list {
       <div class="cv-line">Institute of Marine Sciences (ISMAR)</div>
       <div class="cv-line">National Research Council of Italy (CNR)</div>
       <div class="cv-line">Rome, Italy</div>
-      <div class="cv-meta">Oct 2022 – Oct 2023</div>
+      <div class="cv-meta">
+        Oct 2022 – Oct 2023 · 
+        Co-supervisor: <a href="https://www.researchgate.net/profile/Emanuele-Organelli">Dr. Emanuele Organelli</a>
+      </div>
     </div>
   </div>
 
@@ -223,7 +229,12 @@ html[data-theme="dark"] .cv-list {
       <div class="cv-line">College of Information Science and Engineering</div>
       <div class="cv-line">Ocean University of China</div>
       <div class="cv-line">Qingdao, China</div>
-      <div class="cv-meta">Sep 2014 – Jun 2018 · GPA: 3.55/4</div>
+      <div class="cv-meta">
+        Sep 2014 – Jun 2018 · GPA: 3.55/4 · 
+        Supervisors: 
+        <a href="https://www.researchgate.net/profile/Shuguo-Chen">Prof. Shuguo Chen</a>, 
+        <a href="https://www.researchgate.net/profile/Chen-Ge-5">Prof. Ge Chen</a>
+      </div>
     </div>
   </div>
 
