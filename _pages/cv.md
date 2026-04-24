@@ -25,13 +25,13 @@ redirect_from:
   gap: 1.2rem;
 }
 
-/* 🔥 更大的2:1 logo */
+/* 🔥 1.8:1 logo */
 .cv-logo-box {
   flex: 0 0 150px;
-  aspect-ratio: 2 / 1;
+  aspect-ratio: 1.8 / 1;
   background: #ffffff;
   border-radius: 10px;
-  border: 1px solid rgba(120,120,120,0.15);
+  border: 1px solid rgba(120,120,120,0.12);
   padding: 8px;
   display: flex;
   align-items: center;
@@ -48,16 +48,17 @@ redirect_from:
   flex: 1;
 }
 
+/* 层级更清晰 */
 .cv-title {
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--global-text-color, #222);
 }
 
-.cv-subtitle {
-  font-size: 0.96rem;
-  color: #2c6e91;
-  margin-top: 3px;
+.cv-line {
+  font-size: 0.92rem;
+  color: var(--global-text-color-light, #555);
+  margin-top: 2px;
 }
 
 .cv-meta {
@@ -66,16 +67,10 @@ redirect_from:
   margin-top: 3px;
 }
 
-/* 分割线 */
-.cv-divider {
-  margin: 1rem 0 0.8rem 0;
-  height: 1px;
-  background: rgba(120,120,120,0.15);
-}
-
 /* 内容对齐 */
 .cv-content {
-  padding-left: 168px; /* = logo + gap */
+  padding-left: 168px;
+  margin-top: 0.6rem;
 }
 
 .cv-desc {
@@ -94,7 +89,7 @@ redirect_from:
   margin-bottom: 6px;
 }
 
-/* Skills grid */
+/* Skills */
 .cv-grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -137,21 +132,11 @@ html[data-theme="dark"] .cv-title {
   color: #f1f1f1;
 }
 
-html[data-theme="dark"] .cv-subtitle {
-  color: #5fa8d3;
-}
-
-html[data-theme="dark"] .cv-meta {
-  color: #aaaaaa;
-}
-
-html[data-theme="dark"] .cv-divider {
-  background: rgba(255,255,255,0.1);
-}
-
+html[data-theme="dark"] .cv-line,
+html[data-theme="dark"] .cv-meta,
 html[data-theme="dark"] .cv-desc,
 html[data-theme="dark"] .cv-list {
-  color: #e0e0e0;
+  color: #dcdcdc;
 }
 </style>
 
@@ -162,20 +147,21 @@ html[data-theme="dark"] .cv-list {
     <div class="cv-logo-box">
       <img src="/images/School_Mar_Geo_logoISMAR.jpg">
     </div>
+
     <div class="cv-header-text">
       <div class="cv-title">Postdoctoral Researcher</div>
-      <div class="cv-subtitle">CNR – Institute of Marine Sciences (ISMAR), Rome, Italy</div>
+      <div class="cv-line">Institute of Marine Sciences (ISMAR)</div>
+      <div class="cv-line">National Research Council of Italy (CNR)</div>
+      <div class="cv-line">Rome, Italy</div>
       <div class="cv-meta">Dec 2024 – Present · Supervisor: <a href="https://www.researchgate.net/profile/Emanuele-Organelli">Dr. Emanuele Organelli</a></div>
     </div>
   </div>
 
-  <div class="cv-divider"></div>
-
   <div class="cv-content">
     <ul class="cv-list">
-      <li>Investigation of ocean carbon cycling processes combining BGC-Argo, satellite observations, and reconstruction outputs</li>
-      <li>Developed MATLAB-based BGC-Argo processing pipeline (QC + analysis)</li>
-      <li>Established bio-optical and biogeochemical datasets from BGC-Argo profiles</li>
+      <li>Investigation of ocean carbon cycling processes (biological and microbial carbon pumps) combining BGC-Argo, ocean colour satellite observations and reconstruction outputs</li>
+      <li>Implemented a MATLAB-based processing pipeline for BGC-Argo data, integrating data processing, quality control (QC), and analysis workflows</li>
+      <li>Bio-optical and biogeochemical data processes and dataset establishment from BGC-Argo profiles</li>
     </ul>
   </div>
 </div>
@@ -187,18 +173,19 @@ html[data-theme="dark"] .cv-list {
     <div class="cv-logo-box">
       <img src="/images/ecnu.png">
     </div>
+
     <div class="cv-header-text">
       <div class="cv-title">Doctor of Science in Physical Oceanography</div>
-      <div class="cv-subtitle">East China Normal University (SKLEC)</div>
+      <div class="cv-line">State Key Laboratory of Estuarine and Coastal Research (SKLEC)</div>
+      <div class="cv-line">East China Normal University</div>
+      <div class="cv-line">Shanghai, China</div>
       <div class="cv-meta">Sep 2018 – Jun 2024 · GPA: 3.46/4</div>
     </div>
   </div>
 
-  <div class="cv-divider"></div>
-
   <div class="cv-content">
     <p class="cv-desc">
-      I explored inherent optical properties of marine particles. Designed experiments to quantify refractive indices of minerals, detritus, and phytoplankton. Investigated contributions to particulate organic carbon in optically complex waters. Developed MATLAB workflows and C++ scattering simulations, and served as laboratory administrator.
+      I explored the inherent optical properties of marine particle compositions. I designed and conducted laboratory experiments to quantify the refractive index of mineral particles, detritus, and different phytoplankton. Then I investigated the contributions of phytoplankton and organic detritus to particulate organic carbon in optically complex estuarine-coastal-shelf seas of China. I also analysed the changes in particle types under atmospheric deposition and the response of phytoplankton. I developed MATLAB-based workflows for analysing satellite and float datasets, and implemented C++ simulations of particle backscattering processes. In the meantime, I served as the optical and phytoplankton laboratory administrator.
     </p>
   </div>
 </div>
@@ -208,18 +195,19 @@ html[data-theme="dark"] .cv-list {
     <div class="cv-logo-box">
       <img src="/images/School_Mar_Geo_logoISMAR.jpg">
     </div>
+
     <div class="cv-header-text">
-      <div class="cv-title">Visiting PhD (CSC)</div>
-      <div class="cv-subtitle">CNR – ISMAR, Rome</div>
+      <div class="cv-title">Visiting PhD (China Scholarship Council)</div>
+      <div class="cv-line">Institute of Marine Sciences (ISMAR)</div>
+      <div class="cv-line">National Research Council of Italy (CNR)</div>
+      <div class="cv-line">Rome, Italy</div>
       <div class="cv-meta">Oct 2022 – Oct 2023</div>
     </div>
   </div>
 
-  <div class="cv-divider"></div>
-
   <div class="cv-content">
     <p class="cv-desc">
-      Analysed particle optical properties and scattering simulations. Investigated marine heatwave impacts in the north-western Mediterranean using BGC-Argo data.
+      The primary focus was on analyzing the inherent optical properties of particles and conducting scattering simulations in estuarine-coastal-shelf seas of China. Additionally, based on BGC-Argo data, the ecological impact of marine heatwaves (CAREHeat Project) on the upper waters of the north-western Mediterranean Sea was analysed.
     </p>
   </div>
 </div>
@@ -229,18 +217,19 @@ html[data-theme="dark"] .cv-list {
     <div class="cv-logo-box">
       <img src="/images/OUC.png">
     </div>
+
     <div class="cv-header-text">
       <div class="cv-title">Bachelor of Science in Marine Technology</div>
-      <div class="cv-subtitle">Ocean University of China</div>
+      <div class="cv-line">College of Information Science and Engineering</div>
+      <div class="cv-line">Ocean University of China</div>
+      <div class="cv-line">Qingdao, China</div>
       <div class="cv-meta">Sep 2014 – Jun 2018 · GPA: 3.55/4</div>
     </div>
   </div>
 
-  <div class="cv-divider"></div>
-
   <div class="cv-content">
     <p class="cv-desc">
-      Investigated relationships between dust deposition and phytoplankton using multi-source remote sensing. Developed programming skills across multiple languages with MATLAB as the main tool.
+      My work utilizes multi-source remote sensing data to investigate the causal and time-lag relationships between East Asian dust storm deposition and phytoplankton biomass in the East China Sea. I developed programming skills in C, C++, Python, MATLAB, R, and Assembly, and ultimately applied MATLAB as the primary tool for data analysis and implementation of this study.
     </p>
   </div>
 </div>
@@ -251,36 +240,48 @@ html[data-theme="dark"] .cv-list {
 
 <div class="cv-card">
 <div class="cv-title">Languages</div>
-<div class="cv-divider"></div>
 <ul class="cv-list">
-<li>Chinese (native)</li>
-<li>English (proficient)</li>
-<li>Italian (conversational)</li>
-<li>Japanese (conversational)</li>
+<li>Chinese (Mandarin) <small>native</small></li>
+<li>English <small>proficient</small></li>
+<li>Italian <small>conversational</small></li>
+<li>Japanese <small>conversational</small></li>
 </ul>
 </div>
 
 <div class="cv-card">
-<div class="cv-title">Programming</div>
-<div class="cv-divider"></div>
+<div class="cv-title">Programming & Software</div>
 <ul class="cv-list">
-<li>MATLAB</li>
-<li>Python / R</li>
-<li>C / C++ / Assembly</li>
-<li>ENVI, SNAP, SeaDAS</li>
+<li>MATLAB <small>advanced</small></li>
+<li>Python / R <small>intermediate</small></li>
+<li>C / C++ / Assembly <small>basic</small></li>
 </ul>
+<p class="cv-desc"><small>Software: ENVI, SNAP, SeaDAS, Adobe Photoshop, Microsoft Office</small></p>
 </div>
 
 <div class="cv-card">
 <div class="cv-title">Scientific Instruments</div>
-<div class="cv-divider"></div>
 <ul class="cv-list">
-<li>LISST-200X</li>
-<li>HyperSAS</li>
-<li>AC-S / ECO-BB9</li>
-<li>Spectrophotometer</li>
-<li>Mastersizer</li>
+<li>LISST-200X (Sequoia Scientific)</li>
+<li>HyperSAS (Sea-Bird Scientific)</li>
+<li>AC-S / ECO-BB9 / ECO-VSF (WET Labs)</li>
+<li>Spectrophotometer (PerkinElmer)</li>
+<li>Mastersizer (Malvern)</li>
 </ul>
 </div>
 
+</div>
+
+## Certifications
+
+<div class="cv-card">
+<div class="cv-title">STCW Certifications</div>
+<div class="cv-line">Tecno Italian Safety and Survival Training S.r.l, Italy</div>
+<div class="cv-meta">Issued: Mar 2025</div>
+
+<ul class="cv-list">
+<li>Personal Survival Techniques</li>
+<li>Fire Prevention and Fire Fighting</li>
+<li>Elementary First Aid</li>
+<li>Personal Safety and Social Responsibilities</li>
+</ul>
 </div>
