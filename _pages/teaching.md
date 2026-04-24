@@ -18,23 +18,19 @@ author_profile: true
 /* 布局 */
 .activity-flex {
   display: flex;
-  gap: 1.6rem;              /* 稍微拉开 */
-  align-items: flex-start;  /* 不再强制拉满高度 */
+  gap: 2rem;   /* 👈 拉开一点，更像论文layout */
+  align-items: flex-start;
 }
 
 .activity-flex-text {
   flex: 1;
   min-width: 0;
-  max-width: 680px;         /* 👈 限制文本宽度（关键） */
 }
 
 /* 👇 图片主视觉 */
 .activity-image-box {
-  flex: 0 0 260px;          /* 👈 更宽一点 */
-  aspect-ratio: 0.9 / 1;    /* 👈 接近正方形 */
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid rgba(120,120,120,0.15);
+  flex: 0 0 320px;   /* 👈 从260 → 320 */
+  aspect-ratio: 0.95 / 1;
 }
 
 .activity-image-box img {
