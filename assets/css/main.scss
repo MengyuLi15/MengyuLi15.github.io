@@ -255,6 +255,29 @@ html[data-theme="dark"] a:hover {
   color: #a8ddff;
 }
 
-.theme-toggle {
+/* ===== Force dark mode and hide theme switch ===== */
+html {
+  color-scheme: dark;
+}
+
+html,
+html[data-theme="light"],
+html[data-theme="dark"] {
+  --global-bg-color: #12161a;
+  --global-text-color: #e8edf2;
+  --global-text-color-light: #c8d0d8;
+}
+
+button[aria-label*="theme"],
+button[aria-label*="Theme"],
+button[title*="theme"],
+button[title*="Theme"],
+.theme-toggle,
+.theme-switch,
+.dark-mode-toggle,
+#theme-toggle,
+#dark-mode-toggle,
+.greedy-nav button,
+.masthead button {
   display: none !important;
 }
