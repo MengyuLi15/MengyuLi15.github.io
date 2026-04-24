@@ -17,7 +17,7 @@ url                      : "https://mengyuli15.github.io" # The base hostname & 
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "MengyuLi15/MengyuLi15.github.io"
-
+color_scheme             : dark
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
 #               Additional customization can be done by editing /_includes/author-profile.html
