@@ -48,33 +48,50 @@
   object-fit: cover;
   clip-path: inset(0 round 12px);   /* 更平滑边角 */
 }
+
 /* ===== Global ocean background ===== */
 body {
   background:
-    linear-gradient(rgba(8, 28, 38, 0.28), rgba(8, 28, 38, 0.28)),
+    linear-gradient(rgba(8, 28, 38, 0.22), rgba(8, 28, 38, 0.22)),
     url("/images/franziska_stier-eagle-rays-10139998.jpg") no-repeat center center fixed;
   background-size: cover;
 }
 
-/* remove default harsh backgrounds */
+/* Do not turn the whole page/content into a card */
 .page,
 .page__content,
 .archive,
 .layout--archive,
 .layout--single {
   background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
 }
 
-/* sidebar glass */
+/* Fix sidebar and content spacing */
 .sidebar {
-  background: rgba(255, 255, 255, 0.50) !important;
+  background: rgba(255, 255, 255, 0.52) !important;
   backdrop-filter: blur(18px) saturate(130%);
   -webkit-backdrop-filter: blur(18px) saturate(130%);
-  border-radius: 22px;
+  border-radius: 18px;
   padding: 1rem;
+  margin-right: 2rem;
 }
 
-/* unified soft glass cards */
+/* Avoid overlap between sidebar and main content */
+@media (min-width: 1024px) {
+  .sidebar {
+    width: 230px !important;
+  }
+
+  .archive,
+  .page {
+    padding-left: 1.5rem !important;
+  }
+}
+
+/* Unified glass cards only for real content cards */
 .hero-card,
 .info-card,
 .topic-list,
@@ -84,39 +101,56 @@ body {
 .cv-card,
 .activity-card,
 .conf-card {
-  background: rgba(255, 255, 255, 0.48) !important;
-  backdrop-filter: blur(18px) saturate(135%);
-  -webkit-backdrop-filter: blur(18px) saturate(135%);
-  border: 1px solid rgba(255, 255, 255, 0.38) !important;
-  box-shadow: 0 10px 30px rgba(8, 28, 38, 0.16) !important;
+  background: rgba(255, 255, 255, 0.68) !important;
+  backdrop-filter: blur(16px) saturate(125%);
+  -webkit-backdrop-filter: blur(16px) saturate(125%);
+  border: 1px solid rgba(255, 255, 255, 0.45) !important;
+  box-shadow: 0 8px 24px rgba(8, 28, 38, 0.13) !important;
 }
 
-/* make text clearer on glass */
+/* Homepage hero should not look like card inside another card */
+.hero-card {
+  background: rgba(255, 255, 255, 0.72) !important;
+}
+
+/* Text readability */
+.hero-card h2,
+.info-card h3,
+.address-card h3,
+.cv-title,
+.activity-title,
+.conf-title {
+  color: #1e2a35 !important;
+}
+
 .hero-card p,
 .info-card p,
 .topic-list,
 .pub-box,
 .address-main,
-.address-meta {
-  color: rgba(20, 35, 45, 0.92) !important;
+.address-meta,
+.cv-line,
+.cv-meta,
+.cv-desc,
+.cv-list,
+.activity-meta,
+.activity-list,
+.conf-meta,
+.conf-authors,
+.conf-paper {
+  color: rgba(28, 38, 48, 0.92) !important;
 }
 
-.hero-card h2,
-.info-card h3,
-.address-card h3 {
-  color: #12384a !important;
-}
-
-/* dark mode */
+/* Dark mode */
 html[data-theme="dark"] body {
   background:
-    linear-gradient(rgba(0, 0, 0, 0.48), rgba(0, 0, 0, 0.48)),
+    linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.50)),
     url("/images/franziska_stier-eagle-rays-10139998.jpg") no-repeat center center fixed;
   background-size: cover;
 }
 
 html[data-theme="dark"] .sidebar {
-  background: rgba(20, 24, 28, 0.58) !important;
+  background: rgba(18, 22, 26, 0.58) !important;
 }
 
 html[data-theme="dark"] .hero-card,
@@ -128,7 +162,34 @@ html[data-theme="dark"] .map-card,
 html[data-theme="dark"] .cv-card,
 html[data-theme="dark"] .activity-card,
 html[data-theme="dark"] .conf-card {
-  background: rgba(24, 28, 32, 0.58) !important;
+  background: rgba(24, 28, 32, 0.62) !important;
   border: 1px solid rgba(255, 255, 255, 0.10) !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.32) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35) !important;
+}
+
+html[data-theme="dark"] .hero-card h2,
+html[data-theme="dark"] .info-card h3,
+html[data-theme="dark"] .address-card h3,
+html[data-theme="dark"] .cv-title,
+html[data-theme="dark"] .activity-title,
+html[data-theme="dark"] .conf-title {
+  color: #f1f1f1 !important;
+}
+
+html[data-theme="dark"] .hero-card p,
+html[data-theme="dark"] .info-card p,
+html[data-theme="dark"] .topic-list,
+html[data-theme="dark"] .pub-box,
+html[data-theme="dark"] .address-main,
+html[data-theme="dark"] .address-meta,
+html[data-theme="dark"] .cv-line,
+html[data-theme="dark"] .cv-meta,
+html[data-theme="dark"] .cv-desc,
+html[data-theme="dark"] .cv-list,
+html[data-theme="dark"] .activity-meta,
+html[data-theme="dark"] .activity-list,
+html[data-theme="dark"] .conf-meta,
+html[data-theme="dark"] .conf-authors,
+html[data-theme="dark"] .conf-paper {
+  color: #e2e2e2 !important;
 }
