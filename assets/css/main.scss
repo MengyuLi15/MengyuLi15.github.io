@@ -48,77 +48,87 @@
   object-fit: cover;
   clip-path: inset(0 round 12px);   /* 更平滑边角 */
 }
-/* ===== Background image ===== */
+/* ===== Global ocean background ===== */
 body {
-  background: url("/images/franziska_stier-eagle-rays-10139998.jpg") no-repeat center center fixed;
+  background:
+    linear-gradient(rgba(8, 28, 38, 0.28), rgba(8, 28, 38, 0.28)),
+    url("/images/franziska_stier-eagle-rays-10139998.jpg") no-repeat center center fixed;
   background-size: cover;
 }
 
-/* ===== 毛玻璃主内容区域 ===== */
+/* remove default harsh backgrounds */
 .page,
 .page__content,
 .archive,
 .layout--archive,
 .layout--single {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-radius: 18px;
-  padding: 1.5rem;
+  background: transparent !important;
 }
 
-/* sidebar 同样毛玻璃 */
+/* sidebar glass */
 .sidebar {
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.50) !important;
+  backdrop-filter: blur(18px) saturate(130%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
+  border-radius: 22px;
   padding: 1rem;
 }
 
-/* ===== 卡片再微调（避免叠加太白） */
-.cv-card,
-.activity-card,
-.conf-card,
-.info-card,
+/* unified soft glass cards */
 .hero-card,
+.info-card,
 .topic-list,
 .pub-box,
 .address-card,
-.map-card {
-  background: rgba(255, 255, 255, 0.65) !important;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+.map-card,
+.cv-card,
+.activity-card,
+.conf-card {
+  background: rgba(255, 255, 255, 0.48) !important;
+  backdrop-filter: blur(18px) saturate(135%);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
+  border: 1px solid rgba(255, 255, 255, 0.38) !important;
+  box-shadow: 0 10px 30px rgba(8, 28, 38, 0.16) !important;
 }
 
-/* ===== Dark mode ===== */
+/* make text clearer on glass */
+.hero-card p,
+.info-card p,
+.topic-list,
+.pub-box,
+.address-main,
+.address-meta {
+  color: rgba(20, 35, 45, 0.92) !important;
+}
+
+.hero-card h2,
+.info-card h3,
+.address-card h3 {
+  color: #12384a !important;
+}
+
+/* dark mode */
 html[data-theme="dark"] body {
-  background: url("/images/franziska_stier-eagle-rays-10139998.jpg") no-repeat center center fixed;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.48), rgba(0, 0, 0, 0.48)),
+    url("/images/franziska_stier-eagle-rays-10139998.jpg") no-repeat center center fixed;
   background-size: cover;
 }
 
-/* 主区域变暗玻璃 */
-html[data-theme="dark"] .page,
-html[data-theme="dark"] .archive,
-html[data-theme="dark"] .layout--archive {
-  background: rgba(20, 20, 20, 0.75);
-  backdrop-filter: blur(14px);
-}
-
-/* sidebar */
 html[data-theme="dark"] .sidebar {
-  background: rgba(20, 20, 20, 0.65);
+  background: rgba(20, 24, 28, 0.58) !important;
 }
 
-/* 卡片 */
-html[data-theme="dark"] .cv-card,
-html[data-theme="dark"] .activity-card,
-html[data-theme="dark"] .conf-card,
-html[data-theme="dark"] .info-card,
 html[data-theme="dark"] .hero-card,
+html[data-theme="dark"] .info-card,
 html[data-theme="dark"] .topic-list,
 html[data-theme="dark"] .pub-box,
 html[data-theme="dark"] .address-card,
-html[data-theme="dark"] .map-card {
-  background: rgba(30, 30, 30, 0.65) !important;
+html[data-theme="dark"] .map-card,
+html[data-theme="dark"] .cv-card,
+html[data-theme="dark"] .activity-card,
+html[data-theme="dark"] .conf-card {
+  background: rgba(24, 28, 32, 0.58) !important;
+  border: 1px solid rgba(255, 255, 255, 0.10) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.32) !important;
 }
