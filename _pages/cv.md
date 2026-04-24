@@ -165,7 +165,7 @@ html[data-theme="dark"] .cv-list {
 <div class="cv-card">
   <div class="cv-header">
     <div class="cv-logo-box">
-      <img src="/images/logos/cnr-ismar.png">
+      <img src="/images/School_Mar_Geo_logoISMAR.jpg">
     </div>
     <div class="cv-header-text">
       <div class="cv-title">Visiting PhD (CSC)</div>
