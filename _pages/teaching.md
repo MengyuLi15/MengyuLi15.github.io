@@ -6,7 +6,6 @@ author_profile: true
 ---
 
 <style>
-/* 卡片 */
 .activity-card {
   padding: 1.5rem 1.6rem;
   margin: 1.2rem 0;
@@ -16,28 +15,28 @@ author_profile: true
   box-shadow: 0 6px 18px rgba(0,0,0,0.06);
 }
 
-/* 左右布局 */
+/* 布局 */
 .activity-flex {
   display: flex;
-  gap: 1.4rem;
-  align-items: stretch;   /* 👈 关键：让图片和卡片同高 */
+  gap: 1.6rem;              /* 稍微拉开 */
+  align-items: flex-start;  /* 不再强制拉满高度 */
 }
 
 .activity-flex-text {
   flex: 1;
   min-width: 0;
+  max-width: 680px;         /* 👈 限制文本宽度（关键） */
 }
 
-/* 右侧图片（整块） */
+/* 👇 图片主视觉 */
 .activity-image-box {
-  flex: 0 0 240px;   /* 控制宽度 */
+  flex: 0 0 260px;          /* 👈 更宽一点 */
+  aspect-ratio: 0.9 / 1;    /* 👈 接近正方形 */
   border-radius: 14px;
   overflow: hidden;
   border: 1px solid rgba(120,120,120,0.15);
-  display: flex;
 }
 
-/* 图片填满 */
 .activity-image-box img {
   width: 100%;
   height: 100%;
@@ -45,7 +44,6 @@ author_profile: true
   transition: transform 0.3s ease;
 }
 
-/* hover 动效（可删） */
 .activity-image-box:hover img {
   transform: scale(1.05);
 }
@@ -65,7 +63,7 @@ author_profile: true
   margin-bottom: 0.35rem;
 }
 
-/* meta 信息 */
+/* meta */
 .activity-meta {
   font-size: 0.88rem;
   color: var(--global-text-color-light, #666);
@@ -73,7 +71,7 @@ author_profile: true
   line-height: 1.45;
 }
 
-/* 主列表 */
+/* 列表 */
 .activity-list {
   margin: 0.6rem 0 0 1.1rem;
   padding: 0;
@@ -86,12 +84,9 @@ author_profile: true
   margin-bottom: 6px;
 }
 
-/* 日期列表 */
 .activity-date-list {
   margin: 0.3rem 0 0.7rem 1.1rem;
-  padding: 0;
   font-size: 0.88rem;
-  line-height: 1.5;
   color: var(--global-text-color-light, #666);
 }
 
@@ -106,17 +101,16 @@ author_profile: true
 /* 链接 */
 .activity-card a {
   color: var(--global-link-color, #2c6e91);
-  text-decoration: none;
-}
-
-.activity-card a:hover {
-  text-decoration: underline;
 }
 
 /* 响应式 */
 @media (max-width: 700px) {
   .activity-flex {
     flex-direction: column;
+  }
+
+  .activity-flex-text {
+    max-width: 100%;
   }
 
   .activity-image-box {
@@ -129,7 +123,6 @@ author_profile: true
 html[data-theme="dark"] .activity-card {
   background: #1e1e1e;
   border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
 }
 
 html[data-theme="dark"] .activity-title {
