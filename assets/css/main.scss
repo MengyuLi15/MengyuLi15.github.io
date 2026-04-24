@@ -193,3 +193,30 @@ html[data-theme="dark"] .conf-authors,
 html[data-theme="dark"] .conf-paper {
   color: #e2e2e2 !important;
 }
+
+/* ===== Light mode text fix for dark background ===== */
+html:not([data-theme="dark"]) {
+  color: #eef6fa;
+}
+
+html:not([data-theme="dark"]) .hero-card,
+html:not([data-theme="dark"]) .info-card,
+html:not([data-theme="dark"]) .topic-list,
+html:not([data-theme="dark"]) .pub-box,
+html:not([data-theme="dark"]) .address-card,
+html:not([data-theme="dark"]) .map-card {
+  color: #e6f0f5 !important;
+}
+
+/* 标题 */
+html:not([data-theme="dark"]) h1,
+html:not([data-theme="dark"]) h2,
+html:not([data-theme="dark"]) h3 {
+  color: #ffffff !important;
+}
+
+/* 次级文字 */
+html:not([data-theme="dark"]) p,
+html:not([data-theme="dark"]) li {
+  color: rgba(230, 240, 245, 0.92) !important;
+}
