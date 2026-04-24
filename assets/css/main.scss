@@ -281,3 +281,33 @@ button[title*="Theme"],
 .masthead button {
   display: none !important;
 }
+/* ===== Mobile navigation horizontal scroll ===== */
+@media (max-width: 768px) {
+  .masthead__menu,
+  .greedy-nav {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    white-space: nowrap !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .visible-links {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+  }
+
+  .visible-links li {
+    flex: 0 0 auto !important;
+  }
+
+  .visible-links a {
+    white-space: nowrap !important;
+  }
+
+  .hidden-links,
+  .greedy-nav__toggle {
+    display: none !important;
+  }
+}
