@@ -29,7 +29,7 @@ author:
   bio              : "Postdoctoral Researcher at CNR-ISMAR.\nMarine bio-optics, BGC-Argo observations, ocean colour, and carbon cycling."
   location         : "Rome, Italy"
   employer         : "CNR-ISMAR"
-  uri              : "https://mengyuli15.github.io/"
+  uri              : # Username
   email            : "mengyuli@cnr.it" 
 
   # Academic websites
@@ -37,7 +37,7 @@ author:
   orcid            : "https://orcid.org/0000-0003-0939-7406"
   researchgate       : "https://www.researchgate.net/profile/Mengyu-Li-15"  # URL
   scopus           : # URL
-  zhihu           :  ohnokinoko
+  zhihu           :  # Username
   sciprofiles      : "https://sciprofiles.com/profile/MengyuLi15"
   loop             : "https://loop.frontiersin.org/people/2735627/"
   
