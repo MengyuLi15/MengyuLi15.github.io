@@ -14,10 +14,17 @@ redirect_from:
   padding: 2rem 2.1rem;
   margin: 1rem 0 2rem 0;
   border-radius: 22px;
-  border: 1px solid rgba(120,120,120,0.18);
-  background: var(--global-bg-color, #ffffff);
+
+  background: rgba(255, 255, 255, 0.55);   /* 👈 从白改半透明 */
+  backdrop-filter: blur(18px) saturate(130%);
+  -webkit-backdrop-filter: blur(18px) saturate(130%);
+
+  border: 1px solid rgba(255,255,255,0.4);
   box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-  animation: fadeUp 0.7s ease-out;
+}
+  
+.hero-dynamic {
+  background: transparent !important;
 }
 
 .hero-card h2 {
