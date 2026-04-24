@@ -29,7 +29,7 @@ author_profile: true
 
 /* 👇 图片主视觉 */
 .activity-image-box {
-  flex: 0 0 380px;   /* 👈 从260 → 320 */
+  flex: 0 0 420px;   /* 👈 从260 → 320 */
   aspect-ratio: 0.95 / 1;
 }
 
