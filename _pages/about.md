@@ -8,14 +8,7 @@ redirect_from:
 ---
 
 <style>
-.home-card {
-  padding: 1.5rem 1.6rem;
-  margin: 1.2rem 0;
-  border-radius: 18px;
-  border: 1px solid rgba(120,120,120,0.18);
-  background: var(--global-bg-color, #ffffff);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-}
+
 
 .hero-card {
   padding: 2rem 2.1rem;
