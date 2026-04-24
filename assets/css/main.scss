@@ -48,3 +48,77 @@
   object-fit: cover;
   clip-path: inset(0 round 12px);   /* 更平滑边角 */
 }
+/* ===== Background image ===== */
+body {
+  background: url("/images/franziska_stier-eagle-rays-10139998.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* ===== 毛玻璃主内容区域 ===== */
+.page,
+.page__content,
+.archive,
+.layout--archive,
+.layout--single {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 18px;
+  padding: 1.5rem;
+}
+
+/* sidebar 同样毛玻璃 */
+.sidebar {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 18px;
+  padding: 1rem;
+}
+
+/* ===== 卡片再微调（避免叠加太白） */
+.cv-card,
+.activity-card,
+.conf-card,
+.info-card,
+.hero-card,
+.topic-list,
+.pub-box,
+.address-card,
+.map-card {
+  background: rgba(255, 255, 255, 0.65) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* ===== Dark mode ===== */
+html[data-theme="dark"] body {
+  background: url("/images/franziska_stier-eagle-rays-10139998.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* 主区域变暗玻璃 */
+html[data-theme="dark"] .page,
+html[data-theme="dark"] .archive,
+html[data-theme="dark"] .layout--archive {
+  background: rgba(20, 20, 20, 0.75);
+  backdrop-filter: blur(14px);
+}
+
+/* sidebar */
+html[data-theme="dark"] .sidebar {
+  background: rgba(20, 20, 20, 0.65);
+}
+
+/* 卡片 */
+html[data-theme="dark"] .cv-card,
+html[data-theme="dark"] .activity-card,
+html[data-theme="dark"] .conf-card,
+html[data-theme="dark"] .info-card,
+html[data-theme="dark"] .hero-card,
+html[data-theme="dark"] .topic-list,
+html[data-theme="dark"] .pub-box,
+html[data-theme="dark"] .address-card,
+html[data-theme="dark"] .map-card {
+  background: rgba(30, 30, 30, 0.65) !important;
+}
