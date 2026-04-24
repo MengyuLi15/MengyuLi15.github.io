@@ -9,74 +9,76 @@ author_profile: true
 .pub-section-title {
   margin-top: 2rem;
   margin-bottom: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   font-weight: 700;
+  color: var(--global-text-color, #222);
 }
 
-/* 卡片 */
+/* Card */
 .pub-card {
   display: flex;
   align-items: flex-start;
-  gap: 1.2rem;
-  padding: 1.2rem;
+  gap: 1.3rem;
+  padding: 1.35rem 1.45rem;
   margin: 1.2rem 0;
-  border-radius: 16px;
+  border-radius: 18px;
   border: 1px solid rgba(120,120,120,0.18);
   background: var(--global-bg-color, #ffffff);
-  color: var(--global-text-color, #111111);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+  color: var(--global-text-color, #222);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
 }
 
-/* 图片区域 */
+/* Thumbnail */
 .pub-thumb {
-  flex: 0 0 180px;
-  max-width: 180px;
+  flex: 0 0 185px;
+  max-width: 185px;
 }
 
-/* 关键：统一比例 */
 .pub-thumb img {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
   display: block;
-  border-radius: 12px;
+  border-radius: 14px;
   border: 1px solid rgba(120,120,120,0.15);
 }
 
-/* 内容 */
+/* Content */
 .pub-content {
   flex: 1 1 auto;
   min-width: 0;
 }
 
 .pub-authors {
-  margin: 0 0 0.35rem 0;
-  font-size: 0.98rem;
+  margin: 0 0 0.4rem 0;
+  font-size: 0.92rem;
   line-height: 1.55;
+  color: var(--global-text-color, #333);
 }
 
 .pub-title {
-  margin: 0 0 0.4rem 0;
+  margin: 0 0 0.45rem 0;
   font-size: 1.08rem;
   line-height: 1.45;
   font-weight: 700;
+  color: var(--global-text-color, #222);
 }
 
 .pub-journal {
   margin: 0 0 0.5rem 0;
   font-style: italic;
-  font-size: 0.98rem;
-  opacity: 0.9;
+  font-size: 0.95rem;
+  color: var(--global-text-color-light, #666);
 }
 
-/* 链接 */
 .pub-links {
   margin: 0.35rem 0 0 0;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   line-height: 1.6;
 }
 
 .pub-links a {
+  color: var(--global-link-color, #2c6e91);
   text-decoration: none;
 }
 
@@ -84,14 +86,14 @@ author_profile: true
   text-decoration: underline;
 }
 
-/* note */
 .pub-note {
   margin-top: 0.45rem;
-  font-size: 0.9rem;
-  opacity: 0.85;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--global-text-color-light, #666);
 }
 
-/* 手机端 */
+/* Mobile */
 @media (max-width: 768px) {
   .pub-card {
     flex-direction: column;
@@ -105,6 +107,39 @@ author_profile: true
   .pub-thumb img {
     width: 100%;
   }
+}
+
+/* Dark mode */
+html[data-theme="dark"] .pub-section-title {
+  color: #f1f1f1;
+}
+
+html[data-theme="dark"] .pub-card {
+  background: #1e1e1e;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+html[data-theme="dark"] .pub-title {
+  color: #f1f1f1;
+}
+
+html[data-theme="dark"] .pub-authors,
+html[data-theme="dark"] .pub-links {
+  color: #e2e2e2;
+}
+
+html[data-theme="dark"] .pub-journal,
+html[data-theme="dark"] .pub-note {
+  color: #c8c8c8;
+}
+
+html[data-theme="dark"] .pub-links a {
+  color: #7fc7ff;
+}
+
+html[data-theme="dark"] .pub-thumb img {
+  border: 1px solid rgba(255,255,255,0.10);
 }
 </style>
 
