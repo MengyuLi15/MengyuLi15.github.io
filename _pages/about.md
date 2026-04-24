@@ -451,3 +451,8 @@ document.addEventListener("DOMContentLoaded", function () {
   </div>
 
 </div>
+
+<script>
+document.documentElement.setAttribute("data-theme", "dark");
+localStorage.setItem("theme", "dark");
+</script>
