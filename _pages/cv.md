@@ -245,6 +245,21 @@ html[data-theme="dark"] .cv-list {
   </div>
 </div>
 
+## Awards
+
+<div class="cv-card">
+
+  <ul class="cv-list">
+    <li><strong>China Scholarship Council (CSC) Scholarship</strong> (Grant No. 202206140082), €16,200 per year (2022–2023)</li>
+    <li>Outstanding Student Award, East China Normal University (2021–2022)</li>
+    <li>Outstanding Undergraduate Dissertation Award, Ocean University of China (2018)</li>
+    <li>Outstanding Student Award, Ocean University of China (2016–2017)</li>
+    <li>Scholarship for Excellence in Academic Work, Ocean University of China (2014–2017)</li>
+    <li>Scholarship for Participation in Social Activities, Ocean University of China (2016–2017)</li>
+  </ul>
+
+</div>
+
 ## Skills
 
 <div class="cv-grid-3">
