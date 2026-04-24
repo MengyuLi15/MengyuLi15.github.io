@@ -254,3 +254,7 @@ html[data-theme="dark"] a {
 html[data-theme="dark"] a:hover {
   color: #a8ddff;
 }
+
+.theme-toggle {
+  display: none !important;
+}
