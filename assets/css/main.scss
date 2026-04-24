@@ -41,23 +41,25 @@
     "vendor/font-awesome/solid",
     "vendor/font-awesome/brands"
 ;
+
+/* ===== Profile avatar ===== */
 .author__avatar img {
   border-radius: 12px !important;
   width: 180px;
   height: 240px;
   object-fit: cover;
-  clip-path: inset(0 round 12px);   /* 更平滑边角 */
+  clip-path: inset(0 round 12px);
 }
 
 /* ===== Global ocean background ===== */
 body {
   background:
-    linear-gradient(rgba(8, 28, 38, 0.22), rgba(8, 28, 38, 0.22)),
+    linear-gradient(rgba(8, 28, 38, 0.28), rgba(8, 28, 38, 0.28)),
     url("/images/franziska_stier-eagle-rays-10139998.jpg") no-repeat center center fixed;
   background-size: cover;
 }
 
-/* Do not turn the whole page/content into a card */
+/* Keep page itself transparent */
 .page,
 .page__content,
 .archive,
@@ -69,9 +71,9 @@ body {
   box-shadow: none !important;
 }
 
-/* Fix sidebar and content spacing */
+/* ===== Sidebar glass ===== */
 .sidebar {
-  background: rgba(255, 255, 255, 0.52) !important;
+  background: rgba(235, 244, 248, 0.58) !important;
   backdrop-filter: blur(18px) saturate(130%);
   -webkit-backdrop-filter: blur(18px) saturate(130%);
   border-radius: 18px;
@@ -79,7 +81,6 @@ body {
   margin-right: 2rem;
 }
 
-/* Avoid overlap between sidebar and main content */
 @media (min-width: 1024px) {
   .sidebar {
     width: 230px !important;
@@ -91,7 +92,7 @@ body {
   }
 }
 
-/* Unified glass cards only for real content cards */
+/* ===== Unified glass cards ===== */
 .hero-card,
 .info-card,
 .topic-list,
@@ -100,51 +101,91 @@ body {
 .map-card,
 .cv-card,
 .activity-card,
-.conf-card {
-  background: rgba(255, 255, 255, 0.68) !important;
-  backdrop-filter: blur(16px) saturate(125%);
-  -webkit-backdrop-filter: blur(16px) saturate(125%);
-  border: 1px solid rgba(255, 255, 255, 0.45) !important;
-  box-shadow: 0 8px 24px rgba(8, 28, 38, 0.13) !important;
+.conf-card,
+.pub-card {
+  background: rgba(238, 247, 250, 0.64) !important;
+  backdrop-filter: blur(18px) saturate(125%);
+  -webkit-backdrop-filter: blur(18px) saturate(125%);
+  border: 1px solid rgba(255, 255, 255, 0.44) !important;
+  box-shadow: 0 8px 24px rgba(8, 28, 38, 0.16) !important;
 }
 
-/* Homepage hero should not look like card inside another card */
+/* Slightly stronger hero readability */
 .hero-card {
-  background: rgba(255, 255, 255, 0.72) !important;
+  background: rgba(238, 247, 250, 0.70) !important;
 }
 
-/* Text readability */
-.hero-card h2,
-.info-card h3,
-.address-card h3,
-.cv-title,
-.activity-title,
-.conf-title {
+/* ===== Light mode text readability over dark ocean background ===== */
+html:not([data-theme="dark"]) .page,
+html:not([data-theme="dark"]) .archive {
+  color: #eef6fa;
+}
+
+html:not([data-theme="dark"]) h1,
+html:not([data-theme="dark"]) h2 {
+  color: #f5fbff !important;
+}
+
+html:not([data-theme="dark"]) h3 {
   color: #1e2a35 !important;
 }
 
-.hero-card p,
-.info-card p,
-.topic-list,
-.pub-box,
-.address-main,
-.address-meta,
-.cv-line,
-.cv-meta,
-.cv-desc,
-.cv-list,
-.activity-meta,
-.activity-list,
-.conf-meta,
-.conf-authors,
-.conf-paper {
+html:not([data-theme="dark"]) .hero-card h2,
+html:not([data-theme="dark"]) .info-card h3,
+html:not([data-theme="dark"]) .address-card h3,
+html:not([data-theme="dark"]) .cv-title,
+html:not([data-theme="dark"]) .activity-title,
+html:not([data-theme="dark"]) .conf-title,
+html:not([data-theme="dark"]) .pub-title {
+  color: #1e2a35 !important;
+}
+
+html:not([data-theme="dark"]) .hero-card p,
+html:not([data-theme="dark"]) .hero-dynamic,
+html:not([data-theme="dark"]) .info-card p,
+html:not([data-theme="dark"]) .topic-list,
+html:not([data-theme="dark"]) .topic-list li,
+html:not([data-theme="dark"]) .pub-box,
+html:not([data-theme="dark"]) .address-main,
+html:not([data-theme="dark"]) .address-meta,
+html:not([data-theme="dark"]) .cv-line,
+html:not([data-theme="dark"]) .cv-meta,
+html:not([data-theme="dark"]) .cv-desc,
+html:not([data-theme="dark"]) .cv-list,
+html:not([data-theme="dark"]) .cv-list li,
+html:not([data-theme="dark"]) .activity-meta,
+html:not([data-theme="dark"]) .activity-list,
+html:not([data-theme="dark"]) .activity-list li,
+html:not([data-theme="dark"]) .activity-date-list,
+html:not([data-theme="dark"]) .activity-date-list li,
+html:not([data-theme="dark"]) .conf-meta,
+html:not([data-theme="dark"]) .conf-authors,
+html:not([data-theme="dark"]) .conf-paper,
+html:not([data-theme="dark"]) .pub-authors,
+html:not([data-theme="dark"]) .pub-journal,
+html:not([data-theme="dark"]) .pub-links,
+html:not([data-theme="dark"]) .pub-note {
   color: rgba(28, 38, 48, 0.92) !important;
 }
 
-/* Dark mode */
+/* Avoid white block behind dynamic text */
+.hero-dynamic {
+  background: transparent !important;
+}
+
+/* ===== Links ===== */
+html:not([data-theme="dark"]) a {
+  color: #0a5f7d;
+}
+
+html:not([data-theme="dark"]) a:hover {
+  color: #083f54;
+}
+
+/* ===== Dark mode ===== */
 html[data-theme="dark"] body {
   background:
-    linear-gradient(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.50)),
+    linear-gradient(rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.52)),
     url("/images/franziska_stier-eagle-rays-10139998.jpg") no-repeat center center fixed;
   background-size: cover;
 }
@@ -161,8 +202,9 @@ html[data-theme="dark"] .address-card,
 html[data-theme="dark"] .map-card,
 html[data-theme="dark"] .cv-card,
 html[data-theme="dark"] .activity-card,
-html[data-theme="dark"] .conf-card {
-  background: rgba(24, 28, 32, 0.62) !important;
+html[data-theme="dark"] .conf-card,
+html[data-theme="dark"] .pub-card {
+  background: rgba(24, 28, 32, 0.64) !important;
   border: 1px solid rgba(255, 255, 255, 0.10) !important;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35) !important;
 }
@@ -172,13 +214,16 @@ html[data-theme="dark"] .info-card h3,
 html[data-theme="dark"] .address-card h3,
 html[data-theme="dark"] .cv-title,
 html[data-theme="dark"] .activity-title,
-html[data-theme="dark"] .conf-title {
+html[data-theme="dark"] .conf-title,
+html[data-theme="dark"] .pub-title {
   color: #f1f1f1 !important;
 }
 
 html[data-theme="dark"] .hero-card p,
+html[data-theme="dark"] .hero-dynamic,
 html[data-theme="dark"] .info-card p,
 html[data-theme="dark"] .topic-list,
+html[data-theme="dark"] .topic-list li,
 html[data-theme="dark"] .pub-box,
 html[data-theme="dark"] .address-main,
 html[data-theme="dark"] .address-meta,
@@ -186,37 +231,26 @@ html[data-theme="dark"] .cv-line,
 html[data-theme="dark"] .cv-meta,
 html[data-theme="dark"] .cv-desc,
 html[data-theme="dark"] .cv-list,
+html[data-theme="dark"] .cv-list li,
 html[data-theme="dark"] .activity-meta,
 html[data-theme="dark"] .activity-list,
+html[data-theme="dark"] .activity-list li,
+html[data-theme="dark"] .activity-date-list,
+html[data-theme="dark"] .activity-date-list li,
 html[data-theme="dark"] .conf-meta,
 html[data-theme="dark"] .conf-authors,
-html[data-theme="dark"] .conf-paper {
+html[data-theme="dark"] .conf-paper,
+html[data-theme="dark"] .pub-authors,
+html[data-theme="dark"] .pub-journal,
+html[data-theme="dark"] .pub-links,
+html[data-theme="dark"] .pub-note {
   color: #e2e2e2 !important;
 }
 
-/* ===== Light mode text fix for dark background ===== */
-html:not([data-theme="dark"]) {
-  color: #eef6fa;
+html[data-theme="dark"] a {
+  color: #7fc7ff;
 }
 
-html:not([data-theme="dark"]) .hero-card,
-html:not([data-theme="dark"]) .info-card,
-html:not([data-theme="dark"]) .topic-list,
-html:not([data-theme="dark"]) .pub-box,
-html:not([data-theme="dark"]) .address-card,
-html:not([data-theme="dark"]) .map-card {
-  color: #e6f0f5 !important;
-}
-
-/* 标题 */
-html:not([data-theme="dark"]) h1,
-html:not([data-theme="dark"]) h2,
-html:not([data-theme="dark"]) h3 {
-  color: #ffffff !important;
-}
-
-/* 次级文字 */
-html:not([data-theme="dark"]) p,
-html:not([data-theme="dark"]) li {
-  color: rgba(230, 240, 245, 0.92) !important;
+html[data-theme="dark"] a:hover {
+  color: #a8ddff;
 }
