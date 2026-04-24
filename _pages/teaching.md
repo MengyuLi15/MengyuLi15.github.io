@@ -90,6 +90,49 @@ html[data-theme="dark"] .activity-note {
 html[data-theme="dark"] .activity-card a {
   color: #7fc7ff;
 }
+
+  .activity-flex {
+  display: flex;
+  gap: 1.2rem;
+  align-items: flex-start;
+}
+
+.activity-flex-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.activity-image-box {
+  flex: 0 0 140px;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(120,120,120,0.15);
+}
+
+.activity-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 手机适配 */
+@media (max-width: 700px) {
+  .activity-flex {
+    flex-direction: column;
+  }
+
+  .activity-image-box {
+    width: 100%;
+    max-width: 220px;
+  }
+}
+
+/* 深色模式边框 */
+html[data-theme="dark"] .activity-image-box {
+  border: 1px solid rgba(255,255,255,0.1);
+}
+  
 </style>
 
 ## Editorial & Review
@@ -140,26 +183,38 @@ html[data-theme="dark"] .activity-card a {
 
 <div class="activity-card">
 
-  <div class="activity-title">National Natural Science Foundation of China Cruises</div>
+  <div class="activity-flex">
 
-  <div class="activity-meta">
-    East China Sea · Bohai Sea · Yellow Sea · Yangtze River Estuary
+    <div class="activity-flex-text">
+
+      <div class="activity-title">National Natural Science Foundation of China Cruises</div>
+
+      <div class="activity-meta">
+        East China Sea · Bohai Sea · Yellow Sea · Yangtze River Estuary
+      </div>
+
+      <ul class="activity-date-list">
+        <li>13–29 May 2019 (East China Sea)</li>
+        <li>23 Jul–5 Aug 2019 (the Bohai Sea & the Yellow Sea)</li>
+        <li>27 May–11 Jun 2020 (the Bohai Sea & the Yellow Sea)</li>
+        <li>29 Jun–6 Jul 2020 (the Yangtze River Estuary & the East China Sea)</li>
+      </ul>
+
+      <ul class="activity-list">
+        <li>Performed water sampling and onboard processing for HPLC pigments, TSM, and POC</li>
+        <li>Operated optical instrumentation including absorption, scattering, backscattering, and beam attenuation</li>
+        <li>Processed and quality-controlled datasets including remote sensing reflectance and IOPs</li>
+        <li>Analysed particle characteristics including size distribution and refractive index</li>
+        <li>Contributed to cross-cruise data standardization</li>
+      </ul>
+
+    </div>
+
+    <div class="activity-image-box">
+      <img src="/images/航次.jpg" alt="Scientific cruises">
+    </div>
+
   </div>
-
-  <ul class="activity-date-list">
-    <li>13–29 May 2019 (East China Sea)</li>
-    <li>23 Jul–5 Aug 2019 (the Bohai Sea & the Yellow Sea)</li>
-    <li>27 May–11 Jun 2020 (the Bohai Sea & the Yellow Sea)</li>
-    <li>29 Jun–6 Jul 2020 (the Yangtze River Estuary & the East China Sea)</li>
-  </ul>
-
-  <ul class="activity-list">
-    <li>Performed water sampling and onboard processing for HPLC pigments, TSM, and POC</li>
-    <li>Operated optical instrumentation including absorption, scattering, backscattering, and beam attenuation</li>
-    <li>Processed and quality-controlled datasets including remote sensing reflectance and IOPs</li>
-    <li>Analysed particle characteristics including size distribution and refractive index</li>
-    <li>Contributed to cross-cruise data standardization</li>
-  </ul>
 
 </div>
 
