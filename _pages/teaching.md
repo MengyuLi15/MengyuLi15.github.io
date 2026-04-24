@@ -6,6 +6,7 @@ author_profile: true
 ---
 
 <style>
+/* 卡片 */
 .activity-card {
   padding: 1.5rem 1.6rem;
   margin: 1.2rem 0;
@@ -15,6 +16,41 @@ author_profile: true
   box-shadow: 0 6px 18px rgba(0,0,0,0.06);
 }
 
+/* 左右布局 */
+.activity-flex {
+  display: flex;
+  gap: 1.4rem;
+  align-items: stretch;   /* 👈 关键：让图片和卡片同高 */
+}
+
+.activity-flex-text {
+  flex: 1;
+  min-width: 0;
+}
+
+/* 右侧图片（整块） */
+.activity-image-box {
+  flex: 0 0 240px;   /* 控制宽度 */
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(120,120,120,0.15);
+  display: flex;
+}
+
+/* 图片填满 */
+.activity-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* hover 动效（可删） */
+.activity-image-box:hover img {
+  transform: scale(1.05);
+}
+
+/* 标题 */
 .activity-title {
   font-size: 1.15rem;
   font-weight: 700;
@@ -22,12 +58,14 @@ author_profile: true
   margin-bottom: 0.35rem;
 }
 
+/* 副标题 */
 .activity-subtitle {
   font-size: 0.95rem;
   color: var(--global-text-color, #333);
   margin-bottom: 0.35rem;
 }
 
+/* meta 信息 */
 .activity-meta {
   font-size: 0.88rem;
   color: var(--global-text-color-light, #666);
@@ -35,6 +73,7 @@ author_profile: true
   line-height: 1.45;
 }
 
+/* 主列表 */
 .activity-list {
   margin: 0.6rem 0 0 1.1rem;
   padding: 0;
@@ -47,6 +86,7 @@ author_profile: true
   margin-bottom: 6px;
 }
 
+/* 日期列表 */
 .activity-date-list {
   margin: 0.3rem 0 0.7rem 1.1rem;
   padding: 0;
@@ -55,6 +95,7 @@ author_profile: true
   color: var(--global-text-color-light, #666);
 }
 
+/* 注释 */
 .activity-note {
   margin-top: 0.7rem;
   font-size: 0.88rem;
@@ -62,10 +103,29 @@ author_profile: true
   font-style: italic;
 }
 
+/* 链接 */
 .activity-card a {
   color: var(--global-link-color, #2c6e91);
+  text-decoration: none;
 }
 
+.activity-card a:hover {
+  text-decoration: underline;
+}
+
+/* 响应式 */
+@media (max-width: 700px) {
+  .activity-flex {
+    flex-direction: column;
+  }
+
+  .activity-image-box {
+    width: 100%;
+    max-width: 260px;
+  }
+}
+
+/* 深色模式 */
 html[data-theme="dark"] .activity-card {
   background: #1e1e1e;
   border: 1px solid rgba(255,255,255,0.08);
@@ -91,49 +151,9 @@ html[data-theme="dark"] .activity-card a {
   color: #7fc7ff;
 }
 
-  .activity-flex {
-  display: flex;
-  gap: 1.4rem;   /* 👈 稍微拉开 */
-  align-items: flex-start;
-}
-
-.activity-flex-text {
-  flex: 1;
-  min-width: 0;
-}
-
-.activity-image-box {
-  flex: 0 0 210px;   /* 👈 放大 */
-  aspect-ratio: 1 / 1;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid rgba(120,120,120,0.15);
-}
-
-
-.activity-image-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* 手机适配 */
-@media (max-width: 700px) {
-  .activity-flex {
-    flex-direction: column;
-  }
-
-  .activity-image-box {
-    width: 100%;
-    max-width: 220px;
-  }
-}
-
-/* 深色模式边框 */
 html[data-theme="dark"] .activity-image-box {
   border: 1px solid rgba(255,255,255,0.1);
 }
-  
 </style>
 
 ## Editorial & Review
