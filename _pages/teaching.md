@@ -93,7 +93,7 @@ html[data-theme="dark"] .activity-card a {
 
   .activity-flex {
   display: flex;
-  gap: 1.2rem;
+  gap: 1.4rem;   /* 👈 稍微拉开 */
   align-items: flex-start;
 }
 
@@ -103,12 +103,13 @@ html[data-theme="dark"] .activity-card a {
 }
 
 .activity-image-box {
-  flex: 0 0 140px;
+  flex: 0 0 210px;   /* 👈 放大 */
   aspect-ratio: 1 / 1;
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid rgba(120,120,120,0.15);
 }
+
 
 .activity-image-box img {
   width: 100%;
