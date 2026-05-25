@@ -147,6 +147,36 @@ html[data-theme="dark"] .pub-thumb img {
 
 <div class="pub-card">
   <div class="pub-thumb">
+    <img src="/images/2026FrontiersFigure1.png" alt="A global re-assessment of surface bio-optical properties in Case 1 waters using Biogeochemical-Argo profiles">
+  </div>
+  <div class="pub-content">
+    <p class="pub-authors">
+      <strong>Li, M.</strong>, La Forgia, G., Organelli, E. (2026)
+    </p>
+
+    <p class="pub-title">
+      A global re-assessment of surface bio-optical properties in Case 1 waters using Biogeochemical-Argo profiles
+    </p>
+
+    <p class="pub-journal">
+      Frontiers in Marine Science
+    </p>
+
+    <p class="pub-links">
+      <a href="https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2026.1822929/abstract"
+         target="_blank" rel="noopener noreferrer">
+         Article
+      </a>
+    </p>
+
+    <p class="pub-note">
+      Accepted manuscript
+    </p>
+  </div>
+</div>
+
+<div class="pub-card">
+  <div class="pub-thumb">
     <img src="/images/GRL.jpg">
   </div>
   <div class="pub-content">
