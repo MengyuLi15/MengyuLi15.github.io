@@ -5,6 +5,8 @@
   summary: "本期按更新后的规则重跑：Nature/Science 系列优先，其余重点期刊按影响力与主题相关性排序；历史去重后保留 41 篇，不超过每日 50 篇上限。"
   summary_zh: "本期按更新后的规则重跑：Nature/Science 系列优先，其余重点期刊按影响力与主题相关性排序；历史去重后保留 41 篇，不超过每日 50 篇上限。"
   summary_en: "This issue was rerun with the updated rules: Nature and Science series first, then priority journals ordered by approximate impact and topical relevance. After deduplication, 41 papers remain, below the daily limit of 50."
+  trend_zh: "本期趋势很清楚：海洋热浪研究正在从表层 SST 和表层 Chl-a 转向亚表层增暖、DCM/SCM 变化和群落结构响应；BGC-Argo 正在从剖面观测推进到 NCP、POC export、氧/硝酸盐耦合和微生物过程诊断；海色遥感方向则明显围绕 PACE、高光谱、多传感器融合和机器学习展开，尤其关注 bbp、IOPs、浮游植物群落结构和长期 Chl-a 数据记录。整体上，这批论文共同指向一个方向：未来 carbon pump 研究需要把表层海色、垂向剖面和事件尺度扰动放在同一个三维框架里解释。"
+  trend_en: "The main pattern in this issue is clear: marine-heatwave research is moving beyond surface SST and surface Chl-a toward subsurface warming, DCM/SCM changes and community responses; BGC-Argo studies are moving from profile description toward NCP, POC export, oxygen-nitrate coupling and microbial-process diagnostics; and ocean-colour work is increasingly organized around PACE, hyperspectral sensing, multi-sensor fusion and machine learning, especially for bbp, IOPs, phytoplankton community structure and long-term Chl-a records. Together, these papers point toward a three-dimensional carbon-pump framework that links surface ocean colour, vertical profiles and event-scale disturbances."
   docx: "/files/paper-push/daily_paper_push_2026-05-27.docx"
   figure: "/images/paper-push/mechanism_2026-05-27.png"
   papers:
