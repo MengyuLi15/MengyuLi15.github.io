@@ -1,0 +1,106 @@
+name: Temporary v2 push
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: "generate or delete the temporary v2 push"
+        required: true
+        default: "generate"
+        type: choice
+        options:
+          - generate
+          - delete
+      push_date:
+        description: "Date for the temporary push"
+        required: true
+        default: "2026-05-27"
+      version:
+        description: "Temporary push version"
+        required: true
+        default: "v2"
+      title:
+        description: "Temporary push title"
+        required: true
+        default: "2026-05-27 v2 test push"
+
+jobs:
+  temporary-v2-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Generate temporary push
+        if: ${{ inputs.action == 'generate' }}
+        shell: bash
+        env:
+          PUSH_DATE: ${{ inputs.push_date }}
+          VERSION: ${{ inputs.version }}
+          TITLE: ${{ inputs.title }}
+        run: |
+          set -euo pipefail
+
+          mkdir -p data/pushes
+
+          push_file="data/pushes/${PUSH_DATE}-${VERSION}.json"
+          canonical_file="data/pushes/${PUSH_DATE}.json"
+
+          if [[ -f "$canonical_file" ]]; then
+            echo "Found $canonical_file. Refusing to generate a temporary v2 push over an existing primary push."
+            exit 1
+          fi
+
+          jq -n \
+            --arg id "${PUSH_DATE}-${VERSION}" \
+            --arg date "$PUSH_DATE" \
+            --arg version "$VERSION" \
+            --arg title "$TITLE" \
+            --arg summary "Temporary v2 test push generated after a missed daily push for pre-business-flow review." \
+            '{
+              id: $id,
+              date: $date,
+              version: $version,
+              title: $title,
+              temporary: true,
+              status: "test",
+              summary: $summary,
+              createdBy: "github-actions",
+              removeAfterReview: true
+            }' > "$push_file"
+
+      - name: Delete temporary push
+        if: ${{ inputs.action == 'delete' }}
+        shell: bash
+        env:
+          PUSH_DATE: ${{ inputs.push_date }}
+          VERSION: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+
+          push_file="data/pushes/${PUSH_DATE}-${VERSION}.json"
+
+          if [[ -f "$push_file" ]]; then
+            rm "$push_file"
+          else
+            echo "$push_file does not exist; nothing to delete."
+          fi
+
+      - name: Commit changes
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git add -A
+            git commit -m "chore: ${{ inputs.action }} temporary ${{ inputs.push_date }} ${{ inputs.version }} push"
+            git push
+          else
+            echo "No changes to commit."
+          fi
