@@ -1,101 +1,75 @@
-# Academic Pages
-**Academic Pages is a GitHub Pages template for personal and professional portfolio-oriented websites.**
+# MengyuLi15.github.io
 
-![Academic Pages template example](images/themes/homepage-light.png "Academic Pages template example")
+This repository hosts the personal academic website for Mengyu Li and the Daily Paper Push archive.
 
-# Getting Started
+Website:
 
-1. Register a GitHub account if you don't have one and confirm your e-mail (required!)
-1. Click the "Use this template" button in the top right.
-1. On the "New repository" page, enter your public repository name as "[your GitHub username].github.io", which will also be your website's URL.
-1. Edit site-wide configuration in `_config.yml` and double check that the `url` is the one that you just selected in the previous step and that `repository` reflects the correct path for your repository.
-1. Add your site content, upload any files (like PDFs, .zip files, etc.) to the `files/` directory. They will appear at https://[your GitHub username].github.io/files/example.pdf.
-1. Check status by going to the repository settings, in the "GitHub pages" section
-1. (Optional) Use the Jupyter notebooks or python scripts in the `markdown_generator` folder to generate markdown files for publications and talks from a TSV file.
+- https://mengyuli15.github.io/
+- https://mengyuli15.github.io/activities/paper-push/
 
-See more info at https://academicpages.github.io/
+Wiki:
 
-### Additional Tutorials
+- https://github.com/MengyuLi15/MengyuLi15.github.io/wiki/Paper-Push-Homepage
 
-Additional tutorials for working with the Academic Pages template can be found at the following sites:
-- https://jayrobwilliams.com/posts/2020/06/academic-website/
+## Daily Paper Push
 
-## Running locally
+The Paper Push feature publishes a daily literature archive for BGC-Argo, ocean-colour remote sensing, marine heatwaves, phytoplankton vertical structure, and carbon-pump processes.
 
-When you are initially working on your website, it is very useful to be able to preview the changes locally before pushing them to GitHub. To work locally you will need to:
+Main files:
 
-1. Clone the repository and made updates as detailed above.
+- `_pages/paper-push.md` - Paper Push homepage and date list.
+- `_pages/paper-push-YYYY-MM-DD.md` - generated detail page for each daily issue.
+- `_data/paper_pushes.yml` - structured issue and paper data.
+- `_includes/paper-push-assets.html` - shared styles and script include.
+- `assets/js/paper-push.js` - browser-side language switching, saved papers, search, removal, and CSV export.
+- `scripts/generate_paper_push.py` - daily paper retrieval, filtering, ranking, Word summary generation, history update, and page creation.
+- `scripts/create_paper_push_page.py` - generated page shell for a given date.
+- `.github/workflows/paper-push.yml` - scheduled and manually triggered daily generation workflow.
+- `.github/workflows/temporary-v2-push.yml` - manual temporary test-push workflow.
 
-### Using a different IDE
-1. Make sure you have ruby-dev, bundler, and nodejs installed
-    
-    On most Linux distribution and [Windows Subsystem Linux](https://learn.microsoft.com/en-us/windows/wsl/about) the command is:
-    ```bash
-    sudo apt install ruby-dev ruby-bundler nodejs
-    ```
-    If you see error `Unable to locate package ruby-bundler`, `Unable to locate package nodejs `, run the following:
-    ```bash
-    sudo apt update && sudo apt upgrade -y
-    ```
-    then try run `sudo apt install ruby-dev ruby-bundler nodejs` again.
+The main workflow runs at `06:00 UTC` and `07:00 UTC` to cover `08:00 Europe/Berlin` across daylight-saving changes. DOI/history de-duplication prevents duplicate daily entries when both scheduled runs see the same candidates.
 
-    On MacOS the commands are:
-    ```bash
-    brew install ruby
-    brew install node
-    gem install bundler
-    ```
-1. Run `bundle install` to install ruby dependencies. If you get errors, delete Gemfile.lock and try again.
+## Local Development
 
-    If you see file permission error like `Fetching bundler-2.6.3.gem ERROR:  While executing gem (Gem::FilePermissionError) You don't have write permissions for the /var/lib/gems/3.2.0 directory.` or `Bundler::PermissionError: There was an error while trying to write to /usr/local/bin.`
-    Install Gems Locally (Recommended):
-    ```bash
-    bundle config set --local path 'vendor/bundle'
-    ```
-    then try run `bundle install` again. If succeeded, you should see a folder called `vendor` and `.bundle`.
-
-1. Run `jekyll serve -l -H localhost` to generate the HTML and serve it from `localhost:4000` the local server will automatically rebuild and refresh the pages on change to Markdown (*.md) and HTML files, while changes to the core template and configuration (i.e., `_config.yml`) will require stopping and restarting Jekyll.
-    You may also try `bundle exec jekyll serve -l -H localhost` to ensure jekyll to use specific dependencies on your own local machine.
-
-If you are running on Linux it may be necessary to install some additional dependencies prior to being able to run locally: `sudo apt install build-essential gcc make`
-
-## Using Docker
-
-Working from a different OS, or just want to avoid installing dependencies? You can use the provided `Dockerfile` to build a container that will run the site for you if you have [Docker](https://www.docker.com/) installed.
-
-You can build and execute the container by running the following command in the repository:
+Install the Jekyll dependencies and run the site locally:
 
 ```bash
-chmod -R 777 .
-docker compose up
+bundle install
+bundle exec jekyll serve -l -H localhost
 ```
 
-You should now be able to access the website from `localhost:4000`.
+The local site is served at:
 
-### Using the DevContainer in VS Code
+```text
+http://localhost:4000
+```
 
-If you are using [Visual Studio Code](https://code.visualstudio.com/) you can use the [Dev Container](https://code.visualstudio.com/docs/devcontainers/containers) that comes with this Repository. Normally VS Code detects that a development container configuration is available and asks you if you want to use the container. If this doesn't happen you can manually start the container by **F1->DevContainer: Reopen in Container**. This restarts your VS Code in the container and automatically hosts your academic page locally on http://localhost:4000. All changes will be updated live to that page after a few seconds.
+To run only the paper-push generator in dry-run mode:
 
-# Maintenance
+```bash
+python scripts/generate_paper_push.py --dry-run
+```
 
-Bug reports and feature requests to the template should be [submitted via GitHub](https://github.com/academicpages/academicpages.github.io/issues/new/choose). For questions concerning how to style the template, please feel free to start a [new discussion on GitHub](https://github.com/academicpages/academicpages.github.io/discussions).
+To generate a specific daily push locally:
 
-This repository was forked (then detached) by [Stuart Geiger](https://github.com/staeiou) from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/), which is © 2016 Michael Rose and released under the MIT License (see LICENSE.md). It is currently being maintained by [Robert Zupko](https://github.com/rjzupkoii) and additional maintainers would be welcomed.
+```bash
+python scripts/generate_paper_push.py --date YYYY-MM-DD
+```
 
-## Bugfixes and enhancements
+## 中文说明
 
-If you have bugfixes and enhancements that you would like to submit as a pull request, you will need to [fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) this repository as opposed to using it as a template. This will also allow you to [synchronize your copy](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) of template to your fork as well.
+本仓库用于维护 Mengyu Li 的个人学术网站，以及“每日论文推送”功能。
 
-Unfortunately, one logistical issue with a template theme like Academic Pages that makes it a little tricky to get bug fixes and updates to the core theme. If you use this template and customize it, you will probably get merge conflicts if you attempt to synchronize, although [rebasing](https://git-scm.com/docs/git-rebase) the changes from this template will work along with manually [cherry picking](https://git-scm.com/docs/git-cherry-pick) the relevant commits. If you are not comfortable with the Git command line, you can save your various `.yml` configuration files and Markdown files, delete the repository, and fork it again. 
+每日论文推送页面：
 
----
-<div align="center">
-    
-![pages-build-deployment](https://github.com/academicpages/academicpages.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)
-[![GitHub contributors](https://img.shields.io/github/contributors/academicpages/academicpages.github.io.svg)](https://github.com/academicpages/academicpages.github.io/graphs/contributors)
-[![GitHub release](https://img.shields.io/github/v/release/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io/releases/latest)
-[![GitHub license](https://img.shields.io/github/license/academicpages/academicpages.github.io?color=blue)](https://github.com/academicpages/academicpages.github.io/blob/master/LICENSE)
+- https://mengyuli15.github.io/activities/paper-push/
 
-[![GitHub stars](https://img.shields.io/github/stars/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io)
-[![GitHub forks](https://img.shields.io/github/forks/academicpages/academicpages.github.io)](https://github.com/academicpages/academicpages.github.io/fork)
-</div>
+该功能会围绕 BGC-Argo、海色遥感、海洋热浪、浮游植物垂向结构和碳泵过程，自动生成每日论文归档。页面支持中英文显示、论文收藏、本地搜索和 CSV 导出。
+
+主要维护入口：
+
+- `_data/paper_pushes.yml` - 每日推送数据。
+- `_pages/paper-push.md` - 推送主页。
+- `scripts/generate_paper_push.py` - 自动生成脚本。
+- `.github/workflows/paper-push.yml` - 每日自动运行 workflow。
+- Wiki 页面 - Paper Push 主页功能说明和维护文档。
