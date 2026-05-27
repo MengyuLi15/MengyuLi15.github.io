@@ -23,6 +23,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DATA = ROOT / "_data" / "paper_pushes.yml"
 USER_AGENT = "mengyuli15-paper-push-validator/1.0 (https://mengyuli15.github.io/)"
+SUMMARY_PLACEHOLDER = "DOI-verified metadata correction"
 
 
 def clean_text(value: str) -> str:
@@ -66,6 +67,8 @@ def parse_papers(issue: str) -> list[dict[str, str]]:
                 "journal": field(block, "journal"),
                 "published_month": field(block, "published_month"),
                 "doi": field(block, "doi"),
+                "summary_zh": field(block, "summary_zh") or field(block, "summary"),
+                "summary_en": field(block, "summary_en") or field(block, "summary"),
             }
         )
     return papers
@@ -122,10 +125,27 @@ def published_month_matches(local: str, remote: str) -> bool:
     return local == remote
 
 
+def validate_summary_fields(paper: dict[str, str]) -> list[str]:
+    errors: list[str] = []
+    summary_zh = clean_text(paper["summary_zh"])
+    summary_en = clean_text(paper["summary_en"])
+    for label, value in (("summary_zh", summary_zh), ("summary_en", summary_en)):
+        if not value:
+            errors.append(f"{paper['index']}. {paper['doi']}: {label} is empty")
+        if SUMMARY_PLACEHOLDER in value:
+            errors.append(f"{paper['index']}. {paper['doi']}: {label} still contains a metadata-correction placeholder")
+    if summary_zh and not re.search(r"[\u4e00-\u9fff]", summary_zh):
+        errors.append(f"{paper['index']}. {paper['doi']}: summary_zh does not look Chinese")
+    if summary_en and re.search(r"[\u4e00-\u9fff]", summary_en):
+        errors.append(f"{paper['index']}. {paper['doi']}: summary_en contains Chinese characters")
+    return errors
+
+
 def validate(papers: list[dict[str, str]]) -> list[str]:
     errors: list[str] = []
     for paper in papers:
         doi = paper["doi"]
+        errors.extend(validate_summary_fields(paper))
         try:
             work = crossref_work(doi)
         except (urllib.error.URLError, TimeoutError, KeyError, json.JSONDecodeError) as exc:
