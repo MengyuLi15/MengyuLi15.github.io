@@ -47,6 +47,9 @@ jobs:
             --lookback-days "$LOOKBACK_DAYS" \
             --max-papers "$MAX_PAPERS"
 
+      - name: Validate DOI metadata
+        run: python scripts/validate_paper_push_dois.py
+
       - name: Commit and push changes
         run: |
           if [[ -z "$(git status --porcelain)" ]]; then
