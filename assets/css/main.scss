@@ -134,19 +134,32 @@ body {
 }
 
 @media (min-width: 1024px) {
+  #main:has(> .sidebar) {
+    display: grid;
+    grid-template-columns: 230px minmax(0, 1fr);
+    column-gap: 2rem;
+    align-items: start;
+  }
+
   .sidebar {
     position: sticky !important;
     top: calc(70px + 1.5rem);
     height: auto;
     max-height: calc(100vh - 70px - 3rem);
     width: 230px !important;
+    float: none !important;
     overflow-y: auto;
+    margin-right: 0;
     padding-top: 1rem !important;
   }
 
-  .archive,
-  .page {
-    padding-left: 1.5rem !important;
+  #main:has(> .sidebar) .archive,
+  #main:has(> .sidebar) .page {
+    width: auto !important;
+    float: none !important;
+    margin: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 }
 
