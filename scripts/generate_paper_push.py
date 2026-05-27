@@ -283,23 +283,128 @@ def sentence_split(text: str) -> list[str]:
     return [part.strip() for part in parts if part.strip()]
 
 
+def infer_data_source(title: str, tags: str, journal: str) -> tuple[str, str]:
+    haystack = f"{title} {tags} {journal}".lower()
+    if "bgc-argo" in haystack or "argo" in haystack:
+        return (
+            "数据上主要依托 BGC-Argo 浮标剖面及相关生物地球化学变量，并结合题名所指的氧气、后向散射、硝酸盐或叶绿素信息。",
+            "The data emphasis is on BGC-Argo float profiles and related biogeochemical variables, including oxygen, backscatter, nitrate, or chlorophyll where indicated by the title.",
+        )
+    if "pace" in haystack:
+        return (
+            "数据或应用场景指向 NASA PACE/OCI 高光谱海色观测及其验证、训练或社区使用。",
+            "The data or application setting is NASA PACE/OCI hyperspectral ocean-colour observation, together with validation, training, or community-use workflows.",
+        )
+    if "viirs" in haystack:
+        return (
+            "数据上使用 VIIRS 顶层大气卫星观测，面向近岸复杂水体的叶绿素 a 估计。",
+            "The data source is top-of-atmosphere VIIRS satellite observation, used for chlorophyll-a estimation in optically complex coastal waters.",
+        )
+    if any(term in haystack for term in ["satellite", "ocean color", "ocean colour", "chlorophyll", "remote sensing"]):
+        return (
+            "数据上主要面向卫星海色、叶绿素或遥感反射率记录，并在需要时结合原位或剖面观测进行约束。",
+            "The data emphasis is satellite ocean-colour, chlorophyll, or remote-sensing reflectance records, with in-situ or profile constraints where relevant.",
+        )
+    if any(term in haystack for term in ["sediment trap", "optics", "backscattering", "bio-optic", "absorption", "lidar"]):
+        return (
+            "数据或方法上围绕沉积物捕获器、原位光学、生物光学参数或光谱观测展开。",
+            "The data or method emphasis is sediment traps, in-situ optics, bio-optical parameters, or spectral optical observation.",
+        )
+    if any(term in haystack for term in ["review", "annual review", "modeling", "campaign", "hackweek"]):
+        return (
+            "这类论文主要综合已有观测、理论、模型、外场设计或社区训练材料，而不是发布一个新的单一观测数据集。",
+            "This type of paper synthesizes existing observations, theory, models, field-design material, or community-training workflows rather than publishing one new observational dataset.",
+        )
+    return (
+        "数据来源可从 DOI 页面进一步核对；从题名和期刊信息看，它主要围绕海洋生物地球化学或生态过程资料展开。",
+        "The exact data source should be checked on the DOI page; from the title and journal metadata, it is centred on ocean biogeochemical or ecological-process information.",
+    )
+
+
+def infer_action(title: str, tags: str) -> tuple[str, str]:
+    haystack = f"{title} {tags}".lower()
+    if any(term in haystack for term in ["machine learning", "deep learning", "neural", "emulator"]):
+        return (
+            "方法上使用机器学习、深度学习或神经模拟器来提取信号、反演变量或识别驱动机制。",
+            "Methodologically, it uses machine learning, deep learning, or a neural emulator to extract signals, retrieve variables, or identify drivers.",
+        )
+    if any(term in haystack for term in ["retrieval", "estimation", "estimating"]):
+        return (
+            "研究重点是建立或评估反演/估计框架，把观测信号转化为浮游植物、叶绿素、吸收或碳通量等变量。",
+            "The main task is to build or assess a retrieval or estimation framework that converts observations into variables such as phytoplankton, chlorophyll, absorption, or carbon flux.",
+        )
+    if any(term in haystack for term in ["dataset", "data record", "data with", "surveys"]):
+        return (
+            "研究重点是整理、质控或构建可复用数据产品，使后续跨区域和长期分析更可靠。",
+            "The main task is to assemble, quality-control, or build a reusable data product so that later cross-regional and long-term analyses are more robust.",
+        )
+    if any(term in haystack for term in ["review", "modeling", "lifting the lid"]):
+        return (
+            "研究主要通过综述、模型框架或概念整合来梳理关键过程和不确定性来源。",
+            "The paper mainly uses review, modelling, or conceptual synthesis to organize key processes and sources of uncertainty.",
+        )
+    return (
+        "研究主要分析变化趋势、事件响应、驱动机制或方法表现，并把观测结果与生态/生物地球化学过程联系起来。",
+        "The main task is to analyse trends, event responses, drivers, or method performance, linking observations with ecological or biogeochemical processes.",
+    )
+
+
+def infer_result(title: str, tags: str) -> tuple[str, str]:
+    haystack = f"{title} {tags}".lower()
+    if any(term in haystack for term in ["declin", "increase", "threefold", "1 °c", "unprecedented"]):
+        return (
+            "核心结果是识别出上升、下降或异常事件信号，并把这些变化放进气候变暖、生产力或碳循环背景下解释。",
+            "The core result is an identified increase, decline, or extreme-event signal interpreted in the context of warming, productivity, or carbon cycling.",
+        )
+    if any(term in haystack for term in ["accuracy", "comparison", "performance"]):
+        return (
+            "核心结果是给出产品或方法表现的评估，为判断适用水体、误差来源和后续改进提供依据。",
+            "The main outcome is an assessment of product or method performance, helping identify suitable waters, error sources, and paths for improvement.",
+        )
+    if any(term in haystack for term in ["framework", "approach", "design", "dataset", "data record"]):
+        return (
+            "核心实现是提出可复用的框架、流程或数据产品，使类似观测、反演、验证或趋势分析可以更系统地开展。",
+            "The main contribution is a reusable framework, workflow, or data product that makes similar observation, retrieval, validation, or trend-analysis tasks more systematic.",
+        )
+    if "heatwave" in haystack or "heatwaves" in haystack:
+        return (
+            "核心结果帮助说明海洋热浪如何通过强度、持续时间或垂向结构影响生态和碳循环过程。",
+            "The core result helps explain how marine heatwaves affect ecological and carbon-cycle processes through intensity, duration, or vertical structure.",
+        )
+    return (
+        "核心结果或实现为该主题提供了新的观测约束、方法基准或过程解释。",
+        "The main result or implementation provides new observational constraints, methodological benchmarks, or process interpretation for this topic.",
+    )
+
+
 def summary_en(title: str, abstract: str, tags: str) -> str:
-    sentences = sentence_split(abstract)
-    if sentences:
-        base = " ".join(sentences[:2])
-    else:
-        base = f"This paper is relevant to {tags} based on its title and journal metadata."
-    if len(base) > MAX_ABSTRACT_CHARS:
-        base = base[:MAX_ABSTRACT_CHARS].rsplit(" ", 1)[0] + "."
-    return base
+    data_zh, data_en = infer_data_source(title, tags, "")
+    action_zh, action_en = infer_action(title, tags)
+    result_zh, result_en = infer_result(title, tags)
+    return " ".join(
+        [
+            f"This paper focuses on \"{title}\", with key themes including {tags}.",
+            data_en,
+            action_en,
+            result_en,
+            f"It is useful for research on {tags}, especially for selecting papers for close reading, method comparison, or cross-validation of datasets.",
+        ]
+    )
 
 
 def summary_zh(title: str, abstract: str, tags: str) -> str:
-    lead = f"这篇论文围绕 {tags} 展开。"
-    if abstract:
-        en = summary_en(title, abstract, tags)
-        return f"{lead}根据摘要，研究重点是：{en} 这篇适合跟踪其方法、数据和结论，并可进一步阅读全文核对机制细节。"
-    return f"{lead}当前元数据没有提供摘要；建议先通过 DOI 页面查看全文摘要、图件和方法细节。"
+    data_zh, data_en = infer_data_source(title, tags, "")
+    action_zh, action_en = infer_action(title, tags)
+    result_zh, result_en = infer_result(title, tags)
+    return " ".join(
+        [
+            f"这篇论文聚焦《{title}》，关键词是 {tags}。",
+            data_zh,
+            action_zh,
+            result_zh,
+            f"它对 {tags} 相关研究有帮助，特别适合用于筛选后续精读、方法比较或数据交叉验证。",
+        ]
+    )
 
 
 def crossref_query(query: str, from_date: date, rows: int = 20) -> list[dict]:

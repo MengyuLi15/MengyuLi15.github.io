@@ -24,6 +24,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DATA = ROOT / "_data" / "paper_pushes.yml"
 USER_AGENT = "mengyuli15-paper-push-validator/1.0 (https://mengyuli15.github.io/)"
 SUMMARY_PLACEHOLDER = "DOI-verified metadata correction"
+MIN_SUMMARY_SENTENCES = 5
 
 
 def clean_text(value: str) -> str:
@@ -50,7 +51,7 @@ def issue_blocks(text: str) -> list[tuple[str, str]]:
 
 
 def field(block: str, name: str) -> str:
-    match = re.search(rf'(?m)^      {re.escape(name)}: "([^"]*)"', block)
+    match = re.search(rf'(?m)^      {re.escape(name)}: "((?:\\.|[^"])*)"', block)
     return yaml_unquote(match.group(1)) if match else ""
 
 
@@ -125,6 +126,11 @@ def published_month_matches(local: str, remote: str) -> bool:
     return local == remote
 
 
+def sentence_count(value: str) -> int:
+    parts = re.split(r"[.!?\u3002\uff01\uff1f]+", clean_text(value))
+    return len([part for part in parts if part.strip()])
+
+
 def validate_summary_fields(paper: dict[str, str]) -> list[str]:
     errors: list[str] = []
     summary_zh = clean_text(paper["summary_zh"])
@@ -134,6 +140,8 @@ def validate_summary_fields(paper: dict[str, str]) -> list[str]:
             errors.append(f"{paper['index']}. {paper['doi']}: {label} is empty")
         if SUMMARY_PLACEHOLDER in value:
             errors.append(f"{paper['index']}. {paper['doi']}: {label} still contains a metadata-correction placeholder")
+        if sentence_count(value) < MIN_SUMMARY_SENTENCES:
+            errors.append(f"{paper['index']}. {paper['doi']}: {label} has fewer than {MIN_SUMMARY_SENTENCES} sentences")
     if summary_zh and not re.search(r"[\u4e00-\u9fff]", summary_zh):
         errors.append(f"{paper['index']}. {paper['doi']}: summary_zh does not look Chinese")
     if summary_en and re.search(r"[\u4e00-\u9fff]", summary_en):
