@@ -47,6 +47,7 @@ jobs:
           mkdir -p data/pushes
 
           push_file="data/pushes/${PUSH_DATE}-${VERSION}.json"
+          page_file="_pages/paper-push-${PUSH_DATE}-${VERSION}.md"
           canonical_file="data/pushes/${PUSH_DATE}.json"
 
           if [[ -f "$canonical_file" ]]; then
@@ -72,6 +73,66 @@ jobs:
               removeAfterReview: true
             }' > "$push_file"
 
+          cat > "$page_file" <<PAGE
+          ---
+          layout: archive
+          title: "Paper Push: ${PUSH_DATE} ${VERSION} test"
+          permalink: /activities/paper-push/${PUSH_DATE}-${VERSION}/
+          author_profile: true
+          ---
+
+          {% include base_path %}
+          {% include paper-push-assets.html %}
+
+          {% assign issue_date = "${PUSH_DATE}-${VERSION}" %}
+          {% assign issue = site.data.paper_pushes | where: "date", issue_date | first %}
+
+          <p><a href="{{ base_path }}/activities/paper-push/">Back to date list</a></p>
+
+          ## <span data-paper-i18n="zh">{{ issue.title_zh | default: issue.title }}</span><span data-paper-i18n="en">{{ issue.title_en | default: issue.title }}</span>
+
+          <p class="paper-push-meta">
+            <span data-paper-i18n="zh">{{ issue.summary_zh | default: issue.summary }}</span>
+            <span data-paper-i18n="en">{{ issue.summary_en | default: issue.summary }}</span>
+          </p>
+
+          <section class="paper-push-trend">
+            <h2><span data-paper-i18n="zh">Test Note</span><span data-paper-i18n="en">Test Note</span></h2>
+            <p class="paper-push-block" data-paper-i18n="zh">{{ issue.trend_zh | default: issue.summary_zh | default: issue.summary }}</p>
+            <p class="paper-push-block" data-paper-i18n="en">{{ issue.trend_en | default: issue.summary_en | default: issue.summary }}</p>
+          </section>
+          PAGE
+
+          python - <<'PY'
+          import os
+          from pathlib import Path
+
+          push_date = os.environ["PUSH_DATE"]
+          version = os.environ["VERSION"]
+          issue_date = f"{push_date}-{version}"
+          path = Path("_data/paper_pushes.yml")
+          path.parent.mkdir(parents=True, exist_ok=True)
+          existing = path.read_text(encoding="utf-8") if path.exists() else ""
+          marker = f'- date: "{issue_date}"'
+
+          if marker not in existing:
+              entry = f'''- date: "{issue_date}"
+            display_date: "{push_date}"
+            title: "{push_date} {version} test push"
+            title_zh: "{push_date} \\u7b2c\\u4e8c\\u7248\\u6d4b\\u8bd5\\u63a8\\u9001"
+            title_en: "{push_date} {version} test push"
+            summary: "Temporary v2 test push generated after a missed daily push. This entry is only for website verification and can be removed after review."
+            summary_zh: "\\u6a21\\u62df\\u4eca\\u5929\\u6f0f\\u63a8\\u540e\\u8865\\u53d1\\u7684\\u7b2c\\u4e8c\\u7248\\u6d4b\\u8bd5\\u63a8\\u9001\\uff0c\\u4ec5\\u7528\\u4e8e\\u7f51\\u7ad9\\u68c0\\u67e5\\uff0c\\u68c0\\u67e5\\u5b8c\\u540e\\u53ef\\u5220\\u9664\\u3002"
+            summary_en: "Temporary v2 test push generated after a missed daily push. This entry is only for website verification and can be removed after review."
+            trend_zh: "\\u8fd9\\u662f\\u4e00\\u6761\\u4e34\\u65f6\\u6d4b\\u8bd5\\u63a8\\u9001\\uff0c\\u7528\\u6765\\u786e\\u8ba4\\u65e5\\u671f\\u5217\\u8868\\u3001\\u8be6\\u60c5\\u9875\\u3001GitHub Actions \\u548c\\u7ad9\\u70b9\\u90e8\\u7f72\\u94fe\\u8def\\u662f\\u5426\\u6b63\\u5e38\\u3002"
+            trend_en: "This is a temporary test push for checking the date list, detail page, GitHub Actions, and site deployment path."
+            temporary: true
+            status: "test"
+            papers: []
+          '''
+              path.write_text(entry + existing, encoding="utf-8")
+          PY
+
       - name: Delete temporary push
         if: ${{ inputs.action == 'delete' }}
         shell: bash
@@ -82,12 +143,38 @@ jobs:
           set -euo pipefail
 
           push_file="data/pushes/${PUSH_DATE}-${VERSION}.json"
+          page_file="_pages/paper-push-${PUSH_DATE}-${VERSION}.md"
 
           if [[ -f "$push_file" ]]; then
             rm "$push_file"
           else
             echo "$push_file does not exist; nothing to delete."
           fi
+
+          if [[ -f "$page_file" ]]; then
+            rm "$page_file"
+          else
+            echo "$page_file does not exist; nothing to delete."
+          fi
+
+          python - <<'PY'
+          import os
+          from pathlib import Path
+
+          issue_date = f'{os.environ["PUSH_DATE"]}-{os.environ["VERSION"]}'
+          path = Path("_data/paper_pushes.yml")
+          if path.exists():
+              lines = path.read_text(encoding="utf-8").splitlines()
+              output = []
+              skipping = False
+              target = f'- date: "{issue_date}"'
+              for line in lines:
+                  if line.startswith("- date: "):
+                      skipping = line == target
+                  if not skipping:
+                      output.append(line)
+              path.write_text("\n".join(output).rstrip() + "\n", encoding="utf-8")
+          PY
 
       - name: Commit changes
         shell: bash

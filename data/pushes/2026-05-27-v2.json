@@ -2,10 +2,10 @@
   "id": "2026-05-27-v2",
   "date": "2026-05-27",
   "version": "v2",
-  "title": "2026-05-27 v2 第二版推送",
+  "title": "2026-05-27 v2 test push",
   "temporary": true,
   "status": "test",
-  "summary": "Temporary v2 test push generated after a missed daily push for pre-business-flow review.",
-  "createdBy": "github-actions",
+  "summary": "Temporary v2 test push generated after a missed daily push. This entry is only for website verification and can be removed after review.",
+  "createdBy": "codex",
   "removeAfterReview": true
 }
