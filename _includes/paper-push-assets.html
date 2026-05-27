@@ -1,0 +1,108 @@
+<style>
+.paper-push-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin: 1rem 0 1.25rem;
+}
+
+.paper-push-input {
+  min-width: 240px;
+  max-width: 100%;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid rgba(128,128,128,0.35);
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+}
+
+.paper-push-button,
+.favorite-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.2rem;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid rgba(128,128,128,0.35);
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: 0.88rem;
+  line-height: 1.2;
+}
+
+.paper-push-button:hover,
+.favorite-button:hover,
+.favorite-button.is-favorite {
+  border-color: #2f80ed;
+  color: #2f80ed;
+}
+
+.paper-push-date-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.9rem;
+  margin: 1.2rem 0 1.6rem;
+}
+
+.paper-push-date-item,
+.paper-push-paper {
+  padding: 1rem;
+  border: 1px solid rgba(128,128,128,0.18);
+  border-radius: 8px;
+  background: rgba(128,128,128,0.04);
+}
+
+.paper-push-date-item h3,
+.paper-push-paper h3 {
+  margin-top: 0;
+}
+
+.paper-push-meta {
+  color: var(--global-text-color-light, #666);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.paper-push-paper-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 0.7rem;
+}
+
+.paper-push-favorites-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.8rem 0 1.2rem;
+  font-size: 0.86rem;
+}
+
+.paper-push-favorites-table th,
+.paper-push-favorites-table td {
+  border: 1px solid rgba(128,128,128,0.22);
+  padding: 0.45rem 0.5rem;
+  vertical-align: top;
+}
+
+.paper-push-favorites-table th {
+  text-align: left;
+  background: rgba(128,128,128,0.08);
+}
+
+.paper-push-empty {
+  color: var(--global-text-color-light, #666);
+  font-style: italic;
+}
+
+@media (max-width: 640px) {
+  .paper-push-favorites-table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+</style>
+
+<script src="{{ base_path }}/assets/js/paper-push.js" defer></script>
