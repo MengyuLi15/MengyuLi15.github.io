@@ -12,6 +12,11 @@ author_profile: true
 
 This page archives the daily BGC-Argo, ocean colour, marine heatwave and carbon-pump paper pushes.
 
+<div class="paper-push-system-note">
+  <strong>Automation note.</strong>
+  This paper-push system is deployed on GitHub Actions for scheduled updates, with Codex maintaining the generation workflow, page updates, and ongoing automation adjustments.
+</div>
+
 <div class="paper-push-toolbar">
   <input class="paper-push-input" type="search" placeholder="Search saved papers" data-favorites-filter>
   <button class="paper-push-button" type="button" data-export-favorites>Export saved papers CSV</button>
