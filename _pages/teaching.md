@@ -95,6 +95,24 @@ author_profile: true
 }
 
 /* 链接 */
+.activity-video-box {
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 16 / 9;
+  margin-top: 0.95rem;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(120,120,120,0.18);
+  background: #000;
+}
+
+.activity-video-box iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
 .activity-card a {
   color: var(--global-link-color, #2c6e91);
 }
@@ -143,6 +161,10 @@ html[data-theme="dark"] .activity-card a {
 html[data-theme="dark"] .activity-image-box {
   border: 1px solid rgba(255,255,255,0.1);
 }
+
+html[data-theme="dark"] .activity-video-box {
+  border: 1px solid rgba(255,255,255,0.12);
+}
 </style>
 
 ## Editorial & Review
@@ -188,6 +210,16 @@ html[data-theme="dark"] .activity-image-box {
     <li>Conducted in situ bio-optical measurements including HPLC pigments, CDOM absorption, and particle absorption</li>
     <li>Performed onboard data processing, quality control, and preliminary analysis of optical datasets</li>
   </ul>
+
+  <div class="activity-video-box">
+    <iframe
+      src="https://www.youtube.com/embed/ZA0mgg4sdrg"
+      title="ITINERIS EYES Cruise video"
+      loading="lazy"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+  </div>
 
 </div>
 
