@@ -33,7 +33,7 @@
   function setButtonState(button, active) {
     button.classList.toggle("is-favorite", active);
     button.setAttribute("aria-pressed", active ? "true" : "false");
-    button.textContent = active ? "已收藏" : "收藏";
+    button.textContent = active ? "Saved" : "Save";
   }
 
   function syncButtons() {
@@ -42,6 +42,12 @@
     document.querySelectorAll("[data-favorite-paper]").forEach(function (button) {
       setButtonState(button, ids.indexOf(paperId(buttonPaper(button))) !== -1);
     });
+  }
+
+  function escapeHtml(value) {
+    var node = document.createElement("div");
+    node.textContent = value || "";
+    return node.innerHTML;
   }
 
   function escapeCsv(value) {
@@ -87,11 +93,11 @@
     favorites.forEach(function (paper) {
       html.push(
         "<tr>",
-        '<td><a href="' + paper.url + '">' + paper.title + "</a></td>",
-        "<td>" + paper.journal + "</td>",
-        "<td>" + paper.published + "</td>",
-        '<td><a href="https://doi.org/' + paper.doi + '">' + paper.doi + "</a></td>",
-        '<td><button class="paper-push-button" data-remove-favorite="' + paperId(paper) + '">Remove</button></td>',
+        '<td><a href="' + escapeHtml(paper.url) + '">' + escapeHtml(paper.title) + "</a></td>",
+        "<td>" + escapeHtml(paper.journal) + "</td>",
+        "<td>" + escapeHtml(paper.published) + "</td>",
+        '<td><a href="https://doi.org/' + escapeHtml(paper.doi) + '">' + escapeHtml(paper.doi) + "</a></td>",
+        '<td><button class="paper-push-button" data-remove-favorite="' + escapeHtml(paperId(paper)) + '">Remove</button></td>',
         "</tr>"
       );
     });

@@ -42,37 +42,37 @@ author_profile: true
 
 {{% assign current_group = "" %}}
 {{% for paper in issue.papers %}}
-  {{% if paper.group != current_group %}}
-    {{% assign current_group = paper.group %}}
-    <h2>{{{{ current_group }}}}</h2>
-  {{% endif %}}
+{{% if paper.group != current_group %}}
+{{% assign current_group = paper.group %}}
+<h2>{{{{ current_group }}}}</h2>
+{{% endif %}}
 
-  <article class="paper-push-paper">
-    <h3>{{{{ forloop.index }}}}. {{{{ paper.title }}}}</h3>
-    <p class="paper-push-meta">
-      {{{{ paper.authors }}}}<br>
-      {{{{ paper.journal }}}} · {{{{ paper.published }}}} · DOI:
-      <a href="https://doi.org/{{{{ paper.doi }}}}">{{{{ paper.doi }}}}</a>
-    </p>
-    <p><strong>Tags:</strong> {{{{ paper.tags }}}}</p>
-    <p>{{{{ paper.summary }}}}</p>
-    <div class="paper-push-paper-actions">
-      <a class="paper-push-button" href="{{{{ paper.url }}}}">Open paper</a>
-      <button
-        class="favorite-button"
-        type="button"
-        data-favorite-paper
-        data-issue-date="{{{{ issue.date | escape }}}}"
-        data-title="{{{{ paper.title | escape }}}}"
-        data-authors="{{{{ paper.authors | escape }}}}"
-        data-journal="{{{{ paper.journal | escape }}}}"
-        data-published="{{{{ paper.published | escape }}}}"
-        data-doi="{{{{ paper.doi | escape }}}}"
-        data-url="{{{{ paper.url | escape }}}}"
-        data-summary="{{{{ paper.summary | escape }}}}"
-        aria-pressed="false">收藏</button>
-    </div>
-  </article>
+<article class="paper-push-paper">
+  <h3>{{{{ forloop.index }}}}. {{{{ paper.title }}}}</h3>
+  <p class="paper-push-meta">
+    {{{{ paper.authors }}}}<br>
+    {{{{ paper.journal }}}} &middot; {{{{ paper.published }}}} &middot; DOI:
+    <a href="https://doi.org/{{{{ paper.doi }}}}">{{{{ paper.doi }}}}</a>
+  </p>
+  <p><strong>Tags:</strong> {{{{ paper.tags }}}}</p>
+  <p>{{{{ paper.summary }}}}</p>
+  <div class="paper-push-paper-actions">
+    <a class="paper-push-button" href="{{{{ paper.url }}}}">Open paper</a>
+    <button
+      class="favorite-button"
+      type="button"
+      data-favorite-paper
+      data-issue-date="{{{{ issue.date | escape }}}}"
+      data-title="{{{{ paper.title | escape }}}}"
+      data-authors="{{{{ paper.authors | escape }}}}"
+      data-journal="{{{{ paper.journal | escape }}}}"
+      data-published="{{{{ paper.published | escape }}}}"
+      data-doi="{{{{ paper.doi | escape }}}}"
+      data-url="{{{{ paper.url | escape }}}}"
+      data-summary="{{{{ paper.summary | escape }}}}"
+      aria-pressed="false">Save</button>
+  </div>
+</article>
 {{% endfor %}}
 """
 
