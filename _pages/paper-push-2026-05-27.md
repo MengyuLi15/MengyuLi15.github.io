@@ -13,9 +13,12 @@ author_profile: true
 
 <p><a href="{{ base_path }}/activities/paper-push/">Back to date list</a></p>
 
-## {{ issue.title }}
+## <span data-i18n="zh">{{ issue.title_zh | default: issue.title }}</span><span data-i18n="en">{{ issue.title_en | default: issue.title }}</span>
 
-<p class="paper-push-meta">{{ issue.summary }}</p>
+<p class="paper-push-meta">
+  <span data-i18n="zh">{{ issue.summary_zh | default: issue.summary }}</span>
+  <span data-i18n="en">{{ issue.summary_en | default: issue.summary }}</span>
+</p>
 
 {% if issue.docx %}
 <p><a class="btn" href="{{ issue.docx }}">Download Word summary</a></p>
@@ -26,6 +29,10 @@ author_profile: true
 {% endif %}
 
 <div class="paper-push-toolbar">
+  <div class="paper-push-language" aria-label="Paper push language">
+    <button class="paper-push-button" type="button" data-paper-push-lang-button="zh" aria-pressed="true">中文</button>
+    <button class="paper-push-button" type="button" data-paper-push-lang-button="en" aria-pressed="false">English</button>
+  </div>
   <input class="paper-push-input" type="search" placeholder="Search saved papers" data-favorites-filter>
   <button class="paper-push-button" type="button" data-export-favorites>Export saved papers CSV</button>
 </div>
@@ -36,18 +43,26 @@ author_profile: true
 {% for paper in issue.papers %}
 {% if paper.group != current_group %}
 {% assign current_group = paper.group %}
-<h2>{{ current_group }}</h2>
+<h2><span data-i18n="zh">{{ paper.group_zh | default: paper.group }}</span><span data-i18n="en">{{ paper.group_en | default: paper.group }}</span></h2>
 {% endif %}
 
 <article class="paper-push-paper">
   <h3>{{ forloop.index }}. {{ paper.title }}</h3>
   <p class="paper-push-meta">
-    {{ paper.authors }}<br>
-    {{ paper.journal }} &middot; {{ paper.published }} &middot; DOI:
+    <strong><span data-i18n="zh">作者</span><span data-i18n="en">Authors</span>:</strong> {{ paper.authors }}<br>
+    <strong><span data-i18n="zh">发表月份</span><span data-i18n="en">Publication month</span>:</strong>
+    <span data-i18n="zh">{{ paper.published_month_zh | default: paper.published_month | default: paper.published }}</span>
+    <span data-i18n="en">{{ paper.published_month | default: paper.published }}</span><br>
+    {{ paper.journal }} &middot; DOI:
     <a href="https://doi.org/{{ paper.doi }}">{{ paper.doi }}</a>
   </p>
-  <p><strong>Tags:</strong> {{ paper.tags }}</p>
-  <p>{{ paper.summary }}</p>
+  <p>
+    <strong><span data-i18n="zh">关键词</span><span data-i18n="en">Tags</span>:</strong>
+    <span data-i18n="zh">{{ paper.tags_zh | default: paper.tags }}</span>
+    <span data-i18n="en">{{ paper.tags_en | default: paper.tags }}</span>
+  </p>
+  <p class="paper-push-block" data-i18n="zh">{{ paper.summary_zh | default: paper.summary }}</p>
+  <p class="paper-push-block" data-i18n="en">{{ paper.summary_en | default: paper.summary }}</p>
   <div class="paper-push-paper-actions">
     <a class="paper-push-button" href="{{ paper.url }}">Open paper</a>
     <button
@@ -59,9 +74,12 @@ author_profile: true
       data-authors="{{ paper.authors | escape }}"
       data-journal="{{ paper.journal | escape }}"
       data-published="{{ paper.published | escape }}"
+      data-published-month="{{ paper.published_month | default: paper.published | escape }}"
       data-doi="{{ paper.doi | escape }}"
       data-url="{{ paper.url | escape }}"
-      data-summary="{{ paper.summary | escape }}"
+      data-summary="{{ paper.summary_zh | default: paper.summary | escape }}"
+      data-summary-zh="{{ paper.summary_zh | default: paper.summary | escape }}"
+      data-summary-en="{{ paper.summary_en | default: paper.summary | escape }}"
       aria-pressed="false">Save</button>
   </div>
 </article>

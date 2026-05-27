@@ -1,5 +1,23 @@
 (function () {
   var storageKey = "mengyu-paper-push-favorites-v1";
+  var languageKey = "mengyu-paper-push-language-v1";
+
+  function currentLanguage() {
+    return localStorage.getItem(languageKey) || "zh";
+  }
+
+  function applyLanguage(lang) {
+    var selected = lang === "en" ? "en" : "zh";
+    localStorage.setItem(languageKey, selected);
+    document.documentElement.setAttribute("data-paper-push-lang", selected);
+    document.querySelectorAll("[data-paper-push-lang-button]").forEach(function (button) {
+      var active = button.dataset.paperPushLangButton === selected;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+    syncButtons();
+    renderFavorites();
+  }
 
   function readFavorites() {
     try {
@@ -18,15 +36,19 @@
   }
 
   function buttonPaper(button) {
+    var lang = currentLanguage();
     return {
       title: button.dataset.title || "",
       authors: button.dataset.authors || "",
       journal: button.dataset.journal || "",
       published: button.dataset.published || "",
+      publishedMonth: button.dataset.publishedMonth || "",
+      published_month: button.dataset.publishedMonth || "",
       doi: button.dataset.doi || "",
       url: button.dataset.url || "",
       issueDate: button.dataset.issueDate || "",
-      summary: button.dataset.summary || ""
+      summary: lang === "en" ? (button.dataset.summaryEn || button.dataset.summary || "") : (button.dataset.summaryZh || button.dataset.summary || ""),
+      language: lang
     };
   }
 
@@ -56,7 +78,7 @@
 
   function exportCsv() {
     var favorites = readFavorites();
-    var header = ["issue_date", "title", "authors", "journal", "published", "doi", "url", "summary"];
+    var header = ["issue_date", "language", "title", "authors", "journal", "published", "published_month", "doi", "url", "summary"];
     var rows = favorites.map(function (paper) {
       return header.map(function (key) { return escapeCsv(paper[key]); }).join(",");
     });
@@ -88,14 +110,15 @@
 
     var html = [
       '<table class="paper-push-favorites-table">',
-      "<thead><tr><th>Title</th><th>Journal</th><th>Date</th><th>DOI</th><th></th></tr></thead><tbody>"
+      "<thead><tr><th>Title</th><th>Authors</th><th>Journal</th><th>Month</th><th>DOI</th><th></th></tr></thead><tbody>"
     ];
     favorites.forEach(function (paper) {
       html.push(
         "<tr>",
         '<td><a href="' + escapeHtml(paper.url) + '">' + escapeHtml(paper.title) + "</a></td>",
+        "<td>" + escapeHtml(paper.authors) + "</td>",
         "<td>" + escapeHtml(paper.journal) + "</td>",
-        "<td>" + escapeHtml(paper.published) + "</td>",
+        "<td>" + escapeHtml(paper.publishedMonth || paper.published_month || paper.published) + "</td>",
         '<td><a href="https://doi.org/' + escapeHtml(paper.doi) + '">' + escapeHtml(paper.doi) + "</a></td>",
         '<td><button class="paper-push-button" data-remove-favorite="' + escapeHtml(paperId(paper)) + '">Remove</button></td>',
         "</tr>"
@@ -136,6 +159,11 @@
     if (event.target.closest("[data-export-favorites]")) {
       exportCsv();
     }
+
+    var languageButton = event.target.closest("[data-paper-push-lang-button]");
+    if (languageButton) {
+      applyLanguage(languageButton.dataset.paperPushLangButton);
+    }
   });
 
   document.addEventListener("input", function (event) {
@@ -145,6 +173,7 @@
   });
 
   document.addEventListener("DOMContentLoaded", function () {
+    applyLanguage(currentLanguage());
     syncButtons();
     renderFavorites();
   });
