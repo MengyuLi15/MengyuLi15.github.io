@@ -38,8 +38,8 @@ author_profile: true
 
 <div class="paper-push-toolbar">
   <div class="paper-push-language" aria-label="Paper push language">
-    <button class="paper-push-button" type="button" data-paper-push-lang-button="zh" aria-pressed="true">中文</button>
-    <button class="paper-push-button" type="button" data-paper-push-lang-button="en" aria-pressed="false">English</button>
+    <button class="paper-push-button" type="button" data-paper-push-lang-button="zh" aria-pressed="false">中文</button>
+    <button class="paper-push-button" type="button" data-paper-push-lang-button="en" aria-pressed="true">English</button>
   </div>
   <input class="paper-push-input" type="search" placeholder="Search saved papers" data-favorites-filter>
   <button class="paper-push-button" type="button" data-export-favorites>Export saved papers CSV</button>

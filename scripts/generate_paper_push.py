@@ -394,6 +394,7 @@ def q(value: str) -> str:
 
 
 def issue_block(today: str, papers: list[Paper]) -> str:
+    generated_at = datetime.now(TZ).strftime("%Y-%m-%d %H:%M %Z")
     title_zh = "每日论文推送：BGC-Argo、海色、海洋热浪与碳泵"
     title_en = "Daily Paper Push: BGC-Argo, ocean colour, marine heatwaves and carbon pump"
     summary_zh = f"本期由 GitHub Actions 自动检索生成：Nature/Science 系列优先，其余重点期刊按影响力与主题相关性排序；历史去重后保留 {len(papers)} 篇，不超过每日 50 篇上限。"
@@ -404,6 +405,7 @@ def issue_block(today: str, papers: list[Paper]) -> str:
 
     lines = [
         f"- date: {q(today)}",
+        f"  generated_at: {q(generated_at)}",
         f"  title: {q(title_zh)}",
         f"  title_zh: {q(title_zh)}",
         f"  title_en: {q(title_en)}",

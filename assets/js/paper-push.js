@@ -1,9 +1,9 @@
 (function () {
   var storageKey = "mengyu-paper-push-favorites-v1";
-  var languageKey = "mengyu-paper-push-language-v1";
+  var languageKey = "mengyu-paper-push-language-v2";
 
   function currentLanguage() {
-    return localStorage.getItem(languageKey) || "zh";
+    return localStorage.getItem(languageKey) || "en";
   }
 
   function applyLanguage(lang) {

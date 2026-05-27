@@ -25,8 +25,8 @@ This page archives the daily BGC-Argo, ocean colour, marine heatwave and carbon-
 {% for issue in site.data.paper_pushes %}
   <article class="paper-push-date-item">
     <h3><a href="{{ base_path }}/activities/paper-push/{{ issue.date }}/">{{ issue.date }}</a></h3>
-    <p class="paper-push-meta">{{ issue.summary }}</p>
-    <p class="paper-push-meta">{{ issue.papers | size }} papers</p>
+    <p class="paper-push-meta">Run date: {{ issue.generated_at | default: issue.display_date | default: issue.date }}</p>
+    <p class="paper-push-meta">Total papers: {{ issue.papers | size }}</p>
   </article>
 {% endfor %}
 </div>
