@@ -145,26 +145,6 @@ html[data-theme="dark"] .activity-image-box {
 }
 </style>
 
-## Literature Push
-
-<div class="activity-card">
-
-  <div class="activity-title">Daily Paper Push Archive</div>
-
-  <div class="activity-subtitle">
-    BGC-Argo · ocean colour · marine heatwaves · phytoplankton · carbon pump
-  </div>
-
-  <div class="activity-meta">
-    A date-indexed archive for the daily literature push, with per-paper save buttons and a local CSV export table for later writing and citation work.
-  </div>
-
-  <p>
-    <a href="/activities/paper-push/">Open Paper Push Archive</a>
-  </p>
-
-</div>
-
 ## Editorial & Review
 
 <div class="activity-card">
