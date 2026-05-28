@@ -24,7 +24,7 @@ author_profile: true
 <p><a class="btn" href="{{ issue.docx }}">Download Word summary</a></p>
 {% endif %}
 
-{% if issue.figure != "" %}
+{% if issue.figure and issue.figure != "" %}
 <p><img src="{{ issue.figure }}" alt="Mechanism sketch for the daily paper push"></p>
 {% else %}
 <section class="paper-push-italian-card" aria-label="Daily Italian card">
