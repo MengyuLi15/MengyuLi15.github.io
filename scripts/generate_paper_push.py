@@ -283,17 +283,36 @@ def sentence_split(text: str) -> list[str]:
     return [part.strip() for part in parts if part.strip()]
 
 
+def topic_label(title: str, tags: str) -> tuple[str, str]:
+    haystack = f"{title} {tags}".lower()
+    if "bgc-argo" in haystack and "oxygen-deficient" in haystack:
+        return "氧亏区中的氮-碳循环变化", "nitrogen-carbon cycling in oxygen-deficient waters"
+    if "bgc-argo" in haystack:
+        return "BGC-Argo 剖面约束的生物地球化学变化", "biogeochemical variability constrained by BGC-Argo profiles"
+    if "marine heatwave" in haystack or "marine heatwaves" in haystack:
+        return "海洋热浪对生态结构和碳循环的影响", "the ecological and carbon-cycle impacts of marine heatwaves"
+    if "ocean colour" in haystack or "ocean color" in haystack or "remote sensing" in haystack:
+        return "海色遥感中的浮游植物和光学信号变化", "phytoplankton and optical signals in ocean-colour remote sensing"
+    if "carbon export" in haystack or "carbon pump" in haystack or "organic carbon" in haystack:
+        return "有机碳输出和生物碳泵过程", "organic carbon export and biological carbon-pump processes"
+    if "phytoplankton" in haystack:
+        return "浮游植物群落、生理状态和生产力变化", "changes in phytoplankton communities, physiology, and productivity"
+    if "bio-optic" in haystack or "backscatter" in haystack or "absorption" in haystack or "lidar" in haystack:
+        return "海洋生物光学参数及其观测方法", "marine bio-optical properties and observing methods"
+    return "海洋生物地球化学过程", "ocean biogeochemical processes"
+
+
 def infer_data_source(title: str, tags: str, journal: str) -> tuple[str, str]:
     haystack = f"{title} {tags} {journal}".lower()
     if "bgc-argo" in haystack or "argo" in haystack:
         return (
-            "数据上主要依托 BGC-Argo 浮标剖面及相关生物地球化学变量，并结合题名所指的氧气、后向散射、硝酸盐或叶绿素信息。",
-            "The data emphasis is on BGC-Argo float profiles and related biogeochemical variables, including oxygen, backscatter, nitrate, or chlorophyll where indicated by the title.",
+            "数据基础是 BGC-Argo 浮标剖面及相关生物地球化学观测，可用于连接垂向结构和过程变化。",
+            "The data basis is BGC-Argo float profiles and related biogeochemical observations, which connect vertical structure with process variability.",
         )
     if "pace" in haystack:
         return (
-            "数据或应用场景指向 NASA PACE/OCI 高光谱海色观测及其验证、训练或社区使用。",
-            "The data or application setting is NASA PACE/OCI hyperspectral ocean-colour observation, together with validation, training, or community-use workflows.",
+            "数据或应用场景围绕 NASA PACE/OCI 高光谱海色观测、产品验证和社区使用展开。",
+            "The data or application setting centres on NASA PACE/OCI hyperspectral ocean-colour observations, product validation, and community use.",
         )
     if "viirs" in haystack:
         return (
@@ -316,8 +335,8 @@ def infer_data_source(title: str, tags: str, journal: str) -> tuple[str, str]:
             "This type of paper synthesizes existing observations, theory, models, field-design material, or community-training workflows rather than publishing one new observational dataset.",
         )
     return (
-        "数据来源可从 DOI 页面进一步核对；从题名和期刊信息看，它主要围绕海洋生物地球化学或生态过程资料展开。",
-        "The exact data source should be checked on the DOI page; from the title and journal metadata, it is centred on ocean biogeochemical or ecological-process information.",
+        "研究结合观测、模型或实验结果来刻画海洋生态和生物地球化学过程。",
+        "The study combines observations, models, or experimental results to characterize ocean ecological and biogeochemical processes.",
     )
 
 
@@ -344,7 +363,7 @@ def infer_action(title: str, tags: str) -> tuple[str, str]:
             "The paper mainly uses review, modelling, or conceptual synthesis to organize key processes and sources of uncertainty.",
         )
     return (
-        "研究主要分析变化趋势、事件响应、驱动机制或方法表现，并把观测结果与生态/生物地球化学过程联系起来。",
+        "研究主要分析变化趋势、事件响应、驱动机制或方法表现，并把观测结果与生态和生物地球化学过程联系起来。",
         "The main task is to analyse trends, event responses, drivers, or method performance, linking observations with ecological or biogeochemical processes.",
     )
 
@@ -378,31 +397,33 @@ def infer_result(title: str, tags: str) -> tuple[str, str]:
 
 
 def summary_en(title: str, abstract: str, tags: str) -> str:
+    topic_zh, topic_en = topic_label(title, tags)
     data_zh, data_en = infer_data_source(title, tags, "")
     action_zh, action_en = infer_action(title, tags)
     result_zh, result_en = infer_result(title, tags)
     return " ".join(
         [
-            f"This paper focuses on \"{title}\", with key themes including {tags}.",
+            f"The study examines {topic_en}.",
             data_en,
             action_en,
             result_en,
-            f"It is useful for research on {tags}, especially for selecting papers for close reading, method comparison, or cross-validation of datasets.",
+            "It is useful for interpreting observations, comparing methods, and designing follow-up analyses in marine biogeochemistry.",
         ]
     )
 
 
 def summary_zh(title: str, abstract: str, tags: str) -> str:
+    topic_zh, topic_en = topic_label(title, tags)
     data_zh, data_en = infer_data_source(title, tags, "")
     action_zh, action_en = infer_action(title, tags)
     result_zh, result_en = infer_result(title, tags)
     return " ".join(
         [
-            f"这篇论文聚焦《{title}》，关键词是 {tags}。",
+            f"这项研究关注{topic_zh}。",
             data_zh,
             action_zh,
             result_zh,
-            f"它对 {tags} 相关研究有帮助，特别适合用于筛选后续精读、方法比较或数据交叉验证。",
+            "它有助于解释观测现象、比较方法差异，并为后续海洋生物地球化学分析提供线索。",
         ]
     )
 

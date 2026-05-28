@@ -25,6 +25,17 @@ DEFAULT_DATA = ROOT / "_data" / "paper_pushes.yml"
 USER_AGENT = "mengyuli15-paper-push-validator/1.0 (https://mengyuli15.github.io/)"
 SUMMARY_PLACEHOLDER = "DOI-verified metadata correction"
 MIN_SUMMARY_SENTENCES = 5
+FORBIDDEN_SUMMARY_PHRASES = (
+    "DOI 页面",
+    "进一步核对",
+    "从题名",
+    "题名所示",
+    "关键词是",
+    "The exact data source should be checked",
+    "from the title",
+    "key themes including",
+    "process indicated by the title",
+)
 
 
 def clean_text(value: str) -> str:
@@ -140,6 +151,9 @@ def validate_summary_fields(paper: dict[str, str]) -> list[str]:
             errors.append(f"{paper['index']}. {paper['doi']}: {label} is empty")
         if SUMMARY_PLACEHOLDER in value:
             errors.append(f"{paper['index']}. {paper['doi']}: {label} still contains a metadata-correction placeholder")
+        for phrase in FORBIDDEN_SUMMARY_PHRASES:
+            if phrase in value:
+                errors.append(f"{paper['index']}. {paper['doi']}: {label} contains forbidden generated-text phrase: {phrase}")
         if sentence_count(value) < MIN_SUMMARY_SENTENCES:
             errors.append(f"{paper['index']}. {paper['doi']}: {label} has fewer than {MIN_SUMMARY_SENTENCES} sentences")
     if summary_zh and not re.search(r"[\u4e00-\u9fff]", summary_zh):
