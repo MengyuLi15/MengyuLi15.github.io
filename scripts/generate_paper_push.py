@@ -34,14 +34,33 @@ MAX_ABSTRACT_CHARS = 900
 USER_AGENT = "mengyuli15-paper-push/1.0 (https://mengyuli15.github.io/)"
 
 TOPIC_TERMS = [
+    "BGC Argo",
+    "BGC-Argo",
+    "biogeochemical Argo",
     "BGC-Argo carbon pump",
     "BGC-Argo phytoplankton",
     "BGC-Argo microbial carbon",
     "BGC-Argo bio-optic",
+    "biological carbon pump ocean",
+    "ocean carbon export",
+    "particulate organic carbon ocean",
+    "net community production ocean",
+    "marine phytoplankton",
+    "ocean phytoplankton",
+    "phytoplankton community marine",
+    "marine chlorophyll remote sensing",
     "ocean colour remote sensing phytoplankton",
     "ocean color remote sensing phytoplankton",
+    "ocean bio-optics",
+    "bio-optical ocean",
+    "marine bacterioplankton carbon",
+    "microbial carbon ocean",
+    "marine heatwave phytoplankton",
+    "marine heatwave chlorophyll",
     "marine heatwave phytoplankton vertical",
     "marine heatwave deep chlorophyll maximum",
+    "vertical phytoplankton ocean",
+    "deep chlorophyll maximum ocean",
     "particulate organic carbon ocean bio-optics",
 ]
 
@@ -118,21 +137,82 @@ RELEVANCE_TERMS = {
     "particulate organic carbon": 5,
     "poc": 4,
     "microbial carbon": 6,
+    "bacterioplankton": 4,
+    "microbiome": 4,
     "phytoplankton": 5,
     "chlorophyll": 4,
     "deep chlorophyll maximum": 6,
     "subsurface chlorophyll": 6,
+    "primary production": 5,
+    "net primary production": 6,
     "ocean colour": 5,
     "ocean color": 5,
     "bio-optic": 5,
+    "bio-optical": 5,
     "backscatter": 4,
     "remote sensing": 4,
+    "satellite": 3,
+    "hyperspectral": 4,
     "marine heatwave": 7,
     "marine heatwaves": 7,
+    "temperature sensitivity": 3,
     "vertical": 2,
 }
 
 EXCLUDED_TITLE_PREFIXES = ("corrigendum", "erratum", "correction", "retraction")
+MARINE_CONTEXT_TERMS = [
+    "ocean",
+    "marine",
+    "sea",
+    "seawater",
+    "coastal",
+    "coast",
+    "estuary",
+    "shelf",
+    "basin",
+    "atlantic",
+    "pacific",
+    "indian ocean",
+    "southern ocean",
+    "arabian sea",
+    "mediterranean",
+    "gulf",
+    "strait",
+    "bgc-argo",
+    "biogeochemical argo",
+    "argo float",
+    "ocean colour",
+    "ocean color",
+    "marine heatwave",
+    "marine heatwaves",
+]
+DOMAIN_CONTEXT_TERMS = [
+    "bgc-argo",
+    "biogeochemical argo",
+    "carbon pump",
+    "carbon export",
+    "net community production",
+    "particulate organic carbon",
+    "poc",
+    "microbial carbon",
+    "bacterioplankton",
+    "microbiome",
+    "phytoplankton",
+    "chlorophyll",
+    "deep chlorophyll maximum",
+    "subsurface chlorophyll",
+    "primary production",
+    "net primary production",
+    "ocean colour",
+    "ocean color",
+    "bio-optic",
+    "bio-optical",
+    "backscatter",
+    "remote sensing",
+    "hyperspectral",
+    "marine heatwave",
+    "marine heatwaves",
+]
 
 
 @dataclass
@@ -227,36 +307,54 @@ def best_journal(item: dict) -> str:
     return text_value(titles).strip()
 
 
+def normalize_journal(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", value.lower()).strip()
+
+
 def canonical_journal(journal: str) -> str:
     low = journal.lower()
+    normalized = normalize_journal(journal)
     for candidate in PRIORITY_JOURNALS + NATURE_SCIENCE_HINTS:
         candidate_low = candidate.lower()
+        candidate_normalized = normalize_journal(candidate)
         if candidate_low in {"nature", "science"}:
             if low == candidate_low or low.startswith(f"{candidate_low} "):
                 return candidate
             continue
-        if candidate_low in low or low in candidate_low:
+        if candidate_normalized in normalized:
             return candidate
     return journal
 
 
-def is_target_journal(journal: str) -> bool:
+def is_priority_journal(journal: str) -> bool:
     canonical = canonical_journal(journal)
     return canonical in JOURNAL_RANK or canonical in NATURE_SCIENCE_HINTS
 
 
 def group_for(journal: str) -> tuple[str, str, int]:
     low = journal.lower()
-    if "nature" in low:
+    if journal in NATURE_SCIENCE_HINTS and "nature" in low:
         return "Nature 系列", "Nature series", 0
-    if low == "science" or low.startswith("science ") or "science advances" in low:
+    if journal in NATURE_SCIENCE_HINTS and (low == "science" or low.startswith("science ")):
         return "Science 系列", "Science series", 1
-    return "重点期刊：按影响力和相关性排序", "Key journals: ordered by impact and relevance", 2
+    if journal in JOURNAL_RANK:
+        return "重点期刊：按影响力和相关性排序", "Key journals: ordered by impact and relevance", 2
+    return "其他相关期刊：按主题相关性补充", "Other relevant journals: topical supplements", 3
 
 
 def relevance_score(title: str, abstract: str) -> int:
     haystack = f"{title} {abstract}".lower()
     return sum(weight for term, weight in RELEVANCE_TERMS.items() if term in haystack)
+
+
+def has_marine_context(title: str, abstract: str, journal: str) -> bool:
+    haystack = f"{title} {abstract} {journal}".lower()
+    return any(re.search(rf"\b{re.escape(term)}\b", haystack) for term in MARINE_CONTEXT_TERMS)
+
+
+def has_domain_context(title: str, abstract: str) -> bool:
+    haystack = f"{title} {abstract}".lower()
+    return any(re.search(rf"\b{re.escape(term)}\b", haystack) for term in DOMAIN_CONTEXT_TERMS)
 
 
 def tags_for(title: str, abstract: str) -> str:
@@ -442,6 +540,16 @@ def crossref_query(query: str, from_date: date, rows: int = 20) -> list[dict]:
     return data.get("message", {}).get("items", [])
 
 
+def published_sort_value(value: str) -> int:
+    parts = [int(part) for part in re.findall(r"\d+", value or "")[:3]]
+    if not parts:
+        return 0
+    year = parts[0]
+    month = parts[1] if len(parts) > 1 else 1
+    day = parts[2] if len(parts) > 2 else 1
+    return year * 10000 + month * 100 + day
+
+
 def existing_dois() -> set[str]:
     dois = set()
     if DATA_PATH.exists():
@@ -466,7 +574,7 @@ def collect_candidates(lookback_days: int, max_papers: int) -> list[Paper]:
         if len(candidates) >= max_papers * 4:
             break
         try:
-            items = crossref_query(query, from_date, rows=50)
+            items = crossref_query(query, from_date, rows=100)
         except Exception as exc:
             print(f"Crossref query failed: {query}: {exc}", file=sys.stderr)
             continue
@@ -476,22 +584,25 @@ def collect_candidates(lookback_days: int, max_papers: int) -> list[Paper]:
                 continue
             title = clean_text(text_value(item.get("title")))
             journal = best_journal(item)
-            if not is_target_journal(journal):
-                continue
             canonical = canonical_journal(journal)
             abstract = clean_text(item.get("abstract", ""))
             if title.lower().startswith(EXCLUDED_TITLE_PREFIXES):
+                continue
+            if not has_marine_context(title, abstract, journal):
+                continue
+            if not has_domain_context(title, abstract):
                 continue
             parts = published_parts(item)
             if is_future_publication(parts, today):
                 continue
             score = relevance_score(title, abstract)
-            if score < 5:
+            min_score = 5 if is_priority_journal(canonical) else 7
+            if score < min_score:
                 continue
             group_zh, group_en, group_rank = group_for(canonical)
             published, month, month_zh = month_from_parts(parts)
             tags = tags_for(title, abstract)
-            rank = group_rank * 1000 + JOURNAL_RANK.get(canonical, 500)
+            rank = group_rank * 1000 + JOURNAL_RANK.get(canonical, max(0, 500 - score))
             candidates[doi.lower()] = Paper(
                 title=title,
                 authors=authors_from_item(item),
@@ -512,7 +623,10 @@ def collect_candidates(lookback_days: int, max_papers: int) -> list[Paper]:
             )
         time.sleep(0.05)
 
-    return sorted(candidates.values(), key=lambda paper: (paper.rank, -paper.score, paper.published_month))[:max_papers]
+    return sorted(
+        candidates.values(),
+        key=lambda paper: (paper.rank, -paper.score, -published_sort_value(paper.published)),
+    )[:max_papers]
 
 
 def q(value: str) -> str:
@@ -523,10 +637,10 @@ def issue_block(today: str, papers: list[Paper]) -> str:
     generated_at = datetime.now(TZ).strftime("%Y-%m-%d %H:%M %Z")
     title_zh = "每日论文推送：BGC-Argo、海色、海洋热浪与碳泵"
     title_en = "Daily Paper Push: BGC-Argo, ocean colour, marine heatwaves and carbon pump"
-    summary_zh = f"本期由 GitHub Actions 自动检索生成：Nature/Science 系列优先，其余重点期刊按影响力与主题相关性排序；历史去重后保留 {len(papers)} 篇，不超过每日 50 篇上限。"
-    summary_en = f"This issue was generated automatically by GitHub Actions: Nature and Science series first, then priority journals ordered by approximate impact and topical relevance. After deduplication, {len(papers)} papers remain, below the daily limit of 50."
-    trend_zh = "本期重点关注 BGC-Argo、海色遥感、海洋热浪、浮游植物垂向结构和碳泵过程。整体趋势总结会随每日候选论文自动更新；建议优先查看涉及 BGC-Argo 剖面、POC/NCP、DCM/SCM、PACE/高光谱和 marine heatwave 垂向响应的论文。"
-    trend_en = "This issue focuses on BGC-Argo, ocean-colour remote sensing, marine heatwaves, vertical phytoplankton structure and carbon-pump processes. The daily trend synthesis is generated from the selected candidates; priority should go to papers involving BGC-Argo profiles, POC/NCP, DCM/SCM, PACE/hyperspectral methods and vertical marine-heatwave responses."
+    summary_zh = f"本期由 GitHub Actions 自动检索生成：Nature/Science 系列优先，其次是用户指定重点期刊，最后补充其他相关期刊；历史去重后保留 {len(papers)} 篇，不超过每日 50 篇上限。"
+    summary_en = f"This issue was generated automatically by GitHub Actions: Nature and Science series first, then the user-defined priority journals, followed by other relevant journals as topical supplements. After deduplication, {len(papers)} papers remain, below the daily limit of 50."
+    trend_zh = "本期重点关注 BGC-Argo、海色遥感、海洋热浪、浮游植物垂向结构和碳泵过程。筛选逻辑不再只限于重点期刊；当高影响力期刊当天新增较少时，会从其他相关期刊补充候选论文，但仍优先保留 BGC-Argo 剖面、POC/NCP、DCM/SCM、PACE/高光谱和 marine heatwave 垂向响应相关研究。"
+    trend_en = "This issue focuses on BGC-Argo, ocean-colour remote sensing, marine heatwaves, vertical phytoplankton structure and carbon-pump processes. The selection is no longer limited to priority journals; when few high-impact papers are newly available, other relevant journals are used as supplements while retaining priority for BGC-Argo profiles, POC/NCP, DCM/SCM, PACE/hyperspectral methods and vertical marine-heatwave responses."
     docx_name = f"daily_paper_push_{today}.docx"
 
     lines = [
