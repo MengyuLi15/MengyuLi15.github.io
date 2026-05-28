@@ -568,6 +568,52 @@ def issue_block(today: str, papers: list[Paper]) -> str:
     return "\n".join(lines) + "\n"
 
 
+def issue_exists(issue_date: str) -> bool:
+    if not DATA_PATH.exists():
+        return False
+    text = DATA_PATH.read_text(encoding="utf-8-sig")
+    return bool(re.search(rf'(?m)^- date: "{re.escape(issue_date)}"$', text))
+
+
+def latest_previous_issue_date(issue_date: str) -> str:
+    if not DATA_PATH.exists():
+        return ""
+    text = DATA_PATH.read_text(encoding="utf-8-sig")
+    dates = re.findall(r'(?m)^- date: "([^"]+)"$', text)
+    previous = [date_text for date_text in dates if date_text < issue_date]
+    return previous[0] if previous else (dates[0] if dates else "")
+
+
+def no_update_issue_block(today: str, previous_date: str) -> str:
+    generated_at = datetime.now(TZ).strftime("%Y-%m-%d %H:%M %Z")
+    title_zh = "每日论文推送：今日暂无新增"
+    title_en = "Daily Paper Push: no new papers captured today"
+    if previous_date:
+        summary_zh = f"今日尚未捕捉到符合更新规则的新论文，论文列表与 {previous_date} 保持一致。"
+        summary_en = f"No new papers matching the update rules were captured today; the paper list remains unchanged from {previous_date}."
+    else:
+        summary_zh = "今日尚未捕捉到符合更新规则的新论文。"
+        summary_en = "No new papers matching the update rules were captured today."
+
+    return "\n".join(
+        [
+            f"- date: {q(today)}",
+            f"  generated_at: {q(generated_at)}",
+            "  no_update: true",
+            f"  previous_date: {q(previous_date)}",
+            f"  title: {q(title_zh)}",
+            f"  title_zh: {q(title_zh)}",
+            f"  title_en: {q(title_en)}",
+            f"  summary: {q(summary_zh)}",
+            f"  summary_zh: {q(summary_zh)}",
+            f"  summary_en: {q(summary_en)}",
+            "  docx: \"\"",
+            "  figure: \"\"",
+            "  papers: []",
+        ]
+    ) + "\n"
+
+
 def replace_or_prepend_issue(today: str, block: str) -> None:
     existing = DATA_PATH.read_text(encoding="utf-8") if DATA_PATH.exists() else ""
     pattern = re.compile(rf'(?ms)^- date: "{re.escape(today)}"\n.*?(?=^- date: "|\Z)')
@@ -706,7 +752,19 @@ def main() -> int:
     args = parse_args()
     papers = collect_candidates(args.lookback_days, args.max_papers)
     if not papers:
-        print("No new papers found after de-duplication.")
+        if args.dry_run:
+            print("No new papers found after de-duplication.")
+            return 0
+        if issue_exists(args.date):
+            print(f"No new papers found, and {args.date} already has a paper-push card.")
+            return 0
+        previous_date = latest_previous_issue_date(args.date)
+        replace_or_prepend_issue(args.date, no_update_issue_block(args.date, previous_date))
+        print(
+            f"No new papers found after de-duplication. "
+            f"Added a no-update card for {args.date}"
+            + (f" referencing {previous_date}." if previous_date else ".")
+        )
         return 0
     print(f"Found {len(papers)} papers for {args.date}.")
     if args.dry_run:

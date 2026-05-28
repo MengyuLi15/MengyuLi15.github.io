@@ -66,6 +66,10 @@ def field(block: str, name: str) -> str:
     return yaml_unquote(match.group(1)) if match else ""
 
 
+def issue_flag(block: str, name: str) -> bool:
+    return bool(re.search(rf'(?m)^  {re.escape(name)}:\s*true\s*$', block))
+
+
 def parse_papers(issue: str) -> list[dict[str, str]]:
     papers = []
     pattern = re.compile(r'(?ms)^    - title: "([^"]*)"\r?\n(.*?)(?=^    - title: |\Z)')
@@ -226,10 +230,13 @@ def main() -> int:
             return 1
         issue_date, issue = selected[0]
     else:
-        issue_date, issue = issues[-1]
+        issue_date, issue = issues[0]
 
     papers = parse_papers(issue)
     if not papers:
+        if issue_flag(issue, "no_update"):
+            print(f"Skipped DOI validation for {issue_date}: no-update card has no paper list.")
+            return 0
         print(f"No papers found for {issue_date}.", file=sys.stderr)
         return 1
 
