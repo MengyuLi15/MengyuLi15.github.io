@@ -10,10 +10,10 @@
   trend_en: "This issue focuses on BGC-Argo, ocean-colour remote sensing, marine heatwaves, vertical phytoplankton structure and carbon-pump processes. The selection is no longer limited to priority journals; when few high-impact papers are newly available, other relevant journals are used as supplements while retaining priority for BGC-Argo profiles, POC/NCP, DCM/SCM, PACE/hyperspectral methods and vertical marine-heatwave responses."
   docx: "/files/paper-push/daily_paper_push_2026-05-28.docx"
   figure:
-  italian_phrase: "A metà del cammino della nostra vita, mi ritrovai in una selva oscura."
-  italian_source: "Dante, Divina Commedia, Inferno I, 1-2 (modern Italian paraphrase)"
-  italian_explanation_zh: "人生走到半途时，诗人发现自己迷失在黑暗森林里；这句话常用来表达迷茫、转折和重新寻找方向的时刻。"
-  italian_explanation_en: "At midlife, the speaker finds himself lost in a dark wood; it evokes disorientation, transition, and the need to find a new direction."
+  italian_phrase: "Nel mezzo del cammin di nostra vita, mi ritrovai per una selva oscura."
+  italian_source: "Dante, Commedia, Inferno I, 1-2; Italian original from Kalliope"
+  italian_explanation_zh: "这是 Kalliope 所列《神曲》意大利语原文。现代意大利语可理解为“在人生旅程的中途，我发现自己走入一片黑暗森林”；常用来表达迷茫、转折和重新寻找方向。"
+  italian_explanation_en: "This follows the Italian original listed by Kalliope. In modern terms, it means that midway through life's journey, the speaker finds himself in a dark wood, a scene of disorientation and renewed searching."
   papers:
     - title: "Phytoplankton mortality in a changing ocean"
       authors: "Kyle Mayers; Clare Davis"
@@ -112,9 +112,9 @@
   trend_en: "The main pattern in this issue is clear: marine-heatwave research is moving beyond surface SST and surface Chl-a toward subsurface warming, DCM/SCM changes and community responses; BGC-Argo studies are moving from profile description toward NCP, POC export, oxygen-nitrate coupling and microbial-process diagnostics; and ocean-colour work is increasingly organized around PACE, hyperspectral sensing, multi-sensor fusion and machine learning, especially for bbp, IOPs, phytoplankton community structure and long-term Chl-a records. Together, these papers point toward a three-dimensional carbon-pump framework that links surface ocean colour, vertical profiles and event-scale disturbances."
   docx: "/files/paper-push/daily_paper_push_2026-05-27.docx"
   figure: "/images/paper-push/mechanism_2026-05-27.png"
-  italian_phrase: "Non siete fatti per vivere come bruti, ma per seguire virtù e conoscenza."
-  italian_source: "Dante, Divina Commedia, Inferno XXVI, 119-120 (modern Italian paraphrase)"
-  italian_explanation_zh: "这句话说人不应像野兽一样活着，而应追求德性与知识；现代读法里，它鼓励学习、探索和保持人的尊严。"
+  italian_phrase: "Fatti non foste a viver come bruti, ma per seguir virtute e canoscenza."
+  italian_source: "Dante, Commedia, Inferno XXVI, 119-120; Italian original from Kalliope"
+  italian_explanation_zh: "这句话说人不应像野兽一样活着，而应追求德性与知识；virtute 和 canoscenza 是原文中古意大利语形式。"
   italian_explanation_en: "The line says humans were not made to live like beasts, but to pursue virtue and knowledge; it is often read as a call to learning and exploration."
   papers:
     - title: "Biochemical remodelling of phytoplankton cell composition under climate change"

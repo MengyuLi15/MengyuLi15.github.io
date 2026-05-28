@@ -33,10 +33,10 @@ author_profile: true
     <span data-paper-i18n="en">No mechanism sketch figure today. Daily Italian card:</span>
   </p>
   <h2><span data-paper-i18n="zh">每日一句意大利语</span><span data-paper-i18n="en">Daily Italian</span></h2>
-  <p class="paper-push-italian-phrase">{{ issue.italian_phrase | default: "A metà del cammino della nostra vita, mi ritrovai in una selva oscura." }}</p>
-  <p class="paper-push-meta">{{ issue.italian_source | default: "Dante, Divina Commedia, Inferno I, 1-2 (modern Italian paraphrase)" }}</p>
-  <p class="paper-push-block" data-paper-i18n="zh">{{ issue.italian_explanation_zh | default: "人生走到半途时，诗人发现自己迷失在黑暗森林里；这句话常用来表达迷茫、转折和重新寻找方向的时刻。" }}</p>
-  <p class="paper-push-block" data-paper-i18n="en">{{ issue.italian_explanation_en | default: "At midlife, the speaker finds himself lost in a dark wood; it evokes disorientation, transition, and the need to find a new direction." }}</p>
+  <p class="paper-push-italian-phrase">{{ issue.italian_phrase | default: "Nel mezzo del cammin di nostra vita, mi ritrovai per una selva oscura." }}</p>
+  <p class="paper-push-meta">{{ issue.italian_source | default: "Dante, Commedia, Inferno I, 1-2; Italian original from Kalliope" }}</p>
+  <p class="paper-push-block" data-paper-i18n="zh">{{ issue.italian_explanation_zh | default: "这是 Kalliope 所列《神曲》意大利语原文。现代意大利语可理解为“在人生旅程的中途，我发现自己走入一片黑暗森林”；常用来表达迷茫、转折和重新寻找方向。" }}</p>
+  <p class="paper-push-block" data-paper-i18n="en">{{ issue.italian_explanation_en | default: "This follows the Italian original listed by Kalliope. In modern terms, it means that midway through life's journey, the speaker finds himself in a dark wood, a scene of disorientation and renewed searching." }}</p>
 </section>
 {% endif %}
 

@@ -162,27 +162,27 @@ RELEVANCE_TERMS = {
 EXCLUDED_TITLE_PREFIXES = ("corrigendum", "erratum", "correction", "retraction")
 DANTE_CARDS = [
     {
-        "phrase": "A metà del cammino della nostra vita, mi ritrovai in una selva oscura.",
-        "source": "Dante, Divina Commedia, Inferno I, 1-2 (modern Italian paraphrase)",
-        "explanation_zh": "人生走到半途时，诗人发现自己迷失在黑暗森林里；这句话常用来表达迷茫、转折和重新寻找方向的时刻。",
-        "explanation_en": "At midlife, the speaker finds himself lost in a dark wood; it evokes disorientation, transition, and the need to find a new direction.",
+        "phrase": "Nel mezzo del cammin di nostra vita, mi ritrovai per una selva oscura.",
+        "source": "Dante, Commedia, Inferno I, 1-2; Italian original from Kalliope",
+        "explanation_zh": "这是 Kalliope 所列《神曲》意大利语原文。现代意大利语可理解为“在人生旅程的中途，我发现自己走入一片黑暗森林”；常用来表达迷茫、转折和重新寻找方向。",
+        "explanation_en": "This follows the Italian original listed by Kalliope. In modern terms, it means that midway through life's journey, the speaker finds himself in a dark wood, a scene of disorientation and renewed searching.",
     },
     {
-        "phrase": "Lasciate ogni speranza, voi che entrate.",
-        "source": "Dante, Divina Commedia, Inferno III, 9",
-        "explanation_zh": "这是地狱门上的警句，意思是进入这里的人要放弃所有希望；现代语境里常用来形容艰难、几乎没有退路的处境。",
+        "phrase": "Lasciate ogne speranza, voi ch'intrate.",
+        "source": "Dante, Commedia, Inferno III, 9; Italian original from Kalliope",
+        "explanation_zh": "这是地狱门上的警句，意为“进入这里的人，放弃一切希望”。原文里的 ogne 和 ch'intrate 保留了中古意大利语色彩。",
         "explanation_en": "This is the warning at the gate of Hell: those who enter must abandon hope. Today it can describe a severe situation with almost no easy way back.",
     },
     {
-        "phrase": "L'amore che muove il sole e le altre stelle.",
-        "source": "Dante, Divina Commedia, Paradiso XXXIII, 145 (modern Italian paraphrase)",
-        "explanation_zh": "《神曲》的结尾句，把爱写成推动太阳和群星运行的力量；它强调爱、秩序和宇宙意义之间的联系。",
+        "phrase": "L'amor che move il sole e l'altre stelle.",
+        "source": "Dante, Commedia, Paradiso XXXIII, 145; Italian original from Kalliope tradition",
+        "explanation_zh": "《神曲》的结尾句，把“爱”写成推动太阳和群星运行的力量；原文 amor、move、l'altre 带有古典/中古意大利语形式。",
         "explanation_en": "The final line of the Divine Comedy presents love as the force moving the sun and the stars, linking love with order and cosmic meaning.",
     },
     {
-        "phrase": "Non siete fatti per vivere come bruti, ma per seguire virtù e conoscenza.",
-        "source": "Dante, Divina Commedia, Inferno XXVI, 119-120 (modern Italian paraphrase)",
-        "explanation_zh": "这句话说人不应像野兽一样活着，而应追求德性与知识；现代读法里，它鼓励学习、探索和保持人的尊严。",
+        "phrase": "Fatti non foste a viver come bruti, ma per seguir virtute e canoscenza.",
+        "source": "Dante, Commedia, Inferno XXVI, 119-120; Italian original from Kalliope",
+        "explanation_zh": "这句话说人不应像野兽一样活着，而应追求德性与知识；virtute 和 canoscenza 是原文中古意大利语形式。",
         "explanation_en": "The line says humans were not made to live like beasts, but to pursue virtue and knowledge; it is often read as a call to learning and exploration.",
     },
 ]
