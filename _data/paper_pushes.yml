@@ -10,6 +10,10 @@
   trend_en: "This issue focuses on BGC-Argo, ocean-colour remote sensing, marine heatwaves, vertical phytoplankton structure and carbon-pump processes. The selection is no longer limited to priority journals; when few high-impact papers are newly available, other relevant journals are used as supplements while retaining priority for BGC-Argo profiles, POC/NCP, DCM/SCM, PACE/hyperspectral methods and vertical marine-heatwave responses."
   docx: "/files/paper-push/daily_paper_push_2026-05-28.docx"
   figure: ""
+  italian_phrase: "A metà del cammino della nostra vita, mi ritrovai in una selva oscura."
+  italian_source: "Dante, Divina Commedia, Inferno I, 1-2 (modern Italian paraphrase)"
+  italian_explanation_zh: "人生走到半途时，诗人发现自己迷失在黑暗森林里；这句话常用来表达迷茫、转折和重新寻找方向的时刻。"
+  italian_explanation_en: "At midlife, the speaker finds himself lost in a dark wood; it evokes disorientation, transition, and the need to find a new direction."
   papers:
     - title: "Phytoplankton mortality in a changing ocean"
       authors: "Kyle Mayers; Clare Davis"
@@ -107,7 +111,11 @@
   trend_zh: "本期趋势很清楚：海洋热浪研究正在从表层 SST 和表层 Chl-a 转向亚表层增暖、DCM/SCM 变化和群落结构响应；BGC-Argo 正在从剖面观测推进到 NCP、POC export、氧/硝酸盐耦合和微生物过程诊断；海色遥感方向则明显围绕 PACE、高光谱、多传感器融合和机器学习展开，尤其关注 bbp、IOPs、浮游植物群落结构和长期 Chl-a 数据记录。整体上，这批论文共同指向一个方向：未来 carbon pump 研究需要把表层海色、垂向剖面和事件尺度扰动放在同一个三维框架里解释。"
   trend_en: "The main pattern in this issue is clear: marine-heatwave research is moving beyond surface SST and surface Chl-a toward subsurface warming, DCM/SCM changes and community responses; BGC-Argo studies are moving from profile description toward NCP, POC export, oxygen-nitrate coupling and microbial-process diagnostics; and ocean-colour work is increasingly organized around PACE, hyperspectral sensing, multi-sensor fusion and machine learning, especially for bbp, IOPs, phytoplankton community structure and long-term Chl-a records. Together, these papers point toward a three-dimensional carbon-pump framework that links surface ocean colour, vertical profiles and event-scale disturbances."
   docx: "/files/paper-push/daily_paper_push_2026-05-27.docx"
-  figure: "/images/paper-push/mechanism_2026-05-27.png"
+  figure: ""
+  italian_phrase: "Non siete fatti per vivere come bruti, ma per seguire virtù e conoscenza."
+  italian_source: "Dante, Divina Commedia, Inferno XXVI, 119-120 (modern Italian paraphrase)"
+  italian_explanation_zh: "这句话说人不应像野兽一样活着，而应追求德性与知识；现代读法里，它鼓励学习、探索和保持人的尊严。"
+  italian_explanation_en: "The line says humans were not made to live like beasts, but to pursue virtue and knowledge; it is often read as a call to learning and exploration."
   papers:
     - title: "Biochemical remodelling of phytoplankton cell composition under climate change"
       authors: "Shlomit Sharoni; Keisuke Inomura; Stephanie Dutkiewicz; Oliver Jahn; Zoe V. Finkel; Andrew Irwin; Mohammad M. Amirian; Erwan Monier; et al."

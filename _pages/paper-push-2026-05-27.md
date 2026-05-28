@@ -26,6 +26,18 @@ author_profile: true
 
 {% if issue.figure %}
 <p><img src="{{ issue.figure }}" alt="Mechanism sketch for the daily paper push"></p>
+{% else %}
+<section class="paper-push-italian-card" aria-label="Daily Italian card">
+  <p class="paper-push-system-note">
+    <span data-paper-i18n="zh">无 mechanism sketch 图。今天的意大利语卡片：</span>
+    <span data-paper-i18n="en">No mechanism sketch figure today. Daily Italian card:</span>
+  </p>
+  <h2><span data-paper-i18n="zh">每日一句意大利语</span><span data-paper-i18n="en">Daily Italian</span></h2>
+  <p class="paper-push-italian-phrase">{{ issue.italian_phrase | default: "A metà del cammino della nostra vita, mi ritrovai in una selva oscura." }}</p>
+  <p class="paper-push-meta">{{ issue.italian_source | default: "Dante, Divina Commedia, Inferno I, 1-2 (modern Italian paraphrase)" }}</p>
+  <p class="paper-push-block" data-paper-i18n="zh">{{ issue.italian_explanation_zh | default: "人生走到半途时，诗人发现自己迷失在黑暗森林里；这句话常用来表达迷茫、转折和重新寻找方向的时刻。" }}</p>
+  <p class="paper-push-block" data-paper-i18n="en">{{ issue.italian_explanation_en | default: "At midlife, the speaker finds himself lost in a dark wood; it evokes disorientation, transition, and the need to find a new direction." }}</p>
+</section>
 {% endif %}
 
 <div class="paper-push-toolbar">

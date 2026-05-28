@@ -160,6 +160,32 @@ RELEVANCE_TERMS = {
 }
 
 EXCLUDED_TITLE_PREFIXES = ("corrigendum", "erratum", "correction", "retraction")
+DANTE_CARDS = [
+    {
+        "phrase": "A metà del cammino della nostra vita, mi ritrovai in una selva oscura.",
+        "source": "Dante, Divina Commedia, Inferno I, 1-2 (modern Italian paraphrase)",
+        "explanation_zh": "人生走到半途时，诗人发现自己迷失在黑暗森林里；这句话常用来表达迷茫、转折和重新寻找方向的时刻。",
+        "explanation_en": "At midlife, the speaker finds himself lost in a dark wood; it evokes disorientation, transition, and the need to find a new direction.",
+    },
+    {
+        "phrase": "Lasciate ogni speranza, voi che entrate.",
+        "source": "Dante, Divina Commedia, Inferno III, 9",
+        "explanation_zh": "这是地狱门上的警句，意思是进入这里的人要放弃所有希望；现代语境里常用来形容艰难、几乎没有退路的处境。",
+        "explanation_en": "This is the warning at the gate of Hell: those who enter must abandon hope. Today it can describe a severe situation with almost no easy way back.",
+    },
+    {
+        "phrase": "L'amore che muove il sole e le altre stelle.",
+        "source": "Dante, Divina Commedia, Paradiso XXXIII, 145 (modern Italian paraphrase)",
+        "explanation_zh": "《神曲》的结尾句，把爱写成推动太阳和群星运行的力量；它强调爱、秩序和宇宙意义之间的联系。",
+        "explanation_en": "The final line of the Divine Comedy presents love as the force moving the sun and the stars, linking love with order and cosmic meaning.",
+    },
+    {
+        "phrase": "Non siete fatti per vivere come bruti, ma per seguire virtù e conoscenza.",
+        "source": "Dante, Divina Commedia, Inferno XXVI, 119-120 (modern Italian paraphrase)",
+        "explanation_zh": "这句话说人不应像野兽一样活着，而应追求德性与知识；现代读法里，它鼓励学习、探索和保持人的尊严。",
+        "explanation_en": "The line says humans were not made to live like beasts, but to pursue virtue and knowledge; it is often read as a call to learning and exploration.",
+    },
+]
 MARINE_CONTEXT_TERMS = [
     "ocean",
     "marine",
@@ -633,6 +659,14 @@ def q(value: str) -> str:
     return json.dumps(value or "", ensure_ascii=False)
 
 
+def dante_card_for(issue_date: str) -> dict[str, str]:
+    try:
+        index = datetime.strptime(issue_date, "%Y-%m-%d").date().toordinal() % len(DANTE_CARDS)
+    except ValueError:
+        index = 0
+    return DANTE_CARDS[index]
+
+
 def issue_block(today: str, papers: list[Paper]) -> str:
     generated_at = datetime.now(TZ).strftime("%Y-%m-%d %H:%M %Z")
     title_zh = "每日论文推送：BGC-Argo、海色、海洋热浪与碳泵"
@@ -642,6 +676,7 @@ def issue_block(today: str, papers: list[Paper]) -> str:
     trend_zh = "本期重点关注 BGC-Argo、海色遥感、海洋热浪、浮游植物垂向结构和碳泵过程。筛选逻辑不再只限于重点期刊；当高影响力期刊当天新增较少时，会从其他相关期刊补充候选论文，但仍优先保留 BGC-Argo 剖面、POC/NCP、DCM/SCM、PACE/高光谱和 marine heatwave 垂向响应相关研究。"
     trend_en = "This issue focuses on BGC-Argo, ocean-colour remote sensing, marine heatwaves, vertical phytoplankton structure and carbon-pump processes. The selection is no longer limited to priority journals; when few high-impact papers are newly available, other relevant journals are used as supplements while retaining priority for BGC-Argo profiles, POC/NCP, DCM/SCM, PACE/hyperspectral methods and vertical marine-heatwave responses."
     docx_name = f"daily_paper_push_{today}.docx"
+    dante = dante_card_for(today)
 
     lines = [
         f"- date: {q(today)}",
@@ -656,6 +691,10 @@ def issue_block(today: str, papers: list[Paper]) -> str:
         f"  trend_en: {q(trend_en)}",
         f"  docx: {q('/files/paper-push/' + docx_name)}",
         "  figure: \"\"",
+        f"  italian_phrase: {q(dante['phrase'])}",
+        f"  italian_source: {q(dante['source'])}",
+        f"  italian_explanation_zh: {q(dante['explanation_zh'])}",
+        f"  italian_explanation_en: {q(dante['explanation_en'])}",
         "  papers:",
     ]
     for paper in papers:
@@ -708,6 +747,7 @@ def no_update_issue_block(today: str, previous_date: str) -> str:
     else:
         summary_zh = "今日尚未捕捉到符合更新规则的新论文。"
         summary_en = "No new papers matching the update rules were captured today."
+    dante = dante_card_for(today)
 
     return "\n".join(
         [
@@ -723,6 +763,10 @@ def no_update_issue_block(today: str, previous_date: str) -> str:
             f"  summary_en: {q(summary_en)}",
             "  docx: \"\"",
             "  figure: \"\"",
+            f"  italian_phrase: {q(dante['phrase'])}",
+            f"  italian_source: {q(dante['source'])}",
+            f"  italian_explanation_zh: {q(dante['explanation_zh'])}",
+            f"  italian_explanation_en: {q(dante['explanation_en'])}",
             "  papers: []",
         ]
     ) + "\n"
@@ -870,10 +914,12 @@ def main() -> int:
             print("No new papers found after de-duplication.")
             return 0
         if issue_exists(args.date):
+            ensure_page(args.date)
             print(f"No new papers found, and {args.date} already has a paper-push card.")
             return 0
         previous_date = latest_previous_issue_date(args.date)
         replace_or_prepend_issue(args.date, no_update_issue_block(args.date, previous_date))
+        ensure_page(args.date)
         print(
             f"No new papers found after de-duplication. "
             f"Added a no-update card for {args.date}"
