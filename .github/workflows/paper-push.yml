@@ -2,11 +2,11 @@ name: Daily Paper Push
 
 on:
   schedule:
-    # GitHub cron is UTC. These two runs cover 10:00 in Europe/Berlin
-    # across daylight-saving changes; DOI/history de-duplication prevents
-    # duplicate posts if both runs find the same papers.
-    - cron: "0 8 * * *"
-    - cron: "0 9 * * *"
+    # GitHub cron is UTC. These two runs cover about 10:00 in Europe/Berlin
+    # across daylight-saving changes. Avoid minute 0 because scheduled runs
+    # can be delayed or dropped during GitHub's top-of-hour load peaks.
+    - cron: "17 8 * * *"
+    - cron: "17 9 * * *"
   workflow_dispatch:
     inputs:
       lookback_days:

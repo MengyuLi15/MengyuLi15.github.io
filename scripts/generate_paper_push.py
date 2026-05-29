@@ -53,6 +53,21 @@ TOPIC_TERMS = [
     "ocean color remote sensing phytoplankton",
     "ocean bio-optics",
     "bio-optical ocean",
+    "ocean optics absorption backscattering",
+    "ocean optical absorption",
+    "marine inherent optical properties",
+    "ocean IOP absorption backscattering",
+    "particulate backscattering ocean",
+    "particle backscattering ocean",
+    "phytoplankton absorption ocean",
+    "colored dissolved organic matter absorption ocean",
+    "CDOM absorption ocean",
+    "absorption coefficient ocean color",
+    "backscattering coefficient ocean color",
+    "remote sensing reflectance IOP ocean",
+    "bio-optical algorithms ocean absorption",
+    "aquatic optics ocean color",
+    "ocean optics applications",
     "marine bacterioplankton carbon",
     "microbial carbon ocean",
     "marine heatwave phytoplankton",
@@ -90,6 +105,7 @@ PRIORITY_JOURNALS = [
     "IEEE Transactions on Geoscience and Remote Sensing",
     "Journal of Atmospheric and Oceanic Technology",
     "Journal of Geophysical Research: Oceans",
+    "Journal of Quantitative Spectroscopy and Radiative Transfer",
     "Limnology and Oceanography",
     "Limnology and Oceanography: Methods",
     "Oceanography",
@@ -97,6 +113,7 @@ PRIORITY_JOURNALS = [
     "Proceedings of the National Academy of Sciences",
     "Progress in Oceanography",
     "Remote Sensing of Environment",
+    "Remote Sensing",
 ]
 
 # Approximate ordering by recent impact/influence and field relevance.
@@ -124,6 +141,8 @@ JOURNAL_RANK = {
     "Oceanography": 210,
     "Optics Express": 220,
     "Applied Optics": 230,
+    "Journal of Quantitative Spectroscopy and Radiative Transfer": 240,
+    "Remote Sensing": 250,
 }
 
 RELEVANCE_TERMS = {
@@ -147,9 +166,36 @@ RELEVANCE_TERMS = {
     "net primary production": 6,
     "ocean colour": 5,
     "ocean color": 5,
+    "ocean optics": 6,
+    "aquatic optics": 5,
     "bio-optic": 5,
     "bio-optical": 5,
+    "inherent optical properties": 6,
+    "apparent optical properties": 5,
+    "iop": 4,
+    "iops": 4,
+    "optical absorption": 6,
+    "light absorption": 4,
+    "absorption coefficient": 6,
+    "phytoplankton absorption": 6,
+    "particulate absorption": 5,
+    "cdom absorption": 5,
+    "colored dissolved organic matter": 5,
+    "coloured dissolved organic matter": 5,
     "backscatter": 4,
+    "backscattering": 5,
+    "backscattering coefficient": 6,
+    "particulate backscattering": 6,
+    "particle backscattering": 5,
+    "bbp": 5,
+    "aph": 4,
+    "adg": 4,
+    "remote sensing reflectance": 5,
+    "rrs": 4,
+    "diffuse attenuation": 5,
+    "kd": 4,
+    "water-leaving radiance": 4,
+    "ocean lidar": 5,
     "remote sensing": 4,
     "satellite": 3,
     "hyperspectral": 4,
@@ -209,6 +255,7 @@ MARINE_CONTEXT_TERMS = [
     "argo float",
     "ocean colour",
     "ocean color",
+    "ocean optics",
     "marine heatwave",
     "marine heatwaves",
 ]
@@ -231,9 +278,31 @@ DOMAIN_CONTEXT_TERMS = [
     "net primary production",
     "ocean colour",
     "ocean color",
+    "ocean optics",
+    "aquatic optics",
     "bio-optic",
     "bio-optical",
+    "inherent optical properties",
+    "apparent optical properties",
+    "iop",
+    "iops",
+    "optical absorption",
+    "absorption coefficient",
+    "phytoplankton absorption",
+    "particulate absorption",
+    "cdom absorption",
+    "colored dissolved organic matter",
+    "coloured dissolved organic matter",
     "backscatter",
+    "backscattering",
+    "backscattering coefficient",
+    "particulate backscattering",
+    "bbp",
+    "remote sensing reflectance",
+    "rrs",
+    "diffuse attenuation",
+    "water-leaving radiance",
+    "ocean lidar",
     "remote sensing",
     "hyperspectral",
     "marine heatwave",
@@ -392,7 +461,10 @@ def tags_for(title: str, abstract: str) -> str:
         ("phytoplankton", ["phytoplankton", "chlorophyll"]),
         ("marine heatwaves", ["marine heatwave", "marine heatwaves"]),
         ("ocean colour", ["ocean colour", "ocean color", "remote sensing"]),
-        ("bio-optics", ["bio-optic", "backscatter", "iop", "optical"]),
+        ("ocean optics", ["ocean optics", "aquatic optics", "inherent optical", "apparent optical", "remote sensing reflectance", "rrs", "water-leaving radiance"]),
+        ("absorption", ["optical absorption", "absorption coefficient", "phytoplankton absorption", "particulate absorption", "cdom absorption", "colored dissolved organic matter", "coloured dissolved organic matter", "aph", "adg"]),
+        ("backscattering", ["backscatter", "backscattering", "backscattering coefficient", "particulate backscattering", "particle backscattering", "bbp"]),
+        ("bio-optics", ["bio-optic", "bio-optical", "iop", "iops", "optical", "diffuse attenuation", "ocean lidar"]),
         ("microbial carbon", ["microbial carbon", "microbial", "dissolved organic"]),
         ("vertical structure", ["vertical", "subsurface", "deep chlorophyll maximum", "dcm"]),
     ]
@@ -415,6 +487,8 @@ def topic_label(title: str, tags: str) -> tuple[str, str]:
         return "BGC-Argo 剖面约束的生物地球化学变化", "biogeochemical variability constrained by BGC-Argo profiles"
     if "marine heatwave" in haystack or "marine heatwaves" in haystack:
         return "海洋热浪对生态结构和碳循环的影响", "the ecological and carbon-cycle impacts of marine heatwaves"
+    if any(term in haystack for term in ["ocean optics", "aquatic optics", "bio-optic", "bio-optical", "backscatter", "backscattering", "absorption", "remote sensing reflectance", "rrs", "iop", "iops", "cdom", "diffuse attenuation", "ocean lidar"]):
+        return "海洋生物光学和海洋光学参数、方法与应用", "marine bio-optical and ocean-optics properties, methods, and applications"
     if "ocean colour" in haystack or "ocean color" in haystack or "remote sensing" in haystack:
         return "海色遥感中的浮游植物和光学信号变化", "phytoplankton and optical signals in ocean-colour remote sensing"
     if "carbon export" in haystack or "carbon pump" in haystack or "organic carbon" in haystack:
@@ -448,10 +522,10 @@ def infer_data_source(title: str, tags: str, journal: str) -> tuple[str, str]:
             "数据上主要面向卫星海色、叶绿素或遥感反射率记录，并在需要时结合原位或剖面观测进行约束。",
             "The data emphasis is satellite ocean-colour, chlorophyll, or remote-sensing reflectance records, with in-situ or profile constraints where relevant.",
         )
-    if any(term in haystack for term in ["sediment trap", "optics", "backscattering", "bio-optic", "absorption", "lidar"]):
+    if any(term in haystack for term in ["sediment trap", "optics", "backscattering", "backscatter", "bio-optic", "bio-optical", "absorption", "inherent optical", "apparent optical", "remote sensing reflectance", "rrs", "diffuse attenuation", "water-leaving radiance", "lidar"]):
         return (
             "数据或方法上围绕沉积物捕获器、原位光学、生物光学参数或光谱观测展开。",
-            "The data or method emphasis is sediment traps, in-situ optics, bio-optical parameters, or spectral optical observation.",
+            "The data or method emphasis is sediment traps, in-situ optics, bio-optical parameters, ocean-optics products, or spectral optical observation.",
         )
     if any(term in haystack for term in ["review", "annual review", "modeling", "campaign", "hackweek"]):
         return (
@@ -474,7 +548,7 @@ def infer_action(title: str, tags: str) -> tuple[str, str]:
     if any(term in haystack for term in ["retrieval", "estimation", "estimating"]):
         return (
             "研究重点是建立或评估反演/估计框架，把观测信号转化为浮游植物、叶绿素、吸收或碳通量等变量。",
-            "The main task is to build or assess a retrieval or estimation framework that converts observations into variables such as phytoplankton, chlorophyll, absorption, or carbon flux.",
+            "The main task is to build or assess a retrieval or estimation framework that converts observations into variables such as phytoplankton, chlorophyll, absorption, backscattering, IOPs, or carbon flux.",
         )
     if any(term in haystack for term in ["dataset", "data record", "data with", "surveys"]):
         return (
@@ -669,12 +743,12 @@ def dante_card_for(issue_date: str) -> dict[str, str]:
 
 def issue_block(today: str, papers: list[Paper]) -> str:
     generated_at = datetime.now(TZ).strftime("%Y-%m-%d %H:%M %Z")
-    title_zh = "每日论文推送：BGC-Argo、海色、海洋热浪与碳泵"
-    title_en = "Daily Paper Push: BGC-Argo, ocean colour, marine heatwaves and carbon pump"
+    title_zh = "每日论文推送：BGC-Argo、海色/海洋光学、海洋热浪与碳泵"
+    title_en = "Daily Paper Push: BGC-Argo, ocean colour/ocean optics, marine heatwaves and carbon pump"
     summary_zh = f"本期由 GitHub Actions 自动检索生成：Nature/Science 系列优先，其次是用户指定重点期刊，最后补充其他相关期刊；历史去重后保留 {len(papers)} 篇，不超过每日 50 篇上限。"
     summary_en = f"This issue was generated automatically by GitHub Actions: Nature and Science series first, then the user-defined priority journals, followed by other relevant journals as topical supplements. After deduplication, {len(papers)} papers remain, below the daily limit of 50."
-    trend_zh = "本期重点关注 BGC-Argo、海色遥感、海洋热浪、浮游植物垂向结构和碳泵过程。筛选逻辑不再只限于重点期刊；当高影响力期刊当天新增较少时，会从其他相关期刊补充候选论文，但仍优先保留 BGC-Argo 剖面、POC/NCP、DCM/SCM、PACE/高光谱和 marine heatwave 垂向响应相关研究。"
-    trend_en = "This issue focuses on BGC-Argo, ocean-colour remote sensing, marine heatwaves, vertical phytoplankton structure and carbon-pump processes. The selection is no longer limited to priority journals; when few high-impact papers are newly available, other relevant journals are used as supplements while retaining priority for BGC-Argo profiles, POC/NCP, DCM/SCM, PACE/hyperspectral methods and vertical marine-heatwave responses."
+    trend_zh = "本期重点关注 BGC-Argo、海色遥感/海洋光学、海洋热浪、浮游植物垂向结构和碳泵过程。筛选逻辑不再只限于重点期刊；当高影响力期刊当天新增较少时，会从其他相关期刊补充候选论文，但仍优先保留 BGC-Argo 剖面、POC/NCP、DCM/SCM、PACE/高光谱、吸收/后向散射/IOPs 和 marine heatwave 垂向响应相关研究。"
+    trend_en = "This issue focuses on BGC-Argo, ocean-colour remote sensing, ocean optics, marine heatwaves, vertical phytoplankton structure and carbon-pump processes. The selection is no longer limited to priority journals; when few high-impact papers are newly available, other relevant journals are used as supplements while retaining priority for BGC-Argo profiles, POC/NCP, DCM/SCM, PACE/hyperspectral methods, absorption/backscattering/IOPs, and vertical marine-heatwave responses."
     docx_name = f"daily_paper_push_{today}.docx"
     dante = dante_card_for(today)
 
