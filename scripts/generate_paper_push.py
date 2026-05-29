@@ -439,7 +439,13 @@ def group_for(journal: str) -> tuple[str, str, int]:
 
 def relevance_score(title: str, abstract: str) -> int:
     haystack = f"{title} {abstract}".lower()
-    return sum(weight for term, weight in RELEVANCE_TERMS.items() if term in haystack)
+    return sum(weight for term, weight in RELEVANCE_TERMS.items() if term_present(term, haystack))
+
+
+def term_present(term: str, haystack: str) -> bool:
+    if term in {"iop", "iops", "bbp", "aph", "adg", "rrs", "kd"}:
+        return bool(re.search(rf"\b{re.escape(term)}\b", haystack))
+    return term in haystack
 
 
 def has_marine_context(title: str, abstract: str, journal: str) -> bool:
@@ -469,7 +475,7 @@ def tags_for(title: str, abstract: str) -> str:
         ("vertical structure", ["vertical", "subsurface", "deep chlorophyll maximum", "dcm"]),
     ]
     for label, terms in checks:
-        if any(term in haystack for term in terms):
+        if any(term_present(term, haystack) for term in terms):
             tags.append(label)
     return "; ".join(tags[:5]) or "ocean biogeochemistry"
 
