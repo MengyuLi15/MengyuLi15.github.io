@@ -231,6 +231,30 @@ DANTE_CARDS = [
         "explanation_zh": "这句话说人不应像野兽一样活着，而应追求德性与知识；virtute 和 canoscenza 是原文中古意大利语形式。",
         "explanation_en": "The line says humans were not made to live like beasts, but to pursue virtue and knowledge; it is often read as a call to learning and exploration.",
     },
+    {
+        "phrase": "E quindi uscimmo a riveder le stelle.",
+        "source": "Dante, Commedia, Inferno XXXIV, 139; Italian original from Kalliope",
+        "explanation_zh": "这是《地狱篇》的最后一句，意思是“于是我们走出那里，再次看见群星”。它常被用来表达穿过黑暗之后重新看见方向和希望。",
+        "explanation_en": "This is the final line of Inferno: after passing through darkness, the travellers come out to see the stars again. It suggests recovery, orientation, and renewed hope.",
+    },
+    {
+        "phrase": "Amor, ch'a nullo amato amar perdona.",
+        "source": "Dante, Commedia, Inferno V, 103; Italian original from Kalliope",
+        "explanation_zh": "这句来自 Francesca 的叙述，大意是“爱使被爱者不能不回以爱”。原文的 amor 和 amar 保留了诗歌中的紧密回环。",
+        "explanation_en": "In Francesca's speech, love is described as a force that compels the beloved to love in return. The line is often discussed for its beautiful but dangerous fatalism.",
+    },
+    {
+        "phrase": "La gloria di colui che tutto move per l'universo penetra.",
+        "source": "Dante, Commedia, Paradiso I, 1-2; Italian original from Kalliope",
+        "explanation_zh": "这是《天堂篇》的开篇，把神圣光辉写成穿透宇宙万物的力量；tutto move 与前面“推动太阳和群星”的意象相呼应。",
+        "explanation_en": "This opening of Paradiso imagines divine glory as a light that penetrates the whole universe, joining movement, order, and illumination.",
+    },
+    {
+        "phrase": "Considerate la vostra semenza.",
+        "source": "Dante, Commedia, Inferno XXVI, 118; Italian original from Kalliope",
+        "explanation_zh": "这句可理解为“想想你们的本源”。在尤利西斯的演说中，它引出人应追求德性与知识的名句。",
+        "explanation_en": "The line asks listeners to consider their origin or nature. In Ulysses' speech, it prepares the call to pursue virtue and knowledge.",
+    },
 ]
 MARINE_CONTEXT_TERMS = [
     "ocean",
@@ -739,12 +763,40 @@ def q(value: str) -> str:
     return json.dumps(value or "", ensure_ascii=False)
 
 
+def previous_italian_uses(issue_date: str) -> dict[str, str]:
+    if not DATA_PATH.exists():
+        return {}
+    text = DATA_PATH.read_text(encoding="utf-8-sig")
+    pattern = re.compile(
+        r'(?ms)^- date: "([^"]+)"\n.*?^  italian_phrase: "((?:\\.|[^"])*)"',
+    )
+    uses: dict[str, str] = {}
+    for date_text, phrase_json in pattern.findall(text):
+        if date_text >= issue_date:
+            continue
+        try:
+            phrase = json.loads(f'"{phrase_json}"')
+        except json.JSONDecodeError:
+            phrase = phrase_json
+        if date_text > uses.get(phrase, ""):
+            uses[phrase] = date_text
+    return uses
+
+
 def dante_card_for(issue_date: str) -> dict[str, str]:
     try:
-        index = datetime.strptime(issue_date, "%Y-%m-%d").date().toordinal() % len(DANTE_CARDS)
+        start = datetime.strptime(issue_date, "%Y-%m-%d").date().toordinal() % len(DANTE_CARDS)
     except ValueError:
-        index = 0
-    return DANTE_CARDS[index]
+        start = 0
+    used = previous_italian_uses(issue_date)
+    ordered_cards = DANTE_CARDS[start:] + DANTE_CARDS[:start]
+    for card in ordered_cards:
+        if card["phrase"] not in used:
+            return card
+    return min(
+        ordered_cards,
+        key=lambda card: (used.get(card["phrase"], ""), card["phrase"]),
+    )
 
 
 def issue_block(today: str, papers: list[Paper]) -> str:

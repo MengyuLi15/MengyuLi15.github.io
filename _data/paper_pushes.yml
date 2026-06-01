@@ -10,10 +10,10 @@
   trend_en: "This issue focuses on BGC-Argo, ocean-colour remote sensing, ocean optics, marine heatwaves, vertical phytoplankton structure and carbon-pump processes. The selection is no longer limited to priority journals; when few high-impact papers are newly available, other relevant journals are used as supplements while retaining priority for BGC-Argo profiles, POC/NCP, DCM/SCM, PACE/hyperspectral methods, absorption/backscattering/IOPs, and vertical marine-heatwave responses."
   docx: "/files/paper-push/daily_paper_push_2026-06-01.docx"
   figure:
-  italian_phrase: "Nel mezzo del cammin di nostra vita, mi ritrovai per una selva oscura."
-  italian_source: "Dante, Commedia, Inferno I, 1-2; Italian original from Kalliope"
-  italian_explanation_zh: "这是 Kalliope 所列《神曲》意大利语原文。现代意大利语可理解为“在人生旅程的中途，我发现自己走入一片黑暗森林”；常用来表达迷茫、转折和重新寻找方向。"
-  italian_explanation_en: "This follows the Italian original listed by Kalliope. In modern terms, it means that midway through life's journey, the speaker finds himself in a dark wood, a scene of disorientation and renewed searching."
+  italian_phrase: "E quindi uscimmo a riveder le stelle."
+  italian_source: "Dante, Commedia, Inferno XXXIV, 139; Italian original from Kalliope"
+  italian_explanation_zh: "这是《地狱篇》的最后一句，意思是“于是我们走出那里，再次看见群星”。它常被用来表达穿过黑暗之后重新看见方向和希望。"
+  italian_explanation_en: "This is the final line of Inferno: after passing through darkness, the travellers come out to see the stars again. It suggests recovery, orientation, and renewed hope."
   papers:
     - title: "Organic Matter Stoichiometry Regulates the Continental Shelf Carbon Pump Efficiency of the Northwest European Shelf Seas"
       authors: "K. T. Demir; M. Mathis; J. Kossack; F. Liu; U. Daewel; C. Stegert; H. Thomas; C. Schrum"
