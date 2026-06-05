@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import concurrent.futures
 import csv
 import html
 import json
@@ -10,11 +11,13 @@ import subprocess
 import sys
 import textwrap
 import time
+import unicodedata
 import urllib.error
 import urllib.parse
 import urllib.request
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta, timezone
+from functools import lru_cache
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -28,6 +31,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_PATH = ROOT / "_data" / "paper_pushes.yml"
 HISTORY_PATH = ROOT / "推送历史_论文索引.csv"
 DATE_PAGE_SCRIPT = ROOT / "scripts" / "create_paper_push_page.py"
+FOCUSED_TEAM_AUTHORS_PATH = ROOT / "scripts" / "focused_team_authors.json"
 TZ = ZoneInfo("Europe/Berlin")
 
 MAX_ABSTRACT_CHARS = 900
@@ -708,6 +712,82 @@ def authors_from_item(item: dict) -> str:
     return "; ".join(names) or "Authors not available"
 
 
+def author_names_from_item(item: dict) -> list[str]:
+    names = []
+    for author in item.get("author", []):
+        given = author.get("given", "").strip()
+        family = author.get("family", "").strip()
+        name = " ".join(part for part in [given, family] if part)
+        if name:
+            names.append(name)
+    return names
+
+
+def normalize_person_name(value: str) -> str:
+    value = unicodedata.normalize("NFKD", value or "")
+    value = "".join(ch for ch in value if not unicodedata.combining(ch))
+    return re.sub(r"[^a-z0-9]+", " ", value.lower()).strip()
+
+
+def person_signature(value: str, *, reverse_two_part: bool = False) -> str:
+    tokens = normalize_person_name(value).split()
+    if reverse_two_part and len(tokens) == 2:
+        tokens = list(reversed(tokens))
+    if not tokens:
+        return ""
+    family = tokens[-1]
+    initials = "".join(token[0] for token in tokens[:-1] if token)
+    return f"{family}:{initials}"
+
+
+def person_name_keys(value: str) -> set[str]:
+    normalized = normalize_person_name(value)
+    if not normalized:
+        return set()
+    keys = {normalized.replace(" ", ""), person_signature(value)}
+    if len(normalized.split()) == 2:
+        keys.add(person_signature(value, reverse_two_part=True))
+    return {key for key in keys if key}
+
+
+@lru_cache(maxsize=1)
+def focused_team_config() -> dict:
+    if not FOCUSED_TEAM_AUTHORS_PATH.exists():
+        return {"authors": [], "topic_keywords": []}
+    try:
+        return json.loads(FOCUSED_TEAM_AUTHORS_PATH.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        print(f"Focused team author file could not be read: {exc}", file=sys.stderr)
+        return {"authors": [], "topic_keywords": []}
+
+
+def focused_team_author_records() -> list[dict]:
+    return focused_team_config().get("authors", [])
+
+
+def focused_team_query_text() -> str:
+    keywords = focused_team_config().get("topic_keywords", [])
+    return " ".join(str(keyword) for keyword in keywords[:10])
+
+
+@lru_cache(maxsize=1)
+def focused_team_author_keys() -> set[str]:
+    keys: set[str] = set()
+    for record in focused_team_author_records():
+        keys.update(person_name_keys(record.get("name", "")))
+    return keys
+
+
+def is_focused_team_item(item: dict) -> bool:
+    team_keys = focused_team_author_keys()
+    if not team_keys:
+        return False
+    for name in author_names_from_item(item):
+        if person_name_keys(name) & team_keys:
+            return True
+    return False
+
+
 def best_journal(item: dict) -> str:
     titles = item.get("container-title") or []
     return text_value(titles).strip()
@@ -737,7 +817,7 @@ def is_priority_journal(journal: str) -> bool:
     return canonical in JOURNAL_RANK or canonical in NATURE_SCIENCE_HINTS
 
 
-def group_for(journal: str) -> tuple[str, str, int]:
+def group_for(journal: str, focused_team: bool = False) -> tuple[str, str, int]:
     low = journal.lower()
     if journal in NATURE_SCIENCE_HINTS and "nature" in low:
         return "Nature 系列", "Nature series", 0
@@ -745,7 +825,9 @@ def group_for(journal: str) -> tuple[str, str, int]:
         return "Science 系列", "Science series", 1
     if journal in JOURNAL_RANK:
         return "重点期刊：按影响力和相关性排序", "Key journals: ordered by impact and relevance", 2
-    return "其他相关期刊：按主题相关性补充", "Other relevant journals: topical supplements", 3
+    if focused_team:
+        return "重点关注团队", "Focused team", 3
+    return "其他相关期刊：按主题相关性补充", "Other relevant journals: topical supplements", 4
 
 
 def relevance_score(title: str, abstract: str) -> int:
@@ -764,8 +846,8 @@ def has_marine_context(title: str, abstract: str, journal: str) -> bool:
     return any(re.search(rf"\b{re.escape(term)}\b", haystack) for term in MARINE_CONTEXT_TERMS)
 
 
-def has_domain_context(title: str, abstract: str) -> bool:
-    haystack = f"{title} {abstract}".lower()
+def has_domain_context(title: str, abstract: str, journal: str = "") -> bool:
+    haystack = f"{title} {abstract} {journal}".lower()
     return any(re.search(rf"\b{re.escape(term)}\b", haystack) for term in DOMAIN_CONTEXT_TERMS)
 
 
@@ -959,6 +1041,21 @@ def crossref_query(query: str, from_date: date, rows: int = 20) -> list[dict]:
     return data.get("message", {}).get("items", [])
 
 
+def crossref_author_query(author_name: str, from_date: date, rows: int = 12) -> list[dict]:
+    params = {
+        "query.author": author_name,
+        "query.bibliographic": focused_team_query_text(),
+        "filter": f"from-created-date:{from_date.isoformat()},type:journal-article",
+        "sort": "created",
+        "order": "desc",
+        "rows": str(rows),
+        "select": "DOI,title,author,container-title,published,published-print,published-online,created,URL,abstract,type",
+    }
+    url = "https://api.crossref.org/works?" + urllib.parse.urlencode(params)
+    data = http_json(url)
+    return data.get("message", {}).get("items", [])
+
+
 def published_sort_value(value: str) -> int:
     parts = [int(part) for part in re.findall(r"\d+", value or "")[:3]]
     if not parts:
@@ -983,6 +1080,55 @@ def existing_dois() -> set[str]:
     return dois
 
 
+def paper_from_crossref_item(item: dict, today: date, require_focused_team: bool = False) -> Paper | None:
+    doi = (item.get("DOI") or "").strip()
+    if not doi:
+        return None
+    title = clean_text(text_value(item.get("title")))
+    journal = best_journal(item)
+    canonical = canonical_journal(journal)
+    abstract = clean_text(item.get("abstract", ""))
+    if title.lower().startswith(EXCLUDED_TITLE_PREFIXES):
+        return None
+    if not has_marine_context(title, abstract, journal):
+        return None
+    if not has_domain_context(title, abstract, journal):
+        return None
+    parts = published_parts(item)
+    if is_future_publication(parts, today):
+        return None
+    focused_team = is_focused_team_item(item)
+    if require_focused_team and not focused_team:
+        return None
+    score = relevance_score(title, abstract)
+    min_score = 5 if is_priority_journal(canonical) else (4 if focused_team else 7)
+    if score < min_score:
+        return None
+    group_zh, group_en, group_rank = group_for(canonical, focused_team)
+    published, month, month_zh = month_from_parts(parts)
+    tags = tags_for(title, abstract)
+    within_group_rank = JOURNAL_RANK.get(canonical, max(0, 500 - score))
+    rank = group_rank * 1000 + within_group_rank
+    return Paper(
+        title=title,
+        authors=authors_from_item(item),
+        journal=canonical,
+        published=published,
+        published_month=month,
+        published_month_zh=month_zh,
+        doi=doi,
+        url=item.get("URL") or f"https://doi.org/{doi}",
+        abstract=abstract,
+        group_zh=group_zh,
+        group_en=group_en,
+        tags=tags,
+        summary_zh=summary_zh(title, abstract, tags),
+        summary_en=summary_en(title, abstract, tags),
+        score=score,
+        rank=rank,
+    )
+
+
 def collect_candidates(lookback_days: int, max_papers: int) -> list[Paper]:
     today = datetime.now(TZ).date()
     from_date = datetime.now(TZ).date() - timedelta(days=lookback_days)
@@ -1001,46 +1147,44 @@ def collect_candidates(lookback_days: int, max_papers: int) -> list[Paper]:
             doi = (item.get("DOI") or "").strip()
             if not doi or doi.lower() in seen or doi.lower() in candidates:
                 continue
-            title = clean_text(text_value(item.get("title")))
-            journal = best_journal(item)
-            canonical = canonical_journal(journal)
-            abstract = clean_text(item.get("abstract", ""))
-            if title.lower().startswith(EXCLUDED_TITLE_PREFIXES):
-                continue
-            if not has_marine_context(title, abstract, journal):
-                continue
-            if not has_domain_context(title, abstract):
-                continue
-            parts = published_parts(item)
-            if is_future_publication(parts, today):
-                continue
-            score = relevance_score(title, abstract)
-            min_score = 5 if is_priority_journal(canonical) else 7
-            if score < min_score:
-                continue
-            group_zh, group_en, group_rank = group_for(canonical)
-            published, month, month_zh = month_from_parts(parts)
-            tags = tags_for(title, abstract)
-            rank = group_rank * 1000 + JOURNAL_RANK.get(canonical, max(0, 500 - score))
-            candidates[doi.lower()] = Paper(
-                title=title,
-                authors=authors_from_item(item),
-                journal=canonical,
-                published=published,
-                published_month=month,
-                published_month_zh=month_zh,
-                doi=doi,
-                url=item.get("URL") or f"https://doi.org/{doi}",
-                abstract=abstract,
-                group_zh=group_zh,
-                group_en=group_en,
-                tags=tags,
-                summary_zh=summary_zh(title, abstract, tags),
-                summary_en=summary_en(title, abstract, tags),
-                score=score,
-                rank=rank,
-            )
+            paper = paper_from_crossref_item(item, today)
+            if paper:
+                candidates[doi.lower()] = paper
         time.sleep(0.05)
+
+    author_rows = max(1, int(os.getenv("FOCUSED_TEAM_AUTHOR_ROWS", "12")))
+    author_limit = max(0, int(os.getenv("FOCUSED_TEAM_AUTHOR_LIMIT", "0")))
+    author_records = focused_team_author_records()
+    if author_limit:
+        author_records = author_records[:author_limit]
+    author_workers = max(1, int(os.getenv("FOCUSED_TEAM_AUTHOR_WORKERS", "6")))
+
+    def fetch_author_items(record: dict) -> tuple[str, list[dict], Exception | None]:
+        author_name = (record.get("name") or "").strip()
+        if not author_name:
+            return "", [], None
+        try:
+            return author_name, crossref_author_query(author_name, from_date, rows=author_rows), None
+        except Exception as exc:
+            return author_name, [], exc
+
+    if author_records:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=author_workers) as executor:
+            futures = [executor.submit(fetch_author_items, record) for record in author_records]
+            for index, future in enumerate(concurrent.futures.as_completed(futures), 1):
+                author_name, items, exc = future.result()
+                if exc:
+                    print(f"Crossref focused-team author query failed: {author_name}: {exc}", file=sys.stderr)
+                    continue
+                for item in items:
+                    doi = (item.get("DOI") or "").strip()
+                    if not doi or doi.lower() in seen or doi.lower() in candidates:
+                        continue
+                    paper = paper_from_crossref_item(item, today, require_focused_team=True)
+                    if paper:
+                        candidates[doi.lower()] = paper
+                if index % 50 == 0:
+                    print(f"Focused-team author queries checked: {index}/{len(author_records)}")
 
     return sorted(
         candidates.values(),
@@ -1092,10 +1236,10 @@ def issue_block(today: str, papers: list[Paper]) -> str:
     generated_at = datetime.now(TZ).strftime("%Y-%m-%d %H:%M %Z")
     title_zh = "每日论文推送：BGC-Argo、海色/海洋光学、海洋热浪与碳泵"
     title_en = "Daily Paper Push: BGC-Argo, ocean colour/ocean optics, marine heatwaves and carbon pump"
-    summary_zh = f"本期由 GitHub Actions 自动检索生成：Nature/Science 系列优先，其次是用户指定重点期刊，最后补充其他相关期刊；历史去重后保留 {len(papers)} 篇，不超过每日 50 篇上限。"
-    summary_en = f"This issue was generated automatically by GitHub Actions: Nature and Science series first, then the user-defined priority journals, followed by other relevant journals as topical supplements. After deduplication, {len(papers)} papers remain, below the daily limit of 50."
-    trend_zh = "本期重点关注 BGC-Argo、海色遥感/海洋光学、海洋热浪、浮游植物垂向结构和碳泵过程。筛选逻辑不再只限于重点期刊；当高影响力期刊当天新增较少时，会从其他相关期刊补充候选论文，但仍优先保留 BGC-Argo 剖面、POC/NCP、DCM/SCM、PACE/高光谱、吸收/后向散射/IOPs 和 marine heatwave 垂向响应相关研究。"
-    trend_en = "This issue focuses on BGC-Argo, ocean-colour remote sensing, ocean optics, marine heatwaves, vertical phytoplankton structure and carbon-pump processes. The selection is no longer limited to priority journals; when few high-impact papers are newly available, other relevant journals are used as supplements while retaining priority for BGC-Argo profiles, POC/NCP, DCM/SCM, PACE/hyperspectral methods, absorption/backscattering/IOPs, and vertical marine-heatwave responses."
+    summary_zh = f"本期由 GitHub Actions 自动检索生成：Nature/Science 系列优先，其次是用户指定重点期刊，再补充重点关注团队的新论文，最后纳入其他相关期刊；历史去重后保留 {len(papers)} 篇，不超过每日 50 篇上限。"
+    summary_en = f"This issue was generated automatically by GitHub Actions: Nature and Science series first, then the user-defined priority journals, then new papers from the focused team, followed by other relevant journals as topical supplements. After deduplication, {len(papers)} papers remain, below the daily limit of 50."
+    trend_zh = "本期重点关注 BGC-Argo、海色遥感/海洋光学、海洋热浪、浮游植物垂向结构和碳泵过程。筛选逻辑不再只限于重点期刊；当高影响力期刊当天新增较少时，会额外检索重点关注团队作者的新论文，并用海洋、海色/光学和碳循环关键词过滤，再从其他相关期刊补充候选论文。"
+    trend_en = "This issue focuses on BGC-Argo, ocean-colour remote sensing, ocean optics, marine heatwaves, vertical phytoplankton structure and carbon-pump processes. The selection is no longer limited to priority journals; when few high-impact papers are newly available, the workflow also checks focused-team authors and filters those papers with ocean, ocean-colour/optics, and carbon-cycle keywords before adding other relevant journals as supplements."
     docx_name = f"daily_paper_push_{today}.docx"
     dante = dante_card_for(today)
 
@@ -1249,7 +1393,7 @@ def write_docx(today: str, papers: list[Paper]) -> None:
 
     doc.add_heading("今日总览", level=1)
     p = doc.add_paragraph()
-    r = p.add_run(f"历史去重后今日新增 {len(papers)} 篇。排序规则：Nature 系列、Science 系列、其余重点期刊按影响力和主题相关性排序。")
+    r = p.add_run(f"历史去重后今日新增 {len(papers)} 篇。排序规则：Nature 系列、Science 系列、其余重点期刊、重点关注团队、其他相关补充论文。")
     set_font(r)
 
     current_group = None

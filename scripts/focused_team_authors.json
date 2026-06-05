@@ -1,0 +1,2291 @@
+{
+  "label": "focused team",
+  "description": "Author pool used by the daily paper push generator for focused team paper discovery and ranking.",
+  "topic_keywords": [
+    "ocean",
+    "marine",
+    "seawater",
+    "coastal",
+    "estuary",
+    "BGC-Argo",
+    "phytoplankton",
+    "chlorophyll",
+    "ocean colour",
+    "ocean color",
+    "remote sensing",
+    "ocean optics",
+    "bio-optical",
+    "inherent optical properties",
+    "apparent optical properties",
+    "absorption",
+    "backscattering",
+    "carbon pump",
+    "particulate organic carbon",
+    "marine heatwave"
+  ],
+  "authors": [
+    {
+      "name": "A. Bracher",
+      "affiliations": [
+        "University of Bremen"
+      ]
+    },
+    {
+      "name": "Adam Stoer",
+      "affiliations": [
+        "Dalhousie University"
+      ]
+    },
+    {
+      "name": "Aimee R. Neeley",
+      "affiliations": [
+        "National Aeronautics and Space Administration"
+      ]
+    },
+    {
+      "name": "Alessio Papini",
+      "affiliations": [
+        "University of Florence"
+      ]
+    },
+    {
+      "name": "Alexander Hayward",
+      "affiliations": [
+        "Danish Meteorological Institute"
+      ]
+    },
+    {
+      "name": "Alexandre Castagna",
+      "affiliations": [
+        "Ghent University"
+      ]
+    },
+    {
+      "name": "Alexandre Mignot",
+      "affiliations": [
+        "Mercator Ocean"
+      ]
+    },
+    {
+      "name": "Alice Della Penna",
+      "affiliations": [
+        "University of Auckland"
+      ]
+    },
+    {
+      "name": "Alison Chase",
+      "affiliations": [
+        "University of Washington"
+      ]
+    },
+    {
+      "name": "Alistair J. Hobday",
+      "affiliations": [
+        "The Commonwealth Scientific and Industrial Research Organisation"
+      ]
+    },
+    {
+      "name": "Amabile Ferreira",
+      "affiliations": [
+        "University of California San Diego"
+      ]
+    },
+    {
+      "name": "Ana I. Dogliotti",
+      "affiliations": [
+        "National Scientific and Technical Research Council"
+      ]
+    },
+    {
+      "name": "Andrea Corredor Acosta",
+      "affiliations": [
+        "Instituto de Fomento Pesquero (IFOP)"
+      ]
+    },
+    {
+      "name": "Andrea Pisano",
+      "affiliations": [
+        "Italian National Research Council"
+      ]
+    },
+    {
+      "name": "Andrew P. Rees",
+      "affiliations": [
+        "Plymouth Marine Laboratory"
+      ]
+    },
+    {
+      "name": "Angus Atkinson",
+      "affiliations": [
+        "Plymouth Marine Laboratory"
+      ]
+    },
+    {
+      "name": "Anna Hickman",
+      "affiliations": [
+        "University of Southampton"
+      ]
+    },
+    {
+      "name": "Annalisa Di Cicco",
+      "affiliations": [
+        "Italian National Research Council"
+      ]
+    },
+    {
+      "name": "Annick Bricaud",
+      "affiliations": [
+        "French National Centre for Scientific Research"
+      ]
+    },
+    {
+      "name": "Antoine Mangin",
+      "affiliations": [
+        "ACRI"
+      ]
+    },
+    {
+      "name": "Antoine Poteau",
+      "affiliations": [
+        "Sorbonne University"
+      ]
+    },
+    {
+      "name": "Antoine Sciandra",
+      "affiliations": [
+        "French National Centre for Scientific Research"
+      ]
+    },
+    {
+      "name": "Antonio Mannino",
+      "affiliations": [
+        "National Aeronautics and Space Administration"
+      ]
+    },
+    {
+      "name": "Artur Piotr Palacz",
+      "affiliations": [
+        "Institute of Oceanology of the Polish Academy of Sciences (IO PAN)"
+      ]
+    },
+    {
+      "name": "Astrid Bracher",
+      "affiliations": [
+        "Alfred-Wegener-Institut Helmholtz-Zentrum f\u00fcr Polar- und Meeresforschung"
+      ]
+    },
+    {
+      "name": "Atsushi Matsuoka",
+      "affiliations": [
+        "University of New Hampshire"
+      ]
+    },
+    {
+      "name": "Aurea Maria Ciotti",
+      "affiliations": [
+        "University of S\u00e3o Paulo"
+      ]
+    },
+    {
+      "name": "Azharuddin Chachar",
+      "affiliations": [
+        "Shanghai Jiao Tong University"
+      ]
+    },
+    {
+      "name": "Bangqin Huang",
+      "affiliations": [
+        "Xiamen University"
+      ]
+    },
+    {
+      "name": "Beatriz Mourino",
+      "affiliations": [
+        "University of Vigo"
+      ]
+    },
+    {
+      "name": "Bin Wang",
+      "affiliations": [
+        "Second Institute of Oceanography"
+      ]
+    },
+    {
+      "name": "Bingqing Liu",
+      "affiliations": [
+        "University of Louisiana at Lafayette"
+      ]
+    },
+    {
+      "name": "Bingzhang Chen",
+      "affiliations": [
+        "University of Strathclyde"
+      ]
+    },
+    {
+      "name": "Bob Brewin",
+      "affiliations": [
+        "University of Exeter"
+      ]
+    },
+    {
+      "name": "Bozena Wojtasiewicz",
+      "affiliations": [
+        "Australian Institute of Marine Science"
+      ]
+    },
+    {
+      "name": "Brian Ward",
+      "affiliations": [
+        "University of Galway"
+      ]
+    },
+    {
+      "name": "Bror J\u00f6nsson",
+      "affiliations": [
+        "University of New Hampshire"
+      ]
+    },
+    {
+      "name": "Bruno Buongiorno Nardelli",
+      "affiliations": [
+        "Italian National Research Council"
+      ]
+    },
+    {
+      "name": "Bruno Lafrance",
+      "affiliations": [
+        "Communication & Systems - Information Systems (CS SI)"
+      ]
+    },
+    {
+      "name": "Burton H. Jones",
+      "affiliations": [
+        "King Abdullah University of Science and Technology"
+      ]
+    },
+    {
+      "name": "C. Schmechtig",
+      "affiliations": [
+        "French National Centre for Scientific Research"
+      ]
+    },
+    {
+      "name": "Carina Poulin",
+      "affiliations": [
+        "Florida Atlantic University"
+      ]
+    },
+    {
+      "name": "Carol Robinson",
+      "affiliations": [
+        "University of East Anglia"
+      ]
+    },
+    {
+      "name": "Carole A Llewellyn",
+      "affiliations": [
+        "Swansea University"
+      ]
+    },
+    {
+      "name": "Caterina Bergami",
+      "affiliations": [
+        "Italian National Research Council"
+      ]
+    },
+    {
+      "name": "Caterina Nuccio",
+      "affiliations": [
+        "University of Florence"
+      ]
+    },
+    {
+      "name": "Catherine Mitchell",
+      "affiliations": [
+        "Bigelow Laboratory for Ocean Sciences"
+      ]
+    },
+    {
+      "name": "C\u00e9cile Guieu",
+      "affiliations": [
+        "Institut National des Sciences de l'Univers, French National Centre for Scientific Research"
+      ]
+    },
+    {
+      "name": "cf Zhao",
+      "affiliations": [
+        "Ocean University of China"
+      ]
+    },
+    {
+      "name": "Charlotte Begouen Demeaux",
+      "affiliations": [
+        "University of Maine"
+      ]
+    },
+    {
+      "name": "Chen Ge",
+      "affiliations": [
+        "Ocean University of China"
+      ]
+    },
+    {
+      "name": "Chen Ronglong",
+      "affiliations": [
+        "Nanjing University of Information Science and Technology"
+      ]
+    },
+    {
+      "name": "Cheng Sun",
+      "affiliations": [
+        "East China Normal University"
+      ]
+    },
+    {
+      "name": "Cheng Xue",
+      "affiliations": [
+        "University of South Florida"
+      ]
+    },
+    {
+      "name": "Chengcheng Qian",
+      "affiliations": [
+        "University of York"
+      ]
+    },
+    {
+      "name": "Chiara Lapucci",
+      "affiliations": [
+        "Italian National Research Council"
+      ]
+    },
+    {
+      "name": "Chiara Melillo",
+      "affiliations": [
+        "University of Florence"
+      ]
+    },
+    {
+      "name": "Chiara Santinelli",
+      "affiliations": [
+        "Italian National Research Council"
+      ]
+    },
+    {
+      "name": "Christian Hacker",
+      "affiliations": [
+        "University of Exeter"
+      ]
+    },
+    {
+      "name": "Christian Marchese",
+      "affiliations": [
+        "Italian National Research Council"
+      ]
+    },
+    {
+      "name": "Christina Schallenberg",
+      "affiliations": [
+        "The Commonwealth Scientific and Industrial Research Organisation"
+      ]
+    },
+    {
+      "name": "Christophe Penkerc'h",
+      "affiliations": [
+        "French National Centre for Scientific Research"
+      ]
+    },
+    {
+      "name": "Christopher Thomas Johns",
+      "affiliations": [
+        "TUD Dresden University of Technology"
+      ]
+    },
+    {
+      "name": "Chunxue Yang",
+      "affiliations": [
+        "Italian National Research Council"
+      ]
+    },
+    {
+      "name": "Clara R Vives",
+      "affiliations": [
+        "Japan Agency for Marine-Earth Science and Technology"
+      ]
+    },
+    {
+      "name": "Claudia Giardino",
+      "affiliations": [
+        "Italian National Research Council"
+      ]
+    },
+    {
+      "name": "Colin Andrew Stedmon",
+      "affiliations": [
+        "Technical University of Denmark"
+      ]
+    },
+    {
+      "name": "Colleen B. Mouw",
+      "affiliations": [
+        "University of Rhode Island"
+      ]
+    },
+    {
+      "name": "Collin Roesler",
+      "affiliations": [
+        "Bowdoin College"
+      ]
+    },
+    {
+      "name": "Corinne Le Qu\u00e9r\u00e9",
+      "affiliations": [
+        "University of East Anglia"
+      ]
+    },
+    {
+      "name": "Cosimo Solidoro",
+      "affiliations": [
+        "National Institute of Oceanography and Applied Geophysics"
+      ]
+    },
+    {
+      "name": "Cristina Romera-Castillo",
+      "affiliations": [
+        "Institut de Ci\u00e8ncies del Mar"
+      ]
+    },
+    {
+      "name": "Cuizhu Ma",
+      "affiliations": [
+        "Lamont-Doherty Earth Observatory"
+      ]
+    },
+    {
+      "name": "Da-Zhi Wang",
+      "affiliations": [
+        "Xiamen University"
+      ]
+    },
+    {
+      "name": "Dalin Jiang",
+      "affiliations": [
+        "University of Stirling"
+      ]
+    },
+    {
+      "name": "Daniel J. Ford",
+      "affiliations": [
+        "University of Exeter"
+      ]
+    },
+    {
+      "name": "Daoji Li",
+      "affiliations": [
+        "East China Normal University"
+      ]
+    },
+    {
+      "name": "Dat Dinh Ngoc",
+      "affiliations": [
+        "SPACE TECHNOLOGY INSTITUTE"
+      ]
+    },
+    {
+      "name": "David A Siegel",
+      "affiliations": [
+        "University of California, Santa Barbara"
+      ]
+    },
+    {
+      "name": "David Antoine",
+      "affiliations": [
+        "Curtin University"
+      ]
+    },
+    {
+      "name": "David Doxaran",
+      "affiliations": [
+        "Sorbonne University",
+        "Observatoire Oc\u00e9anologique de Villefranche sur Mer"
+      ]
+    },
+    {
+      "name": "David McKee",
+      "affiliations": [
+        "University of Strathclyde"
+      ]
+    },
+    {
+      "name": "Davide Dionisi",
+      "affiliations": [
+        "Italian National Research Council"
+      ]
+    },
+    {
+      "name": "Demory David",
+      "affiliations": [
+        "French National Centre for Scientific Research"
+      ]
+    },
+    {
+      "name": "Deric Gray",
+      "affiliations": [
+        "United States Naval Research Laboratory"
+      ]
+    },
+    {
+      "name": "Deyong Sun",
+      "affiliations": [
+        "Nanjing University of Information Science and Technology"
+      ]
+    },
+    {
+      "name": "Dong Liu",
+      "affiliations": [
+        "Nanjing Institute of Geography and Limnology; Chinese Academy of Sciences"
+      ]
+    },
+    {
+      "name": "Dongyan Liu",
+      "affiliations": [
+        "East China Normal University"
+      ]
+    },
+    {
+      "name": "Edouard Leymarie",
+      "affiliations": [
+        "French National Centre for Scientific Research"
+      ]
+    },
+    {
+      "name": "Elena Torrecilla",
+      "affiliations": [
+        "Spanish National Research Council"
+      ]
+    },
+    {
+      "name": "Emanuele B\u00f6hm",
+      "affiliations": [
+        "Italian National Research Council"
+      ]
+    },
+    {
+      "name": "Emanuele Ciancia",
+      "affiliations": [
+        "Italian National Research Council"
+      ]
+    },
+    {
+      "name": "Emanuele Organelli",
+      "affiliations": [
+        "Italian National Research Council"
+      ]
+    },
+    {
+      "name": "Emilio Maranon",
+      "affiliations": [
+        "University of Vigo"
+      ]
+    },
+    {
+      "name": "Emmanuel Devred",
+      "affiliations": [
+        "Bedford Institute of Oceanography"
+      ]
+    },
+    {
+      "name": "Emmanuel S Boss",
+      "affiliations": [
+        "University of Maine"
+      ]
+    },
+    {
+      "name": "Ergang Lian",
+      "affiliations": [
+        "Taihu Basin & East China Sea Ecological Environment Supervision and Administration Authority, \u2026"
+      ]
+    },
+    {
+      "name": "Fabio Benedetti",
+      "affiliations": [
+        "University of Bern"
+      ]
+    },
+    {
+      "name": "Fabio Maselli",
+      "affiliations": [
+        "Italian National Research Council"
+      ]
+    },
+    {
+      "name": "Fabiola Fani",
+      "affiliations": [
+        "ARPAT, Agenzia Regionale per la protezione ambientale Toscana"
+      ]
+    },
+    {
+      "name": "Fabrizio D\u2019Ortenzio",
+      "affiliations": [
+        "French National Centre for Scientific Research"
+      ]
+    },
+    {
+      "name": "Fang Cao",
+      "affiliations": [
+        "East China Normal University"
+      ]
+    },
+    {
+      "name": "Fang Shen",
+      "affiliations": [
+        "East China Normal University"
+      ]
+    },
+    {
+      "name": "Federica Braga",
+      "affiliations": [
+        "Italian National Research Council"
+      ]
+    },
+    {
+      "name": "Federico Falcini",
+      "affiliations": [
+        "Italian National Research Council"
+      ]
+    },
+    {
+      "name": "Fei Chai",
+      "affiliations": [
+        "University of Maine"
+      ]
+    },
+    {
+      "name": "Francesco Paladini de Mendoza",
+      "affiliations": [
+        "Italian National Research Council"
+      ]
+    },
+    {
+      "name": "Gabriel Navarro",
+      "affiliations": [
+        "Spanish National Research Council"
+      ]
+    },
+    {
+      "name": "Gabriela Torres",
+      "affiliations": [
+        "Alfred-Wegener-Institut Helmholtz-Zentrum f\u00fcr Polar- und Meeresforschung"
+      ]
+    },
+    {
+      "name": "Gavin Tilstone",
+      "affiliations": [
+        "Plymouth Marine Laboratory"
+      ]
+    },
+    {
+      "name": "Gemma Kulk",
+      "affiliations": [
+        "Plymouth Marine Laboratory"
+      ]
+    },
+    {
+      "name": "Gianluca Volpe",
+      "affiliations": [
+        "Italian National Research Council"
+      ]
+    },
+    {
+      "name": "Gianpiero Cossarini",
+      "affiliations": [
+        "National Institute of Oceanography and Applied Geophysics"
+      ]
+    },
+    {
+      "name": "Giorgio Dall'Olmo",
+      "affiliations": [
+        "National Institute of Oceanography and Applied Geophysics"
+      ]
+    },
+    {
+      "name": "Giovanni la Forgia",
+      "affiliations": [
+        "Italian National Research Council"
+      ]
+    },
+    {
+      "name": "Giulia Sent",
+      "affiliations": [
+        "University of Lisbon"
+      ]
+    },
+    {
+      "name": "Glen A Tarran",
+      "affiliations": [
+        "Plymouth Marine Laboratory"
+      ]
+    },
+    {
+      "name": "Gregory C Johnson",
+      "affiliations": [
+        "National Oceanic and Atmospheric Administration"
+      ]
+    },
+    {
+      "name": "Griet Neukermans",
+      "affiliations": [
+        "Ghent University"
+      ]
+    },
+    {
+      "name": "Guangming Zheng",
+      "affiliations": [
+        "National Oceanic and Atmospheric Administration, College Park, MD"
+      ]
+    },
+    {
+      "name": "Guifen Wang",
+      "affiliations": [
+        "Hohai University"
+      ]
+    },
+    {
+      "name": "Guillaume P Morin",
+      "affiliations": [
+        "Magellium"
+      ]
+    },
+    {
+      "name": "Guyu Peng",
+      "affiliations": [
+        "Helmholtz Centre for Environmental Research"
+      ]
+    },
+    {
+      "name": "H\u00e5kon Sandven",
+      "affiliations": [
+        "University of Bergen"
+      ]
+    },
+    {
+      "name": "Hannah Joy-Warren",
+      "affiliations": [
+        "University of Washington"
+      ]
+    },
+    {
+      "name": "Hans J Van Der Woerd",
+      "affiliations": [
+        "Vrije Universiteit Amsterdam"
+      ]
+    },
+    {
+      "name": "Hao Wang",
+      "affiliations": [
+        "Hainan University"
+      ]
+    },
+    {
+      "name": "Haoyu Jiang",
+      "affiliations": [
+        "Shenzhen University"
+      ]
+    },
+    {
+      "name": "Hayley Evers-King",
+      "affiliations": [
+        "European Organisation for the Exploitation of Meteorological Satellites (EUMETSAT)"
+      ]
+    },
+    {
+      "name": "Heidi M Dierssen",
+      "affiliations": [
+        "University of Connecticut"
+      ]
+    },
+    {
+      "name": "Heidi M Sosik",
+      "affiliations": [
+        "Woods Hole Oceanographic Institution"
+      ]
+    },
+    {
+      "name": "H\u00e9lo\u00efse Lavigne",
+      "affiliations": [
+        "Institute of Natural Sciences"
+      ]
+    },
+    {
+      "name": "Henri F. Drake",
+      "affiliations": [
+        "University of California, Irvine"
+      ]
+    },
+    {
+      "name": "Henry C. Bittig",
+      "affiliations": [
+        "Leibniz Institute for Baltic Sea Research Warnem\u00fcnde"
+      ]
+    },
+    {
+      "name": "Herv\u00e9 Claustre",
+      "affiliations": [
+        "French National Centre for Scientific Research"
+      ]
+    },
+    {
+      "name": "Hongtao Duan",
+      "affiliations": [
+        "Chinese Academy of Sciences"
+      ]
+    },
+    {
+      "name": "Hongwuyi Zhao",
+      "affiliations": [
+        "University of Exeter"
+      ]
+    },
+    {
+      "name": "Hongyan Xi",
+      "affiliations": [
+        "Alfred-Wegener-Institut Helmholtz-Zentrum f\u00fcr Polar- und Meeresforschung"
+      ]
+    },
+    {
+      "name": "Hongyu Ji",
+      "affiliations": [
+        "East China Normal University"
+      ]
+    },
+    {
+      "name": "Howard Gordon",
+      "affiliations": [
+        "University of Miami"
+      ]
+    },
+    {
+      "name": "Huahong Shi",
+      "affiliations": [
+        "East China Normal University"
+      ]
+    },
+    {
+      "name": "Hubert Loisel",
+      "affiliations": [
+        "University of the Littoral Opal Coast"
+      ]
+    },
+    {
+      "name": "Hugh L. Macintyre",
+      "affiliations": [
+        "Dalhousie University"
+      ]
+    },
+    {
+      "name": "Hui Wu",
+      "affiliations": [
+        "East China Normal University"
+      ]
+    },
+    {
+      "name": "Huizeng Liu",
+      "affiliations": [
+        "Shenzhen University"
+      ]
+    },
+    {
+      "name": "Iacopo Vona",
+      "affiliations": [
+        "University of Central Florida"
+      ]
+    },
+    {
+      "name": "Isabel Caballero",
+      "affiliations": [
+        "Spanish National Research Council"
+      ]
+    },
+    {
+      "name": "Isabelle Cox",
+      "affiliations": [
+        "University of Exeter"
+      ]
+    },
+    {
+      "name": "Ivona Cetini\u0107",
+      "affiliations": [
+        "National Aeronautics and Space Administration"
+      ]
+    },
+    {
+      "name": "Jae-Hyun Ahn",
+      "affiliations": [
+        "Korea Institute of Ocean Science and Technology"
+      ]
+    },
+    {
+      "name": "Jakob Weis",
+      "affiliations": [
+        "University of Tasmania"
+      ]
+    },
+    {
+      "name": "James Alexander Dingle",
+      "affiliations": [
+        "Plymouth Marine Laboratory"
+      ]
+    },
+    {
+      "name": "James Fox",
+      "affiliations": [
+        "Oregon State University"
+      ]
+    },
+    {
+      "name": "Jamie Shutler",
+      "affiliations": [
+        "University of Exeter"
+      ]
+    },
+    {
+      "name": "Jason R. Graff",
+      "affiliations": [
+        "Oregon State University"
+      ]
+    },
+    {
+      "name": "Jean-Baptiste Romagnan",
+      "affiliations": [
+        "Institut Fran\u00e7ais de Recherche pour l'Exploitation de la Mer"
+      ]
+    },
+    {
+      "name": "Jeremy Werdell",
+      "affiliations": [
+        "National Aeronautics and Space Administration"
+      ]
+    },
+    {
+      "name": "Jianwei Wei",
+      "affiliations": [
+        "NOAA/STAR; Global Science & Technology Inc"
+      ]
+    },
+    {
+      "name": "Jiaxin Chen",
+      "affiliations": [
+        "University of Oxford"
+      ]
+    },
+    {
+      "name": "Joan Llort",
+      "affiliations": [
+        "Institut de Ci\u00e8ncies del Mar"
+      ]
+    },
+    {
+      "name": "Jochen Wollschl\u00e4ger",
+      "affiliations": [
+        "Carl von Ossietzky University of Oldenburg"
+      ]
+    },
+    {
+      "name": "Johan Viljoen",
+      "affiliations": [
+        "University of Exeter"
+      ]
+    },
+    {
+      "name": "John Marra",
+      "affiliations": [
+        "Brooklyn College"
+      ]
+    },
+    {
+      "name": "Joji Ishizaka",
+      "affiliations": [
+        "Nagoya University"
+      ]
+    },
+    {
+      "name": "Jos\u00e9phine Ras",
+      "affiliations": [
+        "Observatoire Oc\u00e9anologique de Villefranche sur Mer"
+      ]
+    },
+    {
+      "name": "Julia Uitz",
+      "affiliations": [
+        "French National Centre for Scientific Research (CNRS), Villefranche-sur-Mer, France"
+      ]
+    },
+    {
+      "name": "Jun Sun",
+      "affiliations": [
+        "Tianjin University of Science and Technology"
+      ]
+    },
+    {
+      "name": "Junfang Lin",
+      "affiliations": [
+        "Plymouth Marine Laboratory"
+      ]
+    },
+    {
+      "name": "Junting Guo",
+      "affiliations": [
+        "Jimei University"
+      ]
+    },
+    {
+      "name": "Junwu Tang",
+      "affiliations": [
+        "Qingdao National Laboratory for Marine Science and Technology"
+      ]
+    },
+    {
+      "name": "Kai Liu",
+      "affiliations": [
+        "University of Birmingham"
+      ]
+    },
+    {
+      "name": "Kailin Liu",
+      "affiliations": [
+        "Xiamen University"
+      ]
+    },
+    {
+      "name": "Kangwen Sun",
+      "affiliations": [
+        "Ocean University of China"
+      ]
+    },
+    {
+      "name": "Karine Leblanc",
+      "affiliations": [
+        "Aix-Marseille University"
+      ]
+    },
+    {
+      "name": "Katja Fennel",
+      "affiliations": [
+        "Dalhousie University"
+      ]
+    },
+    {
+      "name": "Katsiaryna Pabortsava",
+      "affiliations": [
+        "National Oceanography Centre, Southampton"
+      ]
+    },
+    {
+      "name": "Ken Buesseler",
+      "affiliations": [
+        "Woods Hole Oceanographic Institution"
+      ]
+    },
+    {
+      "name": "Kevin George Ruddick",
+      "affiliations": [
+        "Royal Belgian Institute of Natural Sciences (RBINS) BELGIUM"
+      ]
+    },
+    {
+      "name": "Kimberlee Baldry",
+      "affiliations": [
+        "University of Tasmania"
+      ]
+    },
+    {
+      "name": "Knut Stamnes",
+      "affiliations": [
+        "Stevens Institute of Technology"
+      ]
+    },
+    {
+      "name": "Koen Sabbe",
+      "affiliations": [
+        "Ghent University"
+      ]
+    },
+    {
+      "name": "Kun Xue",
+      "affiliations": [
+        "Chinese Academy of Sciences"
+      ]
+    },
+    {
+      "name": "Kyle Turner",
+      "affiliations": [
+        "City College of New York"
+      ]
+    },
+    {
+      "name": "Lachlan Mckinna",
+      "affiliations": [
+        "Go2Q Pty Ltd"
+      ]
+    },
+    {
+      "name": "Landolfi Angela",
+      "affiliations": [
+        "Italian National Research Council"
+      ]
+    },
+    {
+      "name": "Lars-Eric Heimb\u00fcrger-Boavida",
+      "affiliations": [
+        "Mediterranean Institute of Oceanography"
+      ]
+    },
+    {
+      "name": "Laura Zoffoli",
+      "affiliations": [
+        "Italian National Research Council"
+      ]
+    },
+    {
+      "name": "Laurent Bopp",
+      "affiliations": [
+        "Ecole Normale Sup\u00e9rieure de Paris"
+      ]
+    },
+    {
+      "name": "Laurent Coppola",
+      "affiliations": [
+        "Observatoire Oc\u00e9anologique de Villefranche sur Mer"
+      ]
+    },
+    {
+      "name": "Lei Lin",
+      "affiliations": [
+        "Shandong University of Science and Technology"
+      ]
+    },
+    {
+      "name": "Lei Shaohua",
+      "affiliations": [
+        "Nanjing Hydraulic Research Institute"
+      ]
+    },
+    {
+      "name": "Lenka Kopta s\u030c ikov\u00e1",
+      "affiliations": [
+        "University of Edinburgh"
+      ]
+    },
+    {
+      "name": "L\u00e9o Lacour",
+      "affiliations": [
+        "University of Tasmania"
+      ]
+    },
+    {
+      "name": "Leonid Sokoletsky",
+      "affiliations": [
+        "East China Normal University"
+      ]
+    },
+    {
+      "name": "Lesley Clementson",
+      "affiliations": [
+        "The Commonwealth Scientific and Industrial Research Organisation"
+      ]
+    },
+    {
+      "name": "Lian Feng",
+      "affiliations": [
+        "Wuhan University"
+      ]
+    },
+    {
+      "name": "Lijing Cheng",
+      "affiliations": [
+        "Institute of Atmospheric Physics, Chinese Academy of Sciences"
+      ]
+    },
+    {
+      "name": "Lilian A. Krug",
+      "affiliations": [
+        "Centro de Ci\u00eancias do Mar"
+      ]
+    },
+    {
+      "name": "Lin Deng",
+      "affiliations": [
+        "Sun Yat-sen University"
+      ]
+    },
+    {
+      "name": "Lionel Arteaga",
+      "affiliations": [
+        "National Aeronautics and Space Administration"
+      ]
+    },
+    {
+      "name": "Lionel Guidi",
+      "affiliations": [
+        "French National Centre for Scientific Research"
+      ]
+    },
+    {
+      "name": "Lixia Zhao",
+      "affiliations": [
+        "East China Normal University"
+      ]
+    },
+    {
+      "name": "Louis Prieur",
+      "affiliations": [
+        "Observatoire Oc\u00e9anologique de Villefranche sur Mer"
+      ]
+    },
+    {
+      "name": "Louis Terrats",
+      "affiliations": [
+        "Sorbonne University"
+      ]
+    },
+    {
+      "name": "Luca Massi",
+      "affiliations": [
+        "University of Florence"
+      ]
+    },
+    {
+      "name": "Luca Polimene",
+      "affiliations": [
+        "European Commission"
+      ]
+    },
+    {
+      "name": "Ludovica Sartini",
+      "affiliations": [
+        "RINA Consulting"
+      ]
+    },
+    {
+      "name": "Lufei Zheng",
+      "affiliations": [
+        "Xiamen University"
+      ]
+    },
+    {
+      "name": "Luigi Carlo Lazzara",
+      "affiliations": [
+        "University of Florence"
+      ]
+    },
+    {
+      "name": "Luis Gimenez",
+      "affiliations": [
+        "Bangor University"
+      ]
+    },
+    {
+      "name": "M. Suhyb Salama",
+      "affiliations": [
+        "University of Twente"
+      ]
+    },
+    {
+      "name": "Mads S Thomsen",
+      "affiliations": [
+        "University of Canterbury"
+      ]
+    },
+    {
+      "name": "Malika Kheireddine",
+      "affiliations": [
+        "King Abdullah University of Science and Technology"
+      ]
+    },
+    {
+      "name": "Marco Bellacicco",
+      "affiliations": [
+        "Italian National Research Council"
+      ]
+    },
+    {
+      "name": "Marco Reale",
+      "affiliations": [
+        "National Institute of Oceanography and Applied Geophysics"
+      ]
+    },
+    {
+      "name": "Marco Talone",
+      "affiliations": [
+        "Institut de Ci\u00e8ncies del Mar"
+      ]
+    },
+    {
+      "name": "Maria Tzortziou",
+      "affiliations": [
+        "City College of New York"
+      ]
+    },
+    {
+      "name": "Marie Barbieux",
+      "affiliations": [
+        "Sorbonne University"
+      ]
+    },
+    {
+      "name": "Marie-Fanny Racault",
+      "affiliations": [
+        "University of East Anglia"
+      ]
+    },
+    {
+      "name": "Marin Cornec",
+      "affiliations": [
+        "National Oceanic and Atmospheric Administration"
+      ]
+    },
+    {
+      "name": "Mario Miranda Montenegro",
+      "affiliations": [
+        "Universidad de Panam\u00e1"
+      ]
+    },
+    {
+      "name": "Marlon R. Lewis",
+      "affiliations": [
+        "Dalhousie University"
+      ]
+    },
+    {
+      "name": "Martin Hieronymi",
+      "affiliations": [
+        "Helmholtz-Zentrum Hereon"
+      ]
+    },
+    {
+      "name": "Mathieu Ardyna",
+      "affiliations": [
+        "French National Centre for Scientific Research"
+      ]
+    },
+    {
+      "name": "Mathieu Rembauville",
+      "affiliations": [
+        "\u00c9cole Normale Sup\u00e9rieure de Lyon"
+      ]
+    },
+    {
+      "name": "Matthieu Bressac",
+      "affiliations": [
+        "CNRS"
+      ]
+    },
+    {
+      "name": "Maureen Kapute Mzuzu",
+      "affiliations": [
+        "The Catholic University of Malawi"
+      ]
+    },
+    {
+      "name": "Maurizio Ribera d'Alcala",
+      "affiliations": [
+        "Stazione Zoologica Anton Dohrn"
+      ]
+    },
+    {
+      "name": "Meike Vogt",
+      "affiliations": [
+        "ETH Zurich"
+      ]
+    },
+    {
+      "name": "Mengfan He",
+      "affiliations": [
+        "East China Normal University"
+      ]
+    },
+    {
+      "name": "Michael Twardowski",
+      "affiliations": [
+        "Harbor Branch Oceanographic Institute, Florida Atlantic University"
+      ]
+    },
+    {
+      "name": "Ming Yue",
+      "affiliations": [
+        "East China Normal University"
+      ]
+    },
+    {
+      "name": "Mingkun Liu",
+      "affiliations": [
+        "Ocean University of China"
+      ]
+    },
+    {
+      "name": "Mingqiang Fang",
+      "affiliations": [
+        "Ocean University of China"
+      ]
+    },
+    {
+      "name": "Mingzhu Fu",
+      "affiliations": [
+        "First Institute of Oceanography MNR China"
+      ]
+    },
+    {
+      "name": "Minhan Dai",
+      "affiliations": [
+        "Xiamen University"
+      ]
+    },
+    {
+      "name": "Minyu Wang",
+      "affiliations": [
+        "Zhejiang University"
+      ]
+    },
+    {
+      "name": "Monika Soja-Wozniak",
+      "affiliations": [
+        "University of Amsterdam"
+      ]
+    },
+    {
+      "name": "Nasiha Jahirhussain",
+      "affiliations": [
+        "University of Victoria"
+      ]
+    },
+    {
+      "name": "Nathan Briggs",
+      "affiliations": [
+        "National Oceanography Centre, Southampton"
+      ]
+    },
+    {
+      "name": "Nianzhi Jiao",
+      "affiliations": [
+        "Xiamen University"
+      ]
+    },
+    {
+      "name": "Nicolas Gruber",
+      "affiliations": [
+        "ETH Zurich"
+      ]
+    },
+    {
+      "name": "Nicolas Mayot",
+      "affiliations": [
+        "Villefranche Oceanographic Laboratory"
+      ]
+    },
+    {
+      "name": "Nikolaos D. Zarokanellos",
+      "affiliations": [
+        "Balearic Islands Coastal Observing and Forecasting System (SOCIB)"
+      ]
+    },
+    {
+      "name": "Nina Schuback",
+      "affiliations": [
+        "Swiss Federal Institute of Technology in Lausanne"
+      ]
+    },
+    {
+      "name": "Norman B. Nelson",
+      "affiliations": [
+        "University of California, Santa Barbara"
+      ]
+    },
+    {
+      "name": "Oliver Zielinski",
+      "affiliations": [
+        "Helmholtz-Zentrum Hereon"
+      ]
+    },
+    {
+      "name": "Orens Pasqueron de Fommervault",
+      "affiliations": [
+        "UNESCO"
+      ]
+    },
+    {
+      "name": "Oscar Schofield",
+      "affiliations": [
+        "Rutgers, The State University of New Jersey"
+      ]
+    },
+    {
+      "name": "Osvaldo Ulloa",
+      "affiliations": [
+        "University of Concepci\u00f3n"
+      ]
+    },
+    {
+      "name": "Palanisamy Shanmugam",
+      "affiliations": [
+        "Indian Institute of Technology Madras"
+      ]
+    },
+    {
+      "name": "Peng Chen",
+      "affiliations": [
+        "Second Institute of Oceanography"
+      ]
+    },
+    {
+      "name": "Philip W. Boyd",
+      "affiliations": [
+        "University of Tasmania"
+      ]
+    },
+    {
+      "name": "Pierre Gernez",
+      "affiliations": [
+        "Nantes Universit\u00e9"
+      ]
+    },
+    {
+      "name": "Qi Zheng",
+      "affiliations": [
+        "University of Exeter"
+      ]
+    },
+    {
+      "name": "Qiang Li",
+      "affiliations": [
+        "Chinese Academy of Sciences"
+      ]
+    },
+    {
+      "name": "Qing Zhu",
+      "affiliations": [
+        "Xiamen University"
+      ]
+    },
+    {
+      "name": "Quinten Vanhellemont",
+      "affiliations": [
+        "Institute of Natural Sciences"
+      ]
+    },
+    {
+      "name": "Rafael Gon\u00e7alves-Araujo",
+      "affiliations": [
+        "Technical University of Denmark"
+      ]
+    },
+    {
+      "name": "Rafael Rasse",
+      "affiliations": [
+        "Sorbonne University"
+      ]
+    },
+    {
+      "name": "Rapha\u00eblle Sauz\u00e8de",
+      "affiliations": [
+        "Institut de la mer de Villefranche"
+      ]
+    },
+    {
+      "name": "Rebekah Shunmugapandi",
+      "affiliations": [
+        "Bigelow Laboratory for Ocean Sciences"
+      ]
+    },
+    {
+      "name": "Renhu Li",
+      "affiliations": [
+        "East China Normal University"
+      ]
+    },
+    {
+      "name": "Renosh P. R.",
+      "affiliations": [
+        "Observatoire Oc\u00e9anologique de Villefranche sur Mer"
+      ]
+    },
+    {
+      "name": "Riccardo Droghei",
+      "affiliations": [
+        "Italian National Research Council"
+      ]
+    },
+    {
+      "name": "Richard Bellerby",
+      "affiliations": [
+        "Norwegian Institute for Water Research"
+      ]
+    },
+    {
+      "name": "Richard Semp\u00e9r\u00e9",
+      "affiliations": [
+        "CNRS"
+      ]
+    },
+    {
+      "name": "Ritabrata Chowdhury",
+      "affiliations": [
+        "University of Cambridge"
+      ]
+    },
+    {
+      "name": "Robert Strzepek",
+      "affiliations": [
+        "University of Tasmania"
+      ]
+    },
+    {
+      "name": "Rosabruna La Ferla",
+      "affiliations": [
+        "Italian National Research Council"
+      ]
+    },
+    {
+      "name": "Rosalia Santoleri",
+      "affiliations": [
+        "Italian National Research Council"
+      ]
+    },
+    {
+      "name": "Rossella Pistocchi",
+      "affiliations": [
+        "University of Bologna"
+      ]
+    },
+    {
+      "name": "Roy El Hourany",
+      "affiliations": [
+        "University of the Littoral Opal Coast"
+      ]
+    },
+    {
+      "name": "R\u00fcdiger R\u00f6ttgers",
+      "affiliations": [
+        "Helmholtz-Zentrum Hereon"
+      ]
+    },
+    {
+      "name": "Ruth Airs",
+      "affiliations": [
+        "Plymouth Marine Laboratory"
+      ]
+    },
+    {
+      "name": "Salvatore Marullo",
+      "affiliations": [
+        "ENEA"
+      ]
+    },
+    {
+      "name": "Sam De Decker",
+      "affiliations": [
+        "Ghent University"
+      ]
+    },
+    {
+      "name": "Sarah L. C. Giering",
+      "affiliations": [
+        "National Oceanography Centre, Southampton"
+      ]
+    },
+    {
+      "name": "Sasha Jane Kramer",
+      "affiliations": [
+        "Boston University"
+      ]
+    },
+    {
+      "name": "Severine Alvain",
+      "affiliations": [
+        "French National Centre for Scientific Research"
+      ]
+    },
+    {
+      "name": "Shangbo Yang",
+      "affiliations": [
+        "Guangzhou University"
+      ]
+    },
+    {
+      "name": "Shenglei Wang",
+      "affiliations": [
+        "Aerospace Information Research Institute Chinese Academy of Sciences"
+      ]
+    },
+    {
+      "name": "Shengqiang Wang",
+      "affiliations": [
+        "Nanjing University of Information Science and Technology"
+      ]
+    },
+    {
+      "name": "Shuang Long",
+      "affiliations": [
+        "Ocean University of China"
+      ]
+    },
+    {
+      "name": "Shubha Sathyendranath",
+      "affiliations": [
+        "Plymouth Marine Laboratory"
+      ]
+    },
+    {
+      "name": "Shuguo Chen",
+      "affiliations": [
+        "Ocean University of China"
+      ]
+    },
+    {
+      "name": "Shuibo Hu",
+      "affiliations": [
+        "Chinese Academy of Sciences"
+      ]
+    },
+    {
+      "name": "Shujin Guo",
+      "affiliations": [
+        "Chinese Academy of Sciences"
+      ]
+    },
+    {
+      "name": "Shun Bi",
+      "affiliations": [
+        "Nanjing Institute of Geography and Limnology"
+      ]
+    },
+    {
+      "name": "Shuqun Song",
+      "affiliations": [
+        "Chinese Academy of Sciences"
+      ]
+    },
+    {
+      "name": "Silvia Becagli",
+      "affiliations": [
+        "University of Florence"
+      ]
+    },
+    {
+      "name": "Simon B\u00e9langer",
+      "affiliations": [
+        "Universit\u00e9 du Qu\u00e9bec \u00e0 Rimouski UQAR"
+      ]
+    },
+    {
+      "name": "Simona Retelletti Brogi",
+      "affiliations": [
+        "National Institute of Oceanography and Applied Geophysics"
+      ]
+    },
+    {
+      "name": "Simone Colella",
+      "affiliations": [
+        "Italian National Research Council"
+      ]
+    },
+    {
+      "name": "Simone Toller",
+      "affiliations": [
+        "Italian National Research Council"
+      ]
+    },
+    {
+      "name": "S\u0142awomir B. Wo\u017aniak",
+      "affiliations": [
+        "Institute of Oceanology Polish Academy of Sciences"
+      ]
+    },
+    {
+      "name": "Songyu Chen",
+      "affiliations": [
+        "East China Normal University"
+      ]
+    },
+    {
+      "name": "Stefan G. H. Simis",
+      "affiliations": [
+        "Plymouth Marine Laboratory"
+      ]
+    },
+    {
+      "name": "Stefano Ciavatta",
+      "affiliations": [
+        "Mercator Ocean"
+      ]
+    },
+    {
+      "name": "Stefano Salon",
+      "affiliations": [
+        "National Institute of Oceanography and Applied Geophysics"
+      ]
+    },
+    {
+      "name": "Stephanie Dutkiewicz",
+      "affiliations": [
+        "Massachusetts Institute of Technology"
+      ]
+    },
+    {
+      "name": "Stephanie Henson",
+      "affiliations": [
+        "National Oceanography Centre, Southampton"
+      ]
+    },
+    {
+      "name": "Steve Groom",
+      "affiliations": [
+        "Plymouth Marine Laboratory"
+      ]
+    },
+    {
+      "name": "Surya Prakash Tiwari",
+      "affiliations": [
+        "VIT Chennai"
+      ]
+    },
+    {
+      "name": "Susanne Craig",
+      "affiliations": [
+        "National Aeronautics and Space Administration"
+      ]
+    },
+    {
+      "name": "Sylvie Pouliquen",
+      "affiliations": [
+        "Institut Fran\u00e7ais de Recherche pour l'Exploitation de la Mer"
+      ]
+    },
+    {
+      "name": "T. Lamont",
+      "affiliations": [
+        "Department of Forestry Fisheries and the Environment Cape Town, South Africa"
+      ]
+    },
+    {
+      "name": "Takafumi Hirata",
+      "affiliations": [
+        "Hokkaido University"
+      ]
+    },
+    {
+      "name": "Thomas Fr\u00f6licher",
+      "affiliations": [
+        "University of Bern"
+      ]
+    },
+    {
+      "name": "Thomas Jackson",
+      "affiliations": [
+        "European Organisation for the Exploitation of Meteorological Satellites (EUMETSAT)"
+      ]
+    },
+    {
+      "name": "Tianfei Xue",
+      "affiliations": [
+        "GEOMAR Helmholtz Centre for Ocean Research Kiel"
+      ]
+    },
+    {
+      "name": "Tihomir Kostadinov",
+      "affiliations": [
+        "California State University, San Marcos"
+      ]
+    },
+    {
+      "name": "Timothy S Moore",
+      "affiliations": [
+        "Florida Atlantic University"
+      ]
+    },
+    {
+      "name": "Timothy Smyth",
+      "affiliations": [
+        "Plymouth Marine Laboratory"
+      ]
+    },
+    {
+      "name": "Tinglu Zhang",
+      "affiliations": [
+        "Ocean University of China"
+      ]
+    },
+    {
+      "name": "Tom Jordan",
+      "affiliations": [
+        "Plymouth Marine Laboratory"
+      ]
+    },
+    {
+      "name": "Tristan Harmel",
+      "affiliations": [
+        "Magellium"
+      ]
+    },
+    {
+      "name": "Tristan Petit",
+      "affiliations": [
+        "Institut Fran\u00e7ais de Recherche pour l'Exploitation de la Mer"
+      ]
+    },
+    {
+      "name": "Tvs Udaya Bhaskar",
+      "affiliations": [
+        "Indian National Centre for Ocean Information Services"
+      ]
+    },
+    {
+      "name": "Vanda Brotas",
+      "affiliations": [
+        "University of Lisbon"
+      ]
+    },
+    {
+      "name": "Victor Martinez-Vicente",
+      "affiliations": [
+        "Plymouth Marine Laboratory"
+      ]
+    },
+    {
+      "name": "Vincent Le Fouest",
+      "affiliations": [
+        "La Rochelle Universit\u00e9"
+      ]
+    },
+    {
+      "name": "Vincenzo de Toma",
+      "affiliations": [
+        "Italian National Research Council"
+      ]
+    },
+    {
+      "name": "Vincenzo Vellucci",
+      "affiliations": [
+        "Sorbonne University"
+      ]
+    },
+    {
+      "name": "Violeta Sanjuan Calzado",
+      "affiliations": [
+        "Centre for Maritime Research and Experimentation (CMRE)"
+      ]
+    },
+    {
+      "name": "Virginie Thierry",
+      "affiliations": [
+        "Institut Fran\u00e7ais de Recherche pour l'Exploitation de la Mer"
+      ]
+    },
+    {
+      "name": "Vittorio E. Brando",
+      "affiliations": [
+        "Italian National Research Council"
+      ]
+    },
+    {
+      "name": "Wang Yongchao",
+      "affiliations": [
+        "Xiamen University"
+      ]
+    },
+    {
+      "name": "Wayne H. Slade",
+      "affiliations": [
+        "Florida Atlantic University"
+      ]
+    },
+    {
+      "name": "Wei-Jun Cai",
+      "affiliations": [
+        "University of Delaware"
+      ]
+    },
+    {
+      "name": "Wei Luo",
+      "affiliations": [
+        "Gannan Normal University"
+      ]
+    },
+    {
+      "name": "Weiguo Zhang",
+      "affiliations": [
+        "East China Normal University"
+      ]
+    },
+    {
+      "name": "Wen Zhou",
+      "affiliations": [
+        "Chinese Academy of Sciences"
+      ]
+    },
+    {
+      "name": "Wendi Zheng",
+      "affiliations": [
+        "Chinese Academy of Sciences"
+      ]
+    },
+    {
+      "name": "Wendian Lai",
+      "affiliations": [
+        "Xiamen University"
+      ]
+    },
+    {
+      "name": "Wenju Cai",
+      "affiliations": [
+        "The Commonwealth Scientific and Industrial Research Organisation"
+      ]
+    },
+    {
+      "name": "Wenli Gao",
+      "affiliations": [
+        "East China Normal University"
+      ]
+    },
+    {
+      "name": "Wenlong Xu",
+      "affiliations": [
+        "Jiangsu University of Science and Technology"
+      ]
+    },
+    {
+      "name": "Wenxia Zhang",
+      "affiliations": [
+        "Second Institute of Oceanography, Ministry of Natural Resources"
+      ]
+    },
+    {
+      "name": "Wenxiu Teng",
+      "affiliations": [
+        "University of Massachusetts Amherst"
+      ]
+    },
+    {
+      "name": "William Balch",
+      "affiliations": [
+        "Bigelow Laboratory for Ocean Sciences"
+      ]
+    },
+    {
+      "name": "William Moutier",
+      "affiliations": [
+        "Royal Meteorological Institute of Belgium"
+      ]
+    },
+    {
+      "name": "Wim Vyverman",
+      "affiliations": [
+        "Ghent University"
+      ]
+    },
+    {
+      "name": "Xianqiang He",
+      "affiliations": [
+        "Second Institute of Oceanography"
+      ]
+    },
+    {
+      "name": "Xiaodao Wei",
+      "affiliations": [
+        "East China Normal University"
+      ]
+    },
+    {
+      "name": "Xiaodong Zhang",
+      "affiliations": [
+        "University of Southern Mississippi"
+      ]
+    },
+    {
+      "name": "Xiaofeng Li",
+      "affiliations": [
+        "Institute of Oceanology"
+      ]
+    },
+    {
+      "name": "Xiaogang Xing",
+      "affiliations": [
+        "Second Institute of Oceanography"
+      ]
+    },
+    {
+      "name": "Xiaohan Liu",
+      "affiliations": [
+        "Plymouth Marine Laboratory"
+      ]
+    },
+    {
+      "name": "Xiaoli Wan",
+      "affiliations": [
+        "Tongji University"
+      ]
+    },
+    {
+      "name": "Xiaolong Yu",
+      "affiliations": [
+        "Xiamen University"
+      ]
+    },
+    {
+      "name": "Xiaoyan Chen",
+      "affiliations": [
+        "Second Institute of Oceanography"
+      ]
+    },
+    {
+      "name": "Xin Liu",
+      "affiliations": [
+        "Xiamen University"
+      ]
+    },
+    {
+      "name": "Xos\u00e9 Anxelu G. Mor\u00e1n",
+      "affiliations": [
+        "Instituto Espa\u00f1ol de Oceanografia"
+      ]
+    },
+    {
+      "name": "Xu Li",
+      "affiliations": [
+        "Xiamen University"
+      ]
+    },
+    {
+      "name": "Xuejiao Hou",
+      "affiliations": [
+        "Wuhan University"
+      ]
+    },
+    {
+      "name": "Xuerong Sun",
+      "affiliations": [
+        "University of Exeter"
+      ]
+    },
+    {
+      "name": "Yan Bai",
+      "affiliations": [
+        "Second Institute of Oceanography"
+      ]
+    },
+    {
+      "name": "Yannick Huot",
+      "affiliations": [
+        "Universit\u00e9 de Sherbrooke"
+      ]
+    },
+    {
+      "name": "Yanqun Pan",
+      "affiliations": [
+        "ARCTUS"
+      ]
+    },
+    {
+      "name": "Yanru He",
+      "affiliations": [
+        "National Marine Environmental Forecasting Center"
+      ]
+    },
+    {
+      "name": "Yongqiang Shi",
+      "affiliations": [
+        "Chinese Academy of Fishery Sciences"
+      ]
+    },
+    {
+      "name": "Youhei Yamashita",
+      "affiliations": [
+        "Hokkaido University"
+      ]
+    },
+    {
+      "name": "Yuan Zhang",
+      "affiliations": [
+        "China University of Mining and Technology"
+      ]
+    },
+    {
+      "name": "Yuanheng Xiong",
+      "affiliations": [
+        "University of Southern Mississippi"
+      ]
+    },
+    {
+      "name": "Yuanyuan Li",
+      "affiliations": [
+        "East China Normal University"
+      ]
+    },
+    {
+      "name": "Yueqi Wang",
+      "affiliations": [
+        "Chinese Academy of Sciences"
+      ]
+    },
+    {
+      "name": "Yulun Wu",
+      "affiliations": [
+        "University of Toronto"
+      ]
+    },
+    {
+      "name": "Yuntao Wang",
+      "affiliations": [
+        "Second Institute of Oceanography"
+      ]
+    },
+    {
+      "name": "Zang Chuankai",
+      "affiliations": [
+        "East China Normal University"
+      ]
+    },
+    {
+      "name": "Zenghong Liu",
+      "affiliations": [
+        "The Second Institute of Oceanography, Ministry of Natural Resources"
+      ]
+    },
+    {
+      "name": "Zhaoxin Li",
+      "affiliations": [
+        "East China Normal University"
+      ]
+    },
+    {
+      "name": "Zhenghao Li",
+      "affiliations": [
+        "Nanjing University of Information Science and Technology"
+      ]
+    },
+    {
+      "name": "Zhenjia Zhou",
+      "affiliations": [
+        "Nagoya University"
+      ]
+    },
+    {
+      "name": "Zhixuan Feng",
+      "affiliations": [
+        "East China Normal University"
+      ]
+    },
+    {
+      "name": "Zhongfeng Qiu",
+      "affiliations": [
+        "Nanjing University of Information Science and Technology"
+      ]
+    },
+    {
+      "name": "Zhongping Lee",
+      "affiliations": [
+        "University of Massachusetts Boston"
+      ]
+    }
+  ]
+}
