@@ -56,10 +56,26 @@ TOPIC_TERMS = [
     "ocean optics absorption backscattering",
     "ocean optical absorption",
     "marine inherent optical properties",
+    "in situ inherent optical properties ocean",
+    "in situ apparent optical properties ocean",
+    "in situ IOP AOP ocean optics",
+    "seawater optical properties",
+    "seawater angular scattering function",
+    "seawater backscattering particles",
     "ocean IOP absorption backscattering",
+    "ocean AOP remote sensing reflectance",
+    "apparent optical properties ocean color",
     "particulate backscattering ocean",
     "particle backscattering ocean",
+    "very small particles seawater backscattering",
     "phytoplankton absorption ocean",
+    "particle absorption coefficient ocean",
+    "particulate absorption coefficient ocean",
+    "particulate absorption coefficients hyperspectral",
+    "hyperspectral particulate absorption coefficients",
+    "IEEE TGRS hyperspectral particulate absorption coefficients",
+    "mesoscale eddies particulate absorption coefficients",
+    "hyperspectral ocean optics absorption",
     "colored dissolved organic matter absorption ocean",
     "CDOM absorption ocean",
     "absorption coefficient ocean color",
@@ -77,6 +93,15 @@ TOPIC_TERMS = [
     "vertical phytoplankton ocean",
     "deep chlorophyll maximum ocean",
     "particulate organic carbon ocean bio-optics",
+    "particulate organic carbon satellites Argo floats",
+    "satellite ship Argo particulate organic carbon",
+    "consistent estimates particulate organic carbon satellites ships Argo floats",
+    "surface ocean chlorophyll trend",
+    "surface ocean chlorophyll climate",
+    "surface ocean chlorophyll green get greener blue bluer",
+    "ocean chlorophyll warming trend",
+    "long term trends mesoscale eddies hyperspectral particulate absorption coefficients",
+    "backscattering particles sizes 0.2 seawater",
 ]
 
 NATURE_SCIENCE_HINTS = [
@@ -172,13 +197,22 @@ RELEVANCE_TERMS = {
     "bio-optical": 5,
     "inherent optical properties": 6,
     "apparent optical properties": 5,
+    "apparent optical property": 5,
     "iop": 4,
     "iops": 4,
+    "aop": 4,
+    "aops": 4,
+    "in situ": 2,
+    "in-situ": 2,
     "optical absorption": 6,
     "light absorption": 4,
     "absorption coefficient": 6,
+    "absorption coefficients": 6,
     "phytoplankton absorption": 6,
     "particulate absorption": 5,
+    "particulate absorption coefficient": 7,
+    "particulate absorption coefficients": 7,
+    "particle absorption": 5,
     "cdom absorption": 5,
     "colored dissolved organic matter": 5,
     "coloured dissolved organic matter": 5,
@@ -187,9 +221,13 @@ RELEVANCE_TERMS = {
     "backscattering coefficient": 6,
     "particulate backscattering": 6,
     "particle backscattering": 5,
+    "angular scattering": 6,
+    "volume scattering": 5,
+    "very small particles": 5,
     "bbp": 5,
     "aph": 4,
     "adg": 4,
+    "vsp": 4,
     "remote sensing reflectance": 5,
     "rrs": 4,
     "diffuse attenuation": 5,
@@ -199,6 +237,7 @@ RELEVANCE_TERMS = {
     "remote sensing": 4,
     "satellite": 3,
     "hyperspectral": 4,
+    "surface ocean chlorophyll": 6,
     "marine heatwave": 7,
     "marine heatwaves": 7,
     "temperature sensitivity": 3,
@@ -255,6 +294,54 @@ DANTE_CARDS = [
         "explanation_zh": "这句可理解为“想想你们的本源”。在尤利西斯的演说中，它引出人应追求德性与知识的名句。",
         "explanation_en": "The line asks listeners to consider their origin or nature. In Ulysses' speech, it prepares the call to pursue virtue and knowledge.",
     },
+    {
+        "phrase": "Libertà va cercando, ch'è sì cara.",
+        "source": "Dante, Commedia, Purgatorio I, 71; Italian original from Kalliope",
+        "explanation_zh": "这句说“他正在寻找自由，而自由如此珍贵”。在《炼狱篇》开端，它把自由写成重新上升和净化的核心目标。",
+        "explanation_en": "The line says that the traveller is seeking freedom, and that freedom is precious. At the opening of Purgatorio, it frames ascent as a search for liberation.",
+    },
+    {
+        "phrase": "Puro e disposto a salire a le stelle.",
+        "source": "Dante, Commedia, Purgatorio XXXIII, 145; Italian original from Kalliope",
+        "explanation_zh": "这是《炼狱篇》的结尾，意思是“纯净并准备好上升到群星”。它常被理解为经历修正之后重新拥有前行能力。",
+        "explanation_en": "This closing line of Purgatorio means that the speaker is purified and ready to rise to the stars. It suggests restored readiness after difficult correction.",
+    },
+    {
+        "phrase": "Trasumanar significar per verba non si poria.",
+        "source": "Dante, Commedia, Paradiso I, 70-71; Italian original from Kalliope",
+        "explanation_zh": "这句说“超越人的状态，不能完全用语言说明”。它表达经验超过普通语言边界时的困难。",
+        "explanation_en": "The line says that going beyond the human condition cannot fully be expressed in words. It points to experience at the edge of language.",
+    },
+    {
+        "phrase": "Non ragioniam di lor, ma guarda e passa.",
+        "source": "Dante, Commedia, Inferno III, 51; Italian original from Kalliope",
+        "explanation_zh": "这句大意是“不必谈论他们，只看一眼，然后走过去”。现代语境中常用来提醒自己不要被无意义的噪声拖住。",
+        "explanation_en": "The line means, roughly, do not dwell on them; look and pass on. It is often used as advice not to be trapped by empty noise.",
+    },
+    {
+        "phrase": "Ahi serva Italia, di dolore ostello.",
+        "source": "Dante, Commedia, Purgatorio VI, 76; Italian original from Kalliope",
+        "explanation_zh": "这是但丁对意大利政治分裂的痛切感叹，意思近于“唉，受奴役的意大利，痛苦的居所”。",
+        "explanation_en": "This is Dante's bitter lament over political division in Italy, calling the country a dwelling place of sorrow.",
+    },
+    {
+        "phrase": "Tu proverai sì come sa di sale lo pane altrui.",
+        "source": "Dante, Commedia, Paradiso XVII, 58-59; Italian original from Kalliope",
+        "explanation_zh": "这句说“你会尝到别人的面包有多咸”，常被解读为流亡和寄人篱下的辛酸。",
+        "explanation_en": "The line says that one will learn how salty another person's bread tastes, a vivid image of exile and dependence.",
+    },
+    {
+        "phrase": "Tanto gentile e tanto onesta pare.",
+        "source": "Dante, Vita nuova XXVI; Italian original tradition",
+        "explanation_zh": "这是但丁《新生》中写贝雅特丽齐的名句，强调一种安静、端庄而照亮周围的气质。",
+        "explanation_en": "This line from Vita nuova describes Beatrice as appearing gentle and noble, with a quiet presence that changes the atmosphere around her.",
+    },
+    {
+        "phrase": "Per me si va ne la città dolente.",
+        "source": "Dante, Commedia, Inferno III, 1; Italian original from Kalliope",
+        "explanation_zh": "这是地狱门铭的开头，意为“由我进入痛苦之城”。它比后面的“放弃希望”更像一段严峻旅程的入口。",
+        "explanation_en": "This is the opening of the inscription over Hell's gate: through me one enters the city of sorrow. It marks the threshold of a hard journey.",
+    },
 ]
 MARINE_CONTEXT_TERMS = [
     "ocean",
@@ -308,12 +395,21 @@ DOMAIN_CONTEXT_TERMS = [
     "bio-optical",
     "inherent optical properties",
     "apparent optical properties",
+    "apparent optical property",
     "iop",
     "iops",
+    "aop",
+    "aops",
+    "in situ",
+    "in-situ",
     "optical absorption",
     "absorption coefficient",
+    "absorption coefficients",
     "phytoplankton absorption",
     "particulate absorption",
+    "particulate absorption coefficient",
+    "particulate absorption coefficients",
+    "particle absorption",
     "cdom absorption",
     "colored dissolved organic matter",
     "coloured dissolved organic matter",
@@ -321,7 +417,12 @@ DOMAIN_CONTEXT_TERMS = [
     "backscattering",
     "backscattering coefficient",
     "particulate backscattering",
+    "particle backscattering",
+    "angular scattering",
+    "volume scattering",
+    "very small particles",
     "bbp",
+    "vsp",
     "remote sensing reflectance",
     "rrs",
     "diffuse attenuation",
@@ -467,7 +568,7 @@ def relevance_score(title: str, abstract: str) -> int:
 
 
 def term_present(term: str, haystack: str) -> bool:
-    if term in {"iop", "iops", "bbp", "aph", "adg", "rrs", "kd"}:
+    if term in {"iop", "iops", "aop", "aops", "bbp", "aph", "adg", "vsp", "rrs", "kd"}:
         return bool(re.search(rf"\b{re.escape(term)}\b", haystack))
     return term in haystack
 
@@ -488,13 +589,13 @@ def tags_for(title: str, abstract: str) -> str:
     checks = [
         ("BGC-Argo", ["bgc-argo", "biogeochemical argo", "argo float"]),
         ("carbon pump", ["carbon pump", "carbon export", "net community production", "poc"]),
-        ("phytoplankton", ["phytoplankton", "chlorophyll"]),
+        ("phytoplankton", ["phytoplankton", "chlorophyll", "surface ocean chlorophyll"]),
         ("marine heatwaves", ["marine heatwave", "marine heatwaves"]),
         ("ocean colour", ["ocean colour", "ocean color", "remote sensing"]),
-        ("ocean optics", ["ocean optics", "aquatic optics", "inherent optical", "apparent optical", "remote sensing reflectance", "rrs", "water-leaving radiance"]),
-        ("absorption", ["optical absorption", "absorption coefficient", "phytoplankton absorption", "particulate absorption", "cdom absorption", "colored dissolved organic matter", "coloured dissolved organic matter", "aph", "adg"]),
-        ("backscattering", ["backscatter", "backscattering", "backscattering coefficient", "particulate backscattering", "particle backscattering", "bbp"]),
-        ("bio-optics", ["bio-optic", "bio-optical", "iop", "iops", "optical", "diffuse attenuation", "ocean lidar"]),
+        ("ocean optics", ["ocean optics", "aquatic optics", "inherent optical", "apparent optical", "remote sensing reflectance", "rrs", "water-leaving radiance", "aop", "aops"]),
+        ("absorption", ["optical absorption", "absorption coefficient", "absorption coefficients", "phytoplankton absorption", "particulate absorption", "particulate absorption coefficient", "particulate absorption coefficients", "particle absorption", "cdom absorption", "colored dissolved organic matter", "coloured dissolved organic matter", "aph", "adg"]),
+        ("backscattering", ["backscatter", "backscattering", "backscattering coefficient", "particulate backscattering", "particle backscattering", "angular scattering", "volume scattering", "bbp", "vsp"]),
+        ("bio-optics", ["bio-optic", "bio-optical", "iop", "iops", "aop", "aops", "optical", "diffuse attenuation", "ocean lidar"]),
         ("microbial carbon", ["microbial carbon", "microbial", "dissolved organic"]),
         ("vertical structure", ["vertical", "subsurface", "deep chlorophyll maximum", "dcm"]),
     ]
@@ -517,8 +618,10 @@ def topic_label(title: str, tags: str) -> tuple[str, str]:
         return "BGC-Argo 剖面约束的生物地球化学变化", "biogeochemical variability constrained by BGC-Argo profiles"
     if "marine heatwave" in haystack or "marine heatwaves" in haystack:
         return "海洋热浪对生态结构和碳循环的影响", "the ecological and carbon-cycle impacts of marine heatwaves"
-    if any(term in haystack for term in ["ocean optics", "aquatic optics", "bio-optic", "bio-optical", "backscatter", "backscattering", "absorption", "remote sensing reflectance", "rrs", "iop", "iops", "cdom", "diffuse attenuation", "ocean lidar"]):
+    if any(term in haystack for term in ["ocean optics", "aquatic optics", "bio-optic", "bio-optical", "backscatter", "backscattering", "scattering", "absorption", "remote sensing reflectance", "rrs", "iop", "iops", "aop", "aops", "cdom", "diffuse attenuation", "ocean lidar"]):
         return "海洋生物光学和海洋光学参数、方法与应用", "marine bio-optical and ocean-optics properties, methods, and applications"
+    if "surface ocean chlorophyll" in haystack:
+        return "表层海洋叶绿素长期变化及其气候驱动", "long-term changes in surface-ocean chlorophyll and their climatic drivers"
     if "ocean colour" in haystack or "ocean color" in haystack or "remote sensing" in haystack:
         return "海色遥感中的浮游植物和光学信号变化", "phytoplankton and optical signals in ocean-colour remote sensing"
     if "carbon export" in haystack or "carbon pump" in haystack or "organic carbon" in haystack:
@@ -659,8 +762,8 @@ def summary_zh(title: str, abstract: str, tags: str) -> str:
 def crossref_query(query: str, from_date: date, rows: int = 20) -> list[dict]:
     params = {
         "query.bibliographic": query,
-        "filter": f"from-pub-date:{from_date.isoformat()},type:journal-article",
-        "sort": "published",
+        "filter": f"from-created-date:{from_date.isoformat()},type:journal-article",
+        "sort": "created",
         "order": "desc",
         "rows": str(rows),
         "select": "DOI,title,author,container-title,published,published-print,published-online,created,URL,abstract,type",
@@ -701,7 +804,7 @@ def collect_candidates(lookback_days: int, max_papers: int) -> list[Paper]:
     candidates: dict[str, Paper] = {}
 
     for query in TOPIC_TERMS:
-        if len(candidates) >= max_papers * 4:
+        if len(candidates) >= max_papers * 8:
             break
         try:
             items = crossref_query(query, from_date, rows=100)
@@ -1032,7 +1135,7 @@ def ensure_page(today: str) -> None:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--date", default=datetime.now(TZ).date().isoformat())
-    parser.add_argument("--lookback-days", type=int, default=int(os.getenv("LOOKBACK_DAYS", "14")))
+    parser.add_argument("--lookback-days", type=int, default=int(os.getenv("LOOKBACK_DAYS", "120")))
     parser.add_argument("--max-papers", type=int, default=int(os.getenv("MAX_PAPERS", "50")))
     parser.add_argument("--dry-run", action="store_true")
     return parser.parse_args()

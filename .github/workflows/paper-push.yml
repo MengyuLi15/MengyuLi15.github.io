@@ -12,7 +12,7 @@ on:
       lookback_days:
         description: "How many days back to search"
         required: false
-        default: "14"
+        default: "120"
       max_papers:
         description: "Maximum papers to publish"
         required: false
@@ -40,7 +40,7 @@ jobs:
 
       - name: Generate daily paper push
         env:
-          LOOKBACK_DAYS: ${{ github.event.inputs.lookback_days || '14' }}
+          LOOKBACK_DAYS: ${{ github.event.inputs.lookback_days || '120' }}
           MAX_PAPERS: ${{ github.event.inputs.max_papers || '50' }}
         run: |
           python scripts/generate_paper_push.py \

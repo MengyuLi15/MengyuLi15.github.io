@@ -10,10 +10,10 @@
   trend_en: "This issue focuses on BGC-Argo, ocean-colour remote sensing, ocean optics, marine heatwaves, vertical phytoplankton structure and carbon-pump processes. The selection is no longer limited to priority journals; when few high-impact papers are newly available, other relevant journals are used as supplements while retaining priority for BGC-Argo profiles, POC/NCP, DCM/SCM, PACE/hyperspectral methods, absorption/backscattering/IOPs, and vertical marine-heatwave responses."
   docx: "/files/paper-push/daily_paper_push_2026-06-05.docx"
   figure:
-  italian_phrase: "Nel mezzo del cammin di nostra vita, mi ritrovai per una selva oscura."
-  italian_source: "Dante, Commedia, Inferno I, 1-2; Italian original from Kalliope"
-  italian_explanation_zh: "这是 Kalliope 所列《神曲》意大利语原文。现代意大利语可理解为“在人生旅程的中途，我发现自己走入一片黑暗森林”；常用来表达迷茫、转折和重新寻找方向。"
-  italian_explanation_en: "This follows the Italian original listed by Kalliope. In modern terms, it means that midway through life's journey, the speaker finds himself in a dark wood, a scene of disorientation and renewed searching."
+  italian_phrase: "Ahi serva Italia, di dolore ostello."
+  italian_source: "Dante, Commedia, Purgatorio VI, 76; Italian original from Kalliope"
+  italian_explanation_zh: "这是但丁对意大利政治分裂的痛切感叹，意思近于“唉，受奴役的意大利，痛苦的居所”。"
+  italian_explanation_en: "This is Dante's bitter lament over political division in Italy, calling the country a dwelling place of sorrow."
   papers:
     - title: "Trace Metal Biogeochemistry in the Nordic Seas: Arctic and Atlantic Water Inflows Determine (Micro)Nutrient Availability"
       authors: "Yaqing Ruan; Stephan Krisch; Thomas J. Browning; C. Mark Moore; Mario Esposito; Tim Steffens; Eric P. Achterberg"
