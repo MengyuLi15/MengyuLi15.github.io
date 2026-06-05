@@ -9,7 +9,7 @@
   trend_zh: "本期重点关注 BGC-Argo、海色遥感/海洋光学、海洋热浪、浮游植物垂向结构和碳泵过程。筛选逻辑不再只限于重点期刊；当高影响力期刊当天新增较少时，会额外检索重点关注团队作者的新论文，并用海洋、海色/光学和碳循环关键词过滤，再从其他相关期刊补充候选论文。"
   trend_en: "This issue focuses on BGC-Argo, ocean-colour remote sensing, ocean optics, marine heatwaves, vertical phytoplankton structure and carbon-pump processes. The selection is no longer limited to priority journals; when few high-impact papers are newly available, the workflow also checks focused-team authors and filters those papers with ocean, ocean-colour/optics, and carbon-cycle keywords before adding other relevant journals as supplements."
   docx: "/files/paper-push/daily_paper_push_2026-06-05.docx"
-  figure:
+  figure: "/images/paper-push/mechanism_2026-06-05.png"
   italian_phrase: "In la sua volontade è nostra pace."
   italian_source: "Dante, Commedia, Paradiso III, 85; Italian original from Kalliope"
   italian_explanation_zh: "这句说“在他的意志中有我们的平安”。它是《天堂篇》中最常被引用的神学句之一。"
