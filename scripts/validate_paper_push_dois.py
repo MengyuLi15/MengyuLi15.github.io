@@ -14,6 +14,7 @@ import json
 import re
 import sys
 import time
+import unicodedata
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -46,6 +47,23 @@ def clean_text(value: str) -> str:
 
 def normalize(value: str) -> str:
     return re.sub(r"[^a-z0-9]+", " ", clean_text(value).lower()).strip()
+
+
+def normalize_person_name(value: str) -> str:
+    value = unicodedata.normalize("NFKC", clean_text(value)).casefold()
+    value = "".join(char if char.isalnum() else " " for char in value)
+    return re.sub(r"\s+", " ", value).strip()
+
+
+def person_name_keys(value: str) -> set[str]:
+    normalized = normalize_person_name(value)
+    if not normalized:
+        return set()
+    keys = {normalized, normalized.replace(" ", "")}
+    parts = normalized.split()
+    if len(parts) == 2:
+        keys.add("".join(reversed(parts)))
+    return keys
 
 
 def yaml_unquote(value: str) -> str:
@@ -128,9 +146,9 @@ def journal_matches(local: str, remote: str) -> bool:
 def author_matches(local: str, remote_authors: list[str]) -> bool:
     if not local or not remote_authors:
         return False
-    local_first = normalize(local.split(";")[0])
-    remote_first = normalize(remote_authors[0])
-    return bool(local_first and remote_first and (local_first in remote_first or remote_first in local_first))
+    local_keys = person_name_keys(local.split(";")[0])
+    remote_keys = person_name_keys(remote_authors[0])
+    return bool(local_keys and remote_keys and local_keys.intersection(remote_keys))
 
 
 def published_month_matches(local: str, remote: str) -> bool:
