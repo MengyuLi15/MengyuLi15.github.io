@@ -43,3 +43,22 @@ This page archives the daily BGC-Argo, ocean colour, marine heatwave and carbon-
   </article>
 {% endfor %}
 </div>
+
+## Collection Growth
+
+<section class="paper-push-cumulative" aria-label="Cumulative included papers over time">
+  <div class="paper-push-cumulative-chart" data-paper-push-cumulative-chart>
+    {% assign cumulative_papers = 0 %}
+    {% assign chart_issues = site.data.paper_pushes | sort: "date" %}
+    {% for issue in chart_issues %}
+      {% assign issue_paper_count = issue.papers | size %}
+      {% assign cumulative_papers = cumulative_papers | plus: issue_paper_count %}
+      <span
+        data-paper-push-cumulative-point
+        data-date="{{ issue.date | escape }}"
+        data-time="{{ issue.generated_at | default: issue.display_date | default: issue.date | escape }}"
+        data-papers="{{ issue_paper_count }}"
+        data-cumulative="{{ cumulative_papers }}"></span>
+    {% endfor %}
+  </div>
+</section>
