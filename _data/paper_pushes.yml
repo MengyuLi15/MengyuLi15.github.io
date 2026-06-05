@@ -1,3 +1,21 @@
+- date: "2026-06-05"
+  generated_at: "2026-06-05 10:19 CEST"
+  no_update: true
+  previous_date: "2026-06-04"
+  title: "每日论文推送：今日暂无新增"
+  title_zh: "每日论文推送：今日暂无新增"
+  title_en: "Daily Paper Push: no new papers captured today"
+  summary: "今日尚未捕捉到符合更新规则的新论文，论文列表与 2026-06-04 保持一致。"
+  summary_zh: "今日尚未捕捉到符合更新规则的新论文，论文列表与 2026-06-04 保持一致。"
+  summary_en: "No new papers matching the update rules were captured today; the paper list remains unchanged from 2026-06-04."
+  docx: ""
+  figure:
+  italian_phrase: "Nel mezzo del cammin di nostra vita, mi ritrovai per una selva oscura."
+  italian_source: "Dante, Commedia, Inferno I, 1-2; Italian original from Kalliope"
+  italian_explanation_zh: "这是 Kalliope 所列《神曲》意大利语原文。现代意大利语可理解为“在人生旅程的中途，我发现自己走入一片黑暗森林”；常用来表达迷茫、转折和重新寻找方向。"
+  italian_explanation_en: "This follows the Italian original listed by Kalliope. In modern terms, it means that midway through life's journey, the speaker finds himself in a dark wood, a scene of disorientation and renewed searching."
+  papers: []
+
 - date: "2026-06-04"
   generated_at: "2026-06-04 10:27 CEST"
   no_update: true
