@@ -63,6 +63,14 @@
 }
 
 .page__footer-follow {
+  .page__footer-follow-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+    width: 100%;
+  }
+
   ul {
     margin: 0;
     padding: 0;
@@ -91,6 +99,27 @@
   .social-icons {
     a {
       white-space: nowrap;
+    }
+  }
+
+  .page__footer-visits {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-family: $sans-serif-narrow;
+    font-size: $type-size-6;
+    font-weight: bold;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  @include breakpoint(max-width $small) {
+    .page__footer-follow-inner {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 0.25em;
     }
   }
 }
