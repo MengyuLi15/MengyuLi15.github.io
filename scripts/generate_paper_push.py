@@ -655,7 +655,7 @@ def retry_delay_seconds(exc: urllib.error.HTTPError, attempt: int) -> float:
     return min(60.0, 2.0 ** (attempt + 1))
 
 
-def http_json(url: str, retries: int = 5) -> dict:
+def http_json(url: str, retries: int = 5, label: str = "Crossref"):
     for attempt in range(retries):
         request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
         try:
@@ -664,12 +664,12 @@ def http_json(url: str, retries: int = 5) -> dict:
         except urllib.error.HTTPError as exc:
             if exc.code == 429 and attempt == 0:
                 delay = retry_delay_seconds(exc, attempt)
-                print(f"Crossref HTTP 429; retrying once in {delay:g}s.", file=sys.stderr)
+                print(f"{label} HTTP 429; retrying once in {delay:g}s.", file=sys.stderr)
                 time.sleep(delay)
                 continue
             if exc.code != 429 and exc.code in CROSSREF_RETRY_STATUS_CODES and attempt < retries - 1:
                 delay = retry_delay_seconds(exc, attempt)
-                print(f"Crossref HTTP {exc.code}; retrying in {delay:g}s.", file=sys.stderr)
+                print(f"{label} HTTP {exc.code}; retrying in {delay:g}s.", file=sys.stderr)
                 time.sleep(delay)
                 continue
             raise
@@ -692,8 +692,13 @@ def clean_text(value: str) -> str:
     return value
 
 
+def abstract_body(value: str) -> str:
+    value = clean_text(value)
+    return re.sub(r"(?i)^(abstract|summary)\b\s*[:.-]?\s*", "", value).strip()
+
+
 def abstract_sentences(abstract: str) -> list[str]:
-    text = clean_text(abstract)
+    text = abstract_body(abstract)
     text = re.sub(
         r"(?i)^(abstract|background|objective|objectives|methods?|results?|conclusions?)\s*[:.-]\s*",
         "",
@@ -749,6 +754,46 @@ def key_abstract_sentences(title: str, abstract: str, tags: str, limit: int = 2)
     )
     selected = sorted(ranked[:limit], key=lambda item: item[0])
     return [compact_sentence(sentence) for _, sentence in selected]
+
+
+def translation_chunks(text: str, max_chars: int = 1800) -> list[str]:
+    sentences = abstract_sentences(text)
+    if not sentences:
+        return [text] if text else []
+    chunks: list[str] = []
+    current = ""
+    for sentence in sentences:
+        candidate = f"{current} {sentence}".strip()
+        if current and len(candidate) > max_chars:
+            chunks.append(current)
+            current = sentence
+        else:
+            current = candidate
+    if current:
+        chunks.append(current)
+    return chunks
+
+
+def translate_to_chinese(text: str) -> str:
+    if not text:
+        return ""
+    if os.getenv("TRANSLATE_ABSTRACTS", "1").lower() in {"0", "false", "no"}:
+        return text
+    translated_chunks: list[str] = []
+    for chunk in translation_chunks(text):
+        params = {
+            "client": "gtx",
+            "sl": "en",
+            "tl": "zh-CN",
+            "dt": "t",
+            "q": chunk,
+        }
+        url = "https://translate.googleapis.com/translate_a/single?" + urllib.parse.urlencode(params)
+        payload = http_json(url, label="Translation")
+        translated = "".join(part[0] for part in payload[0] if part and part[0])
+        translated_chunks.append(translated)
+        time.sleep(float(os.getenv("ABSTRACT_TRANSLATION_DELAY_SECONDS", "0.2")))
+    return clean_text(" ".join(translated_chunks))
 
 
 def month_from_parts(parts: list[int], fallback: str = "") -> tuple[str, str, str]:
@@ -1084,16 +1129,16 @@ def infer_result(title: str, tags: str) -> tuple[str, str]:
 
 
 def summary_en(title: str, abstract: str, tags: str) -> str:
-    abstract_text = clean_text(abstract)
+    abstract_text = abstract_body(abstract)
     if abstract_text:
         return f"Abstract: {abstract_text}"
     return "Abstract: Crossref did not provide an abstract for this DOI."
 
 
 def summary_zh(title: str, abstract: str, tags: str) -> str:
-    abstract_text = clean_text(abstract)
+    abstract_text = abstract_body(abstract)
     if abstract_text:
-        return f"摘要：{abstract_text}"
+        return f"摘要：{translate_to_chinese(abstract_text)}"
     return "摘要：Crossref 未提供该 DOI 的摘要。"
 
 
