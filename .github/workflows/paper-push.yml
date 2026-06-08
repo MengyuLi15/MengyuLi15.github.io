@@ -25,6 +25,10 @@ on:
         description: "Concurrent focused-team author queries"
         required: false
         default: "1"
+      focused_team_author_limit:
+        description: "Maximum focused-team authors to query per run"
+        required: false
+        default: "60"
 
 permissions:
   contents: write
@@ -52,6 +56,7 @@ jobs:
           MAX_PAPERS: ${{ github.event.inputs.max_papers || '50' }}
           FOCUSED_TEAM_AUTHOR_ROWS: ${{ github.event.inputs.focused_team_author_rows || '8' }}
           FOCUSED_TEAM_AUTHOR_WORKERS: ${{ github.event.inputs.focused_team_author_workers || '1' }}
+          FOCUSED_TEAM_AUTHOR_LIMIT: ${{ github.event.inputs.focused_team_author_limit || '60' }}
         run: |
           python scripts/generate_paper_push.py \
             --lookback-days "$LOOKBACK_DAYS" \
@@ -70,4 +75,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
           git commit -m "Add paper push for $(date -u +%F)"
+          git pull --rebase origin "${GITHUB_REF_NAME:-master}"
           git push

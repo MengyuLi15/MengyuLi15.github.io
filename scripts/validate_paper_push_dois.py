@@ -26,6 +26,7 @@ DEFAULT_DATA = ROOT / "_data" / "paper_pushes.yml"
 USER_AGENT = "mengyuli15-paper-push-validator/1.0 (https://mengyuli15.github.io/)"
 SUMMARY_PLACEHOLDER = "DOI-verified metadata correction"
 MIN_SUMMARY_SENTENCES = 5
+CROSSREF_RETRY_STATUS_CODES = {429, 500, 502, 503, 504}
 FORBIDDEN_SUMMARY_PHRASES = (
     "DOI 页面",
     "进一步核对",
@@ -108,12 +109,29 @@ def parse_papers(issue: str) -> list[dict[str, str]]:
     return papers
 
 
-def crossref_work(doi: str) -> dict:
+def retry_delay_seconds(exc: urllib.error.HTTPError, attempt: int) -> float:
+    retry_after = exc.headers.get("Retry-After")
+    if retry_after and retry_after.isdigit():
+        return min(120.0, max(1.0, float(retry_after)))
+    return min(60.0, 2.0 ** (attempt + 1))
+
+
+def crossref_work(doi: str, retries: int = 5) -> dict:
     url = "https://api.crossref.org/works/" + urllib.parse.quote(doi, safe="")
-    request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    with urllib.request.urlopen(request, timeout=20) as response:
-        payload = json.loads(response.read().decode("utf-8"))
-    return payload["message"]
+    for attempt in range(retries):
+        request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+        try:
+            with urllib.request.urlopen(request, timeout=20) as response:
+                payload = json.loads(response.read().decode("utf-8"))
+            return payload["message"]
+        except urllib.error.HTTPError as exc:
+            if exc.code in CROSSREF_RETRY_STATUS_CODES and attempt < retries - 1:
+                delay = retry_delay_seconds(exc, attempt)
+                print(f"Crossref validation HTTP {exc.code}; retrying in {delay:g}s.", file=sys.stderr)
+                time.sleep(delay)
+                continue
+            raise
+    raise RuntimeError("unreachable")
 
 
 def crossref_month(work: dict) -> str:

@@ -839,6 +839,13 @@ def focused_team_author_records() -> list[dict]:
     return focused_team_config().get("authors", [])
 
 
+def rotated_records(records: list[dict], issue_date: date) -> list[dict]:
+    if not records:
+        return []
+    start = issue_date.toordinal() % len(records)
+    return records[start:] + records[:start]
+
+
 def focused_team_query_text() -> str:
     keywords = focused_team_config().get("topic_keywords", [])
     return " ".join(str(keyword) for keyword in keywords[:10])
@@ -1255,11 +1262,12 @@ def collect_candidates(lookback_days: int, max_papers: int) -> list[Paper]:
         time.sleep(0.05)
 
     author_rows = max(1, int(os.getenv("FOCUSED_TEAM_AUTHOR_ROWS", "8")))
-    author_limit = max(0, int(os.getenv("FOCUSED_TEAM_AUTHOR_LIMIT", "0")))
-    author_records = focused_team_author_records()
+    author_limit = max(0, int(os.getenv("FOCUSED_TEAM_AUTHOR_LIMIT", "60")))
+    author_records = rotated_records(focused_team_author_records(), today)
     if author_limit:
         author_records = author_records[:author_limit]
     author_workers = max(1, int(os.getenv("FOCUSED_TEAM_AUTHOR_WORKERS", "1")))
+    author_delay = max(0.0, float(os.getenv("FOCUSED_TEAM_AUTHOR_DELAY_SECONDS", "0.8")))
 
     def fetch_author_items(record: dict) -> tuple[str, list[dict], Exception | None]:
         author_name = (record.get("name") or "").strip()
@@ -1269,6 +1277,9 @@ def collect_candidates(lookback_days: int, max_papers: int) -> list[Paper]:
             return author_name, crossref_author_query(author_name, from_date, rows=author_rows), None
         except Exception as exc:
             return author_name, [], exc
+        finally:
+            if author_delay:
+                time.sleep(author_delay)
 
     if author_records:
         with concurrent.futures.ThreadPoolExecutor(max_workers=author_workers) as executor:
@@ -1440,7 +1451,7 @@ def no_update_issue_block(today: str, previous_date: str) -> str:
 
 
 def replace_or_prepend_issue(today: str, block: str) -> None:
-    existing = DATA_PATH.read_text(encoding="utf-8") if DATA_PATH.exists() else ""
+    existing = DATA_PATH.read_text(encoding="utf-8-sig").lstrip("\ufeff") if DATA_PATH.exists() else ""
     pattern = re.compile(rf'(?ms)^- date: "{re.escape(today)}"\n.*?(?=^- date: "|\Z)')
     if pattern.search(existing):
         updated = pattern.sub(block, existing).rstrip() + "\n"
