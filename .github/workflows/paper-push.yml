@@ -17,6 +17,14 @@ on:
         description: "Maximum papers to publish"
         required: false
         default: "50"
+      focused_team_author_rows:
+        description: "Rows per focused-team author query"
+        required: false
+        default: "8"
+      focused_team_author_workers:
+        description: "Concurrent focused-team author queries"
+        required: false
+        default: "1"
 
 permissions:
   contents: write
@@ -42,6 +50,8 @@ jobs:
         env:
           LOOKBACK_DAYS: ${{ github.event.inputs.lookback_days || '120' }}
           MAX_PAPERS: ${{ github.event.inputs.max_papers || '50' }}
+          FOCUSED_TEAM_AUTHOR_ROWS: ${{ github.event.inputs.focused_team_author_rows || '8' }}
+          FOCUSED_TEAM_AUTHOR_WORKERS: ${{ github.event.inputs.focused_team_author_workers || '1' }}
         run: |
           python scripts/generate_paper_push.py \
             --lookback-days "$LOOKBACK_DAYS" \

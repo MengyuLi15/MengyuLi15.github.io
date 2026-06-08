@@ -36,6 +36,7 @@ TZ = ZoneInfo("Europe/Berlin")
 
 MAX_ABSTRACT_CHARS = 900
 USER_AGENT = "mengyuli15-paper-push/1.0 (https://mengyuli15.github.io/)"
+CROSSREF_RETRY_STATUS_CODES = {429, 500, 502, 503, 504}
 
 TOPIC_TERMS = [
     "BGC Argo",
@@ -645,12 +646,26 @@ class Paper:
     rank: int
 
 
-def http_json(url: str, retries: int = 2) -> dict:
+def retry_delay_seconds(exc: urllib.error.HTTPError, attempt: int) -> float:
+    retry_after = exc.headers.get("Retry-After")
+    if retry_after and retry_after.isdigit():
+        return min(120.0, max(1.0, float(retry_after)))
+    return min(60.0, 2.0 ** (attempt + 1))
+
+
+def http_json(url: str, retries: int = 5) -> dict:
     for attempt in range(retries):
         request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
         try:
             with urllib.request.urlopen(request, timeout=15) as response:
                 return json.loads(response.read().decode("utf-8"))
+        except urllib.error.HTTPError as exc:
+            if exc.code in CROSSREF_RETRY_STATUS_CODES and attempt < retries - 1:
+                delay = retry_delay_seconds(exc, attempt)
+                print(f"Crossref HTTP {exc.code}; retrying in {delay:g}s.", file=sys.stderr)
+                time.sleep(delay)
+                continue
+            raise
         except (urllib.error.URLError, TimeoutError) as exc:
             if attempt == retries - 1:
                 raise exc
@@ -668,6 +683,65 @@ def clean_text(value: str) -> str:
     value = re.sub(r"<[^>]+>", " ", html.unescape(value or ""))
     value = re.sub(r"\s+", " ", value).strip()
     return value
+
+
+def abstract_sentences(abstract: str) -> list[str]:
+    text = clean_text(abstract)
+    text = re.sub(
+        r"(?i)^(abstract|background|objective|objectives|methods?|results?|conclusions?)\s*[:.-]\s*",
+        "",
+        text,
+    )
+    parts = re.findall(r"[^.!?\u3002\uff01\uff1f]+[.!?\u3002\uff01\uff1f]?", text)
+    sentences: list[str] = []
+    seen: set[str] = set()
+    for part in parts:
+        sentence = part.strip(" \t\r\n;:")
+        if len(sentence) < 35:
+            continue
+        normalized = re.sub(r"[^a-z0-9]+", " ", sentence.lower()).strip()
+        if not normalized or normalized in seen:
+            continue
+        seen.add(normalized)
+        sentences.append(sentence)
+    return sentences
+
+
+def sentence_score(sentence: str, title: str, tags: str) -> int:
+    haystack = sentence.lower()
+    score = 0
+    score += sum(weight for term, weight in RELEVANCE_TERMS.items() if term_present(term, haystack))
+    title_terms = {term for term in re.findall(r"[a-z0-9-]{5,}", title.lower()) if len(term) > 4}
+    score += sum(1 for term in title_terms if term in haystack)
+    tag_terms = {term.strip().lower() for term in tags.split(",") if term.strip()}
+    score += 2 * sum(1 for term in tag_terms if term in haystack)
+    if re.search(r"\b(we|this study|this paper|here,? we|our results|results show|showed|suggest|indicate|reveal|demonstrate|estimate|measure|compare|evaluate|dataset|observations?)\b", haystack):
+        score += 5
+    if re.search(r"\b(bgc-argo|argo|pace|oci|viirs|modis|seawifs|satellite|in situ|ship|float|model|neural|machine learning|sediment trap|glider)\b", haystack):
+        score += 4
+    if re.search(r"\d", sentence):
+        score += 2
+    if len(sentence.split()) > 55:
+        score -= 2
+    return score
+
+
+def compact_sentence(sentence: str, max_words: int = 34) -> str:
+    words = sentence.strip().split()
+    if len(words) <= max_words:
+        return sentence.strip()
+    compact = " ".join(words[:max_words]).rstrip(" ,;:")
+    return compact + "..."
+
+
+def key_abstract_sentences(title: str, abstract: str, tags: str, limit: int = 2) -> list[str]:
+    sentences = abstract_sentences(abstract)
+    ranked = sorted(
+        enumerate(sentences),
+        key=lambda item: (-sentence_score(item[1], title, tags), item[0]),
+    )
+    selected = sorted(ranked[:limit], key=lambda item: item[0])
+    return [compact_sentence(sentence) for _, sentence in selected]
 
 
 def month_from_parts(parts: list[int], fallback: str = "") -> tuple[str, str, str]:
@@ -996,33 +1070,61 @@ def infer_result(title: str, tags: str) -> tuple[str, str]:
 
 
 def summary_en(title: str, abstract: str, tags: str) -> str:
+    abstract_points = key_abstract_sentences(title, abstract, tags)
+    if abstract_points:
+        topic_zh, topic_en = topic_label(title, tags)
+        focus = tags.lower() if tags else topic_en
+        if len(abstract_points) == 1:
+            abstract_points.append(f"The abstract is short, so the recommendation is anchored on this stated result and the paper metadata.")
+        return " ".join(
+            [
+                f"From the abstract: {abstract_points[0]}",
+                f"It also highlights: {abstract_points[1]}",
+                f"For this feed, the useful angle is its connection to {focus}.",
+                "This keeps the card tied to the paper's own stated content instead of a generic title-based description.",
+                "Use the DOI link for the full methods, sampling context, and uncertainty details.",
+            ]
+        )
     topic_zh, topic_en = topic_label(title, tags)
     data_zh, data_en = infer_data_source(title, tags, "")
     action_zh, action_en = infer_action(title, tags)
-    result_zh, result_en = infer_result(title, tags)
     return " ".join(
         [
-            f"The study examines {topic_en}.",
+            "Crossref did not provide a usable abstract for this DOI.",
+            f"This card is therefore a discovery note for {topic_en}, not a confirmed content summary.",
             data_en,
             action_en,
-            result_en,
-            "It is useful for interpreting observations, comparing methods, and designing follow-up analyses in marine biogeochemistry.",
+            "Open the paper link before treating any method, sampling, or result details as confirmed.",
         ]
     )
 
 
 def summary_zh(title: str, abstract: str, tags: str) -> str:
+    abstract_points = key_abstract_sentences(title, abstract, tags)
+    if abstract_points:
+        topic_zh, topic_en = topic_label(title, tags)
+        focus = tags or topic_zh
+        if len(abstract_points) == 1:
+            abstract_points.append("摘要较短，因此这条卡片主要依据这句摘要信息和 DOI 元数据生成。")
+        return " ".join(
+            [
+                f"摘要核心信息：{abstract_points[0]}",
+                f"摘要还提到：{abstract_points[1]}",
+                f"因此这条推荐归入 {focus}，不是只按标题做泛泛分类。",
+                "卡片会尽量保留论文摘要中的数据、方法或结果线索。",
+                "完整方法、采样背景和不确定性仍以论文链接和原文为准。",
+            ]
+        )
     topic_zh, topic_en = topic_label(title, tags)
     data_zh, data_en = infer_data_source(title, tags, "")
     action_zh, action_en = infer_action(title, tags)
-    result_zh, result_en = infer_result(title, tags)
     return " ".join(
         [
-            f"这项研究关注{topic_zh}。",
+            "Crossref 当前没有提供可用摘要。",
+            f"这张卡片只能作为 {topic_zh} 的发现线索，不冒充论文内容总结。",
             data_zh,
             action_zh,
-            result_zh,
-            "它有助于解释观测现象、比较方法差异，并为后续海洋生物地球化学分析提供线索。",
+            "在确认方法、采样背景或结果细节前，应打开论文链接查看原文。",
         ]
     )
 
@@ -1041,7 +1143,7 @@ def crossref_query(query: str, from_date: date, rows: int = 20) -> list[dict]:
     return data.get("message", {}).get("items", [])
 
 
-def crossref_author_query(author_name: str, from_date: date, rows: int = 12) -> list[dict]:
+def crossref_author_query(author_name: str, from_date: date, rows: int = 8) -> list[dict]:
     params = {
         "query.author": author_name,
         "query.bibliographic": focused_team_query_text(),
@@ -1152,12 +1254,12 @@ def collect_candidates(lookback_days: int, max_papers: int) -> list[Paper]:
                 candidates[doi.lower()] = paper
         time.sleep(0.05)
 
-    author_rows = max(1, int(os.getenv("FOCUSED_TEAM_AUTHOR_ROWS", "12")))
+    author_rows = max(1, int(os.getenv("FOCUSED_TEAM_AUTHOR_ROWS", "8")))
     author_limit = max(0, int(os.getenv("FOCUSED_TEAM_AUTHOR_LIMIT", "0")))
     author_records = focused_team_author_records()
     if author_limit:
         author_records = author_records[:author_limit]
-    author_workers = max(1, int(os.getenv("FOCUSED_TEAM_AUTHOR_WORKERS", "6")))
+    author_workers = max(1, int(os.getenv("FOCUSED_TEAM_AUTHOR_WORKERS", "1")))
 
     def fetch_author_items(record: dict) -> tuple[str, list[dict], Exception | None]:
         author_name = (record.get("name") or "").strip()
