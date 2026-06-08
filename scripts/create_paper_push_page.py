@@ -87,8 +87,8 @@ author_profile: true
     <span data-paper-i18n="zh">{{{{ paper.tags_zh | default: paper.tags }}}}</span>
     <span data-paper-i18n="en">{{{{ paper.tags_en | default: paper.tags }}}}</span>
   </p>
-  <p class="paper-push-block" data-paper-i18n="zh">{{{{ paper.summary_zh | default: paper.summary }}}}</p>
-  <p class="paper-push-block" data-paper-i18n="en">{{{{ paper.summary_en | default: paper.summary }}}}</p>
+  <p class="paper-push-block paper-push-abstract" data-paper-i18n="zh">{{{{ paper.summary_zh | default: paper.summary }}}}</p>
+  <p class="paper-push-block paper-push-abstract" data-paper-i18n="en">{{{{ paper.summary_en | default: paper.summary }}}}</p>
   <div class="paper-push-paper-actions">
     <a class="paper-push-button" href="{{{{ paper.url }}}}">Open paper</a>
     <button
@@ -120,12 +120,9 @@ def main() -> int:
 
     date = sys.argv[1]
     out_path = PAGES_DIR / f"paper-push-{date}.md"
-    if out_path.exists():
-        print(f"Exists: {out_path}")
-        return 0
-
+    existed = out_path.exists()
     out_path.write_text(TEMPLATE.format(date=date), encoding="utf-8")
-    print(f"Created: {out_path}")
+    print(f"{'Updated' if existed else 'Created'}: {out_path}")
     return 0
 
 

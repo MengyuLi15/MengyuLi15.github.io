@@ -650,6 +650,8 @@ def retry_delay_seconds(exc: urllib.error.HTTPError, attempt: int) -> float:
     retry_after = exc.headers.get("Retry-After")
     if retry_after and retry_after.isdigit():
         return min(120.0, max(1.0, float(retry_after)))
+    if exc.code == 429:
+        return 60.0
     return min(60.0, 2.0 ** (attempt + 1))
 
 
@@ -660,7 +662,12 @@ def http_json(url: str, retries: int = 5) -> dict:
             with urllib.request.urlopen(request, timeout=15) as response:
                 return json.loads(response.read().decode("utf-8"))
         except urllib.error.HTTPError as exc:
-            if exc.code in CROSSREF_RETRY_STATUS_CODES and attempt < retries - 1:
+            if exc.code == 429 and attempt == 0:
+                delay = retry_delay_seconds(exc, attempt)
+                print(f"Crossref HTTP 429; retrying once in {delay:g}s.", file=sys.stderr)
+                time.sleep(delay)
+                continue
+            if exc.code != 429 and exc.code in CROSSREF_RETRY_STATUS_CODES and attempt < retries - 1:
                 delay = retry_delay_seconds(exc, attempt)
                 print(f"Crossref HTTP {exc.code}; retrying in {delay:g}s.", file=sys.stderr)
                 time.sleep(delay)
@@ -1077,63 +1084,17 @@ def infer_result(title: str, tags: str) -> tuple[str, str]:
 
 
 def summary_en(title: str, abstract: str, tags: str) -> str:
-    abstract_points = key_abstract_sentences(title, abstract, tags)
-    if abstract_points:
-        topic_zh, topic_en = topic_label(title, tags)
-        focus = tags.lower() if tags else topic_en
-        if len(abstract_points) == 1:
-            abstract_points.append(f"The abstract is short, so the recommendation is anchored on this stated result and the paper metadata.")
-        return " ".join(
-            [
-                f"From the abstract: {abstract_points[0]}",
-                f"It also highlights: {abstract_points[1]}",
-                f"For this feed, the useful angle is its connection to {focus}.",
-                "This keeps the card tied to the paper's own stated content instead of a generic title-based description.",
-                "Use the DOI link for the full methods, sampling context, and uncertainty details.",
-            ]
-        )
-    topic_zh, topic_en = topic_label(title, tags)
-    data_zh, data_en = infer_data_source(title, tags, "")
-    action_zh, action_en = infer_action(title, tags)
-    return " ".join(
-        [
-            "Crossref did not provide a usable abstract for this DOI.",
-            f"This card is therefore a discovery note for {topic_en}, not a confirmed content summary.",
-            data_en,
-            action_en,
-            "Open the paper link before treating any method, sampling, or result details as confirmed.",
-        ]
-    )
+    abstract_text = clean_text(abstract)
+    if abstract_text:
+        return f"Abstract: {abstract_text}"
+    return "Abstract: Crossref did not provide an abstract for this DOI."
 
 
 def summary_zh(title: str, abstract: str, tags: str) -> str:
-    abstract_points = key_abstract_sentences(title, abstract, tags)
-    if abstract_points:
-        topic_zh, topic_en = topic_label(title, tags)
-        focus = tags or topic_zh
-        if len(abstract_points) == 1:
-            abstract_points.append("摘要较短，因此这条卡片主要依据这句摘要信息和 DOI 元数据生成。")
-        return " ".join(
-            [
-                f"摘要核心信息：{abstract_points[0]}",
-                f"摘要还提到：{abstract_points[1]}",
-                f"因此这条推荐归入 {focus}，不是只按标题做泛泛分类。",
-                "卡片会尽量保留论文摘要中的数据、方法或结果线索。",
-                "完整方法、采样背景和不确定性仍以论文链接和原文为准。",
-            ]
-        )
-    topic_zh, topic_en = topic_label(title, tags)
-    data_zh, data_en = infer_data_source(title, tags, "")
-    action_zh, action_en = infer_action(title, tags)
-    return " ".join(
-        [
-            "Crossref 当前没有提供可用摘要。",
-            f"这张卡片只能作为 {topic_zh} 的发现线索，不冒充论文内容总结。",
-            data_zh,
-            action_zh,
-            "在确认方法、采样背景或结果细节前，应打开论文链接查看原文。",
-        ]
-    )
+    abstract_text = clean_text(abstract)
+    if abstract_text:
+        return f"摘要：{abstract_text}"
+    return "摘要：Crossref 未提供该 DOI 的摘要。"
 
 
 def crossref_query(query: str, from_date: date, rows: int = 20) -> list[dict]:
@@ -1538,6 +1499,7 @@ def write_docx(today: str, papers: list[Paper]) -> None:
         p = doc.add_paragraph()
         r = p.add_run(paper.summary_zh)
         set_font(r)
+        r.font.size = Pt(8.5)
         p = doc.add_paragraph()
         r = p.add_run(f"链接：{paper.url}")
         set_font(r)

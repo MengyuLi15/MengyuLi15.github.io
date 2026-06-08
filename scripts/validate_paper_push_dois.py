@@ -25,7 +25,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DATA = ROOT / "_data" / "paper_pushes.yml"
 USER_AGENT = "mengyuli15-paper-push-validator/1.0 (https://mengyuli15.github.io/)"
 SUMMARY_PLACEHOLDER = "DOI-verified metadata correction"
-MIN_SUMMARY_SENTENCES = 5
+MIN_SUMMARY_SENTENCES = 1
 CROSSREF_RETRY_STATUS_CODES = {429, 500, 502, 503, 504}
 FORBIDDEN_SUMMARY_PHRASES = (
     "DOI 页面",
@@ -113,6 +113,8 @@ def retry_delay_seconds(exc: urllib.error.HTTPError, attempt: int) -> float:
     retry_after = exc.headers.get("Retry-After")
     if retry_after and retry_after.isdigit():
         return min(120.0, max(1.0, float(retry_after)))
+    if exc.code == 429:
+        return 60.0
     return min(60.0, 2.0 ** (attempt + 1))
 
 
@@ -125,7 +127,12 @@ def crossref_work(doi: str, retries: int = 5) -> dict:
                 payload = json.loads(response.read().decode("utf-8"))
             return payload["message"]
         except urllib.error.HTTPError as exc:
-            if exc.code in CROSSREF_RETRY_STATUS_CODES and attempt < retries - 1:
+            if exc.code == 429 and attempt == 0:
+                delay = retry_delay_seconds(exc, attempt)
+                print(f"Crossref validation HTTP 429; retrying once in {delay:g}s.", file=sys.stderr)
+                time.sleep(delay)
+                continue
+            if exc.code != 429 and exc.code in CROSSREF_RETRY_STATUS_CODES and attempt < retries - 1:
                 delay = retry_delay_seconds(exc, attempt)
                 print(f"Crossref validation HTTP {exc.code}; retrying in {delay:g}s.", file=sys.stderr)
                 time.sleep(delay)

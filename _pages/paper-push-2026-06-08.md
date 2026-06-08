@@ -79,8 +79,8 @@ author_profile: true
     <span data-paper-i18n="zh">{{ paper.tags_zh | default: paper.tags }}</span>
     <span data-paper-i18n="en">{{ paper.tags_en | default: paper.tags }}</span>
   </p>
-  <p class="paper-push-block" data-paper-i18n="zh">{{ paper.summary_zh | default: paper.summary }}</p>
-  <p class="paper-push-block" data-paper-i18n="en">{{ paper.summary_en | default: paper.summary }}</p>
+  <p class="paper-push-block paper-push-abstract" data-paper-i18n="zh">{{ paper.summary_zh | default: paper.summary }}</p>
+  <p class="paper-push-block paper-push-abstract" data-paper-i18n="en">{{ paper.summary_en | default: paper.summary }}</p>
   <div class="paper-push-paper-actions">
     <a class="paper-push-button" href="{{ paper.url }}">Open paper</a>
     <button
