@@ -1,3 +1,21 @@
+- date: "2026-06-14"
+  generated_at: "2026-06-14 10:29 CEST"
+  no_update: true
+  previous_date: "2026-06-13"
+  title: "每日论文推送：今日暂无新增"
+  title_zh: "每日论文推送：今日暂无新增"
+  title_en: "Daily Paper Push: no new papers captured today"
+  summary: "今日尚未捕捉到符合更新规则的新论文，论文列表与 2026-06-13 保持一致。"
+  summary_zh: "今日尚未捕捉到符合更新规则的新论文，论文列表与 2026-06-13 保持一致。"
+  summary_en: "No new papers matching the update rules were captured today; the paper list remains unchanged from 2026-06-13."
+  docx: ""
+  figure:
+  italian_phrase: "Puro e disposto a salire a le stelle."
+  italian_source: "Dante, Commedia, Purgatorio XXXIII, 145; Italian original from Kalliope"
+  italian_explanation_zh: "这是《炼狱篇》的结尾，意思是“纯净并准备好上升到群星”。它常被理解为经历修正之后重新拥有前行能力。"
+  italian_explanation_en: "This closing line of Purgatorio means that the speaker is purified and ready to rise to the stars. It suggests restored readiness after difficult correction."
+  papers: []
+
 - date: "2026-06-13"
   generated_at: "2026-06-13 10:01 CEST"
   title: "每日论文推送：BGC-Argo、海色/海洋光学、海洋热浪与碳泵"
