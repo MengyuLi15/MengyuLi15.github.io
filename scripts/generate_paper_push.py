@@ -830,7 +830,7 @@ def authors_from_item(item: dict) -> str:
     for author in item.get("author", [])[:8]:
         given = author.get("given", "").strip()
         family = author.get("family", "").strip()
-        name = " ".join(part for part in [given, family] if part)
+        name = " ".join(part for part in [given, family] if part) or author.get("name", "").strip()
         if name:
             names.append(name)
     if len(item.get("author", [])) > 8:
@@ -843,7 +843,7 @@ def author_names_from_item(item: dict) -> list[str]:
     for author in item.get("author", []):
         given = author.get("given", "").strip()
         family = author.get("family", "").strip()
-        name = " ".join(part for part in [given, family] if part)
+        name = " ".join(part for part in [given, family] if part) or author.get("name", "").strip()
         if name:
             names.append(name)
     return names
@@ -1203,6 +1203,9 @@ def paper_from_crossref_item(item: dict, today: date, require_focused_team: bool
     journal = best_journal(item)
     canonical = canonical_journal(journal)
     abstract = clean_text(item.get("abstract", ""))
+    authors = authors_from_item(item)
+    if authors == "Authors not available":
+        return None
     if title.lower().startswith(EXCLUDED_TITLE_PREFIXES):
         return None
     if not has_marine_context(title, abstract, journal):
@@ -1226,7 +1229,7 @@ def paper_from_crossref_item(item: dict, today: date, require_focused_team: bool
     rank = group_rank * 1000 + within_group_rank
     return Paper(
         title=title,
-        authors=authors_from_item(item),
+        authors=authors,
         journal=canonical,
         published=published,
         published_month=month,
