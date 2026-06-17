@@ -159,18 +159,22 @@ html[data-theme="dark"] .pub-thumb img {
     </p>
 
     <p class="pub-journal">
-      Frontiers in Marine Science
+      Frontiers in Marine Science, 13, 1822929
     </p>
 
     <p class="pub-links">
-      <a href="https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2026.1822929/abstract"
+      <a href="https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2026.1822929/full"
          target="_blank" rel="noopener noreferrer">
-         Article
+         Full text
+      </a> ·
+      <a href="https://doi.org/10.3389/fmars.2026.1822929"
+         target="_blank" rel="noopener noreferrer">
+         DOI
       </a>
     </p>
 
     <p class="pub-note">
-      Accepted manuscript
+      Published 17 June 2026
     </p>
   </div>
 </div>
