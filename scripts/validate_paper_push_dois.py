@@ -189,6 +189,17 @@ def sentence_count(value: str) -> int:
     return len([part for part in parts if part.strip()])
 
 
+def has_excessive_english(value: str) -> bool:
+    value = clean_text(value)
+    latin_letters = len(re.findall(r"[A-Za-z]", value))
+    han_characters = len(re.findall(r"[\u4e00-\u9fff]", value))
+    english_words = re.findall(r"\b[A-Za-z]{3,}\b", value)
+    return (
+        len(english_words) >= 12
+        and latin_letters > 0.35 * max(1, latin_letters + han_characters)
+    )
+
+
 def validate_summary_fields(paper: dict[str, str]) -> list[str]:
     errors: list[str] = []
     summary_zh = clean_text(paper["summary_zh"])
@@ -205,6 +216,8 @@ def validate_summary_fields(paper: dict[str, str]) -> list[str]:
             errors.append(f"{paper['index']}. {paper['doi']}: {label} has fewer than {MIN_SUMMARY_SENTENCES} sentences")
     if summary_zh and not re.search(r"[\u4e00-\u9fff]", summary_zh):
         errors.append(f"{paper['index']}. {paper['doi']}: summary_zh does not look Chinese")
+    if summary_zh and has_excessive_english(summary_zh):
+        errors.append(f"{paper['index']}. {paper['doi']}: summary_zh contains excessive English residue")
     if summary_en and re.search(r"[\u4e00-\u9fff]", summary_en):
         errors.append(f"{paper['index']}. {paper['doi']}: summary_en contains Chinese characters")
     return errors

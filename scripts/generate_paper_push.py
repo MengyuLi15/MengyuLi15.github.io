@@ -38,6 +38,17 @@ MAX_ABSTRACT_CHARS = 900
 USER_AGENT = "mengyuli15-paper-push/1.0 (https://mengyuli15.github.io/)"
 CROSSREF_RETRY_STATUS_CODES = {429, 500, 502, 503, 504}
 
+TARGETED_TITLE_TERMS = [
+    "EMIT hyperspectral phytoplankton estuarine waters",
+    "PACE OCI cyanotoxin microcystin",
+    "satellite phytoplankton size structure global ocean",
+    "OLCI suspended particulate matter coastal waters",
+    "adaptive hybrid algorithm particulate organic carbon coastal waters",
+    "data-driven ocean color training domain gaps",
+    "very small particles seawater backscattering",
+    "mesoscale eddies Pacific Decadal Oscillation",
+]
+
 TOPIC_TERMS = [
     "BGC Argo",
     "BGC-Argo",
@@ -247,6 +258,13 @@ RELEVANCE_TERMS = {
     "marine heatwaves": 7,
     "temperature sensitivity": 3,
     "vertical": 2,
+    "cyanotoxin": 5,
+    "microcystin": 5,
+    "suspended particulate matter": 5,
+    "phytoplankton size structure": 6,
+    "training domain": 4,
+    "pacific decadal oscillation": 5,
+    "mesoscale eddies": 4,
 }
 
 EXCLUDED_TITLE_PREFIXES = ("corrigendum", "erratum", "correction", "retraction")
@@ -560,6 +578,13 @@ MARINE_CONTEXT_TERMS = [
     "ocean optics",
     "marine heatwave",
     "marine heatwaves",
+    "cyanotoxin",
+    "microcystin",
+    "suspended particulate matter",
+    "phytoplankton size structure",
+    "training domain",
+    "pacific decadal oscillation",
+    "mesoscale eddies",
 ]
 DOMAIN_CONTEXT_TERMS = [
     "bgc-argo",
@@ -623,6 +648,13 @@ DOMAIN_CONTEXT_TERMS = [
     "hyperspectral",
     "marine heatwave",
     "marine heatwaves",
+    "cyanotoxin",
+    "microcystin",
+    "suspended particulate matter",
+    "phytoplankton size structure",
+    "training domain",
+    "pacific decadal oscillation",
+    "mesoscale eddies",
 ]
 
 
@@ -756,22 +788,54 @@ def key_abstract_sentences(title: str, abstract: str, tags: str, limit: int = 2)
     return [compact_sentence(sentence) for _, sentence in selected]
 
 
-def translation_chunks(text: str, max_chars: int = 1800) -> list[str]:
-    sentences = abstract_sentences(text)
-    if not sentences:
+def translation_units(text: str) -> list[str]:
+    text = abstract_body(text)
+    if not text:
+        return []
+    units = re.findall(r"[^.!?\u3002\uff01\uff1f]+[.!?\u3002\uff01\uff1f]?", text)
+    return [unit.strip() for unit in units if unit.strip()]
+
+
+def translation_chunks(text: str, max_chars: int = 900) -> list[str]:
+    units = translation_units(text)
+    if not units:
         return [text] if text else []
     chunks: list[str] = []
     current = ""
-    for sentence in sentences:
-        candidate = f"{current} {sentence}".strip()
+    for unit in units:
+        candidate = f"{current} {unit}".strip()
         if current and len(candidate) > max_chars:
             chunks.append(current)
-            current = sentence
+            current = unit
         else:
             current = candidate
     if current:
         chunks.append(current)
     return chunks
+
+
+def has_excessive_english(text: str) -> bool:
+    text = clean_text(text)
+    latin_letters = len(re.findall(r"[A-Za-z]", text))
+    han_characters = len(re.findall(r"[\u4e00-\u9fff]", text))
+    english_words = re.findall(r"\b[A-Za-z]{3,}\b", text)
+    return (
+        len(english_words) >= 12
+        and latin_letters > 0.35 * max(1, latin_letters + han_characters)
+    )
+
+
+def translate_chunk_to_chinese(chunk: str) -> str:
+    params = {
+        "client": "gtx",
+        "sl": "en",
+        "tl": "zh-CN",
+        "dt": "t",
+        "q": chunk,
+    }
+    url = "https://translate.googleapis.com/translate_a/single?" + urllib.parse.urlencode(params)
+    payload = http_json(url, label="Translation")
+    return clean_text("".join(part[0] for part in payload[0] if part and part[0]))
 
 
 def translate_to_chinese(text: str) -> str:
@@ -781,19 +845,17 @@ def translate_to_chinese(text: str) -> str:
         return text
     translated_chunks: list[str] = []
     for chunk in translation_chunks(text):
-        params = {
-            "client": "gtx",
-            "sl": "en",
-            "tl": "zh-CN",
-            "dt": "t",
-            "q": chunk,
-        }
-        url = "https://translate.googleapis.com/translate_a/single?" + urllib.parse.urlencode(params)
-        payload = http_json(url, label="Translation")
-        translated = "".join(part[0] for part in payload[0] if part and part[0])
+        translated = translate_chunk_to_chinese(chunk)
+        if has_excessive_english(translated):
+            translated = " ".join(
+                translate_chunk_to_chinese(unit) for unit in translation_units(chunk)
+            )
         translated_chunks.append(translated)
         time.sleep(float(os.getenv("ABSTRACT_TRANSLATION_DELAY_SECONDS", "0.2")))
-    return clean_text(" ".join(translated_chunks))
+    result = clean_text(" ".join(translated_chunks))
+    if has_excessive_english(result):
+        raise RuntimeError("Chinese abstract translation contains excessive English residue")
+    return result
 
 
 def month_from_parts(parts: list[int], fallback: str = "") -> tuple[str, str, str]:
@@ -1156,6 +1218,18 @@ def crossref_query(query: str, from_date: date, rows: int = 20) -> list[dict]:
     return data.get("message", {}).get("items", [])
 
 
+def crossref_title_query(query: str, from_date: date, rows: int = 20) -> list[dict]:
+    params = {
+        "query.title": query,
+        "filter": f"from-created-date:{from_date.isoformat()},type:journal-article",
+        "rows": str(rows),
+        "select": "DOI,title,author,container-title,published,published-print,published-online,created,URL,abstract,type",
+    }
+    url = "https://api.crossref.org/works?" + urllib.parse.urlencode(params)
+    data = http_json(url)
+    return data.get("message", {}).get("items", [])
+
+
 def crossref_author_query(author_name: str, from_date: date, rows: int = 8) -> list[dict]:
     params = {
         "query.author": author_name,
@@ -1252,6 +1326,21 @@ def collect_candidates(lookback_days: int, max_papers: int) -> list[Paper]:
     from_date = datetime.now(TZ).date() - timedelta(days=lookback_days)
     seen = existing_dois()
     candidates: dict[str, Paper] = {}
+
+    for query in TARGETED_TITLE_TERMS:
+        try:
+            items = crossref_title_query(query, from_date, rows=20)
+        except Exception as exc:
+            print(f"Crossref targeted title query failed: {query}: {exc}", file=sys.stderr)
+            continue
+        for item in items:
+            doi = (item.get("DOI") or "").strip()
+            if not doi or doi.lower() in seen or doi.lower() in candidates:
+                continue
+            paper = paper_from_crossref_item(item, today)
+            if paper:
+                candidates[doi.lower()] = paper
+        time.sleep(0.05)
 
     for query in TOPIC_TERMS:
         if len(candidates) >= max_papers * 8:
