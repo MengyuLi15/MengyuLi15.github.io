@@ -51,6 +51,22 @@ class TranslationTests(unittest.TestCase):
         self.assertTrue(MODULE.has_excessive_english(mixed))
         self.assertTrue(VALIDATOR.has_excessive_english(mixed))
 
+    def test_translation_failure_uses_chinese_fallback_summary(self):
+        with patch.object(
+            MODULE,
+            "translate_to_chinese",
+            side_effect=RuntimeError("Chinese abstract translation contains excessive English residue"),
+        ):
+            summary = MODULE.summary_zh(
+                "Machine-learning retrieval of ocean chlorophyll",
+                "This abstract remains in English after translation.",
+                "machine learning, chlorophyll, ocean color",
+            )
+
+        self.assertTrue(summary.startswith("摘要："))
+        self.assertFalse(MODULE.has_excessive_english(summary))
+        self.assertGreaterEqual(VALIDATOR.sentence_count(summary), 2)
+
 
 if __name__ == "__main__":
     unittest.main()

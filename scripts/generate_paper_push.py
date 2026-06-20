@@ -1200,7 +1200,17 @@ def summary_en(title: str, abstract: str, tags: str) -> str:
 def summary_zh(title: str, abstract: str, tags: str) -> str:
     abstract_text = abstract_body(abstract)
     if abstract_text:
-        return f"摘要：{translate_to_chinese(abstract_text)}"
+        try:
+            return f"摘要：{translate_to_chinese(abstract_text)}"
+        except Exception as exc:
+            action_zh, _ = infer_action(title, tags)
+            result_zh, _ = infer_result(title, tags)
+            print(
+                f"Chinese abstract translation failed; using a Chinese fallback summary "
+                f"for {title!r}: {exc}",
+                file=sys.stderr,
+            )
+            return f"摘要：{action_zh} {result_zh}"
     return "摘要：Crossref 未提供该 DOI 的摘要。"
 
 
