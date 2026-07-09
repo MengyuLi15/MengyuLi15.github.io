@@ -1689,12 +1689,22 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--date", default=datetime.now(TZ).date().isoformat())
     parser.add_argument("--lookback-days", type=int, default=int(os.getenv("LOOKBACK_DAYS", "120")))
     parser.add_argument("--max-papers", type=int, default=int(os.getenv("MAX_PAPERS", "50")))
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Regenerate the issue even when a card for the date already exists.",
+    )
     parser.add_argument("--dry-run", action="store_true")
     return parser.parse_args()
 
 
 def main() -> int:
     args = parse_args()
+    if not args.dry_run and not args.force and issue_exists(args.date):
+        ensure_page(args.date)
+        print(f"{args.date} already has a paper-push card; skipping duplicate generation.")
+        return 0
+
     papers = collect_candidates(args.lookback_days, args.max_papers)
     if not papers:
         if args.dry_run:

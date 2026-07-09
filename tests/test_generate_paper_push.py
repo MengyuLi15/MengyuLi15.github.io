@@ -68,5 +68,30 @@ class TranslationTests(unittest.TestCase):
         self.assertGreaterEqual(VALIDATOR.sentence_count(summary), 2)
 
 
+class DuplicateIssueTests(unittest.TestCase):
+    def test_existing_issue_skips_duplicate_generation(self):
+        argv = [
+            "generate_paper_push.py",
+            "--date",
+            "2026-07-07",
+            "--lookback-days",
+            "120",
+            "--max-papers",
+            "50",
+        ]
+        with patch.object(sys, "argv", argv), patch.object(
+            MODULE, "issue_exists", return_value=True
+        ), patch.object(MODULE, "ensure_page") as ensure_page, patch.object(
+            MODULE, "collect_candidates"
+        ) as collect_candidates, patch.object(
+            MODULE, "replace_or_prepend_issue"
+        ) as replace_issue:
+            self.assertEqual(MODULE.main(), 0)
+
+        ensure_page.assert_called_once_with("2026-07-07")
+        collect_candidates.assert_not_called()
+        replace_issue.assert_not_called()
+
+
 if __name__ == "__main__":
     unittest.main()

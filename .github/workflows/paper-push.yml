@@ -2,11 +2,12 @@ name: Daily Paper Push
 
 on:
   schedule:
-    # GitHub cron is UTC. These two runs cover about 06:17 in Europe/Rome
-    # across daylight-saving changes. Avoid minute 0 because scheduled runs
-    # can be delayed or dropped during GitHub's top-of-hour load peaks.
-    - cron: "17 4 * * *"
-    - cron: "17 5 * * *"
+    # GitHub cron is UTC. Run once per day around 06:17 in Europe/Rome:
+    # 05:17 UTC during standard-time months, 04:17 UTC during daylight-saving months.
+    # Avoid minute 0 because scheduled runs can be delayed or dropped during GitHub's
+    # top-of-hour load peaks.
+    - cron: "17 5 * 1,2,3,11,12 *"
+    - cron: "17 4 * 4-10 *"
   workflow_dispatch:
     inputs:
       lookback_days:
@@ -29,6 +30,10 @@ on:
         description: "Maximum focused-team authors to query per run"
         required: false
         default: "60"
+      force:
+        description: "Regenerate even if this date already has a paper-push card"
+        required: false
+        default: "false"
 
 permissions:
   contents: write
@@ -57,10 +62,16 @@ jobs:
           FOCUSED_TEAM_AUTHOR_ROWS: ${{ github.event.inputs.focused_team_author_rows || '8' }}
           FOCUSED_TEAM_AUTHOR_WORKERS: ${{ github.event.inputs.focused_team_author_workers || '1' }}
           FOCUSED_TEAM_AUTHOR_LIMIT: ${{ github.event.inputs.focused_team_author_limit || '60' }}
+          FORCE: ${{ github.event.inputs.force || 'false' }}
         run: |
+          FORCE_FLAG=""
+          if [[ "$FORCE" == "true" ]]; then
+            FORCE_FLAG="--force"
+          fi
           python scripts/generate_paper_push.py \
             --lookback-days "$LOOKBACK_DAYS" \
-            --max-papers "$MAX_PAPERS"
+            --max-papers "$MAX_PAPERS" \
+            $FORCE_FLAG
 
       - name: Validate DOI metadata
         run: python scripts/validate_paper_push_dois.py
