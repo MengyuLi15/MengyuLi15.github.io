@@ -68,6 +68,31 @@ class TranslationTests(unittest.TestCase):
         self.assertGreaterEqual(VALIDATOR.sentence_count(summary), 2)
 
 
+class MetadataEscapingTests(unittest.TestCase):
+    def test_crossref_journal_entities_and_whitespace_are_cleaned(self):
+        raw = "Environmental Science &amp;\nTechnology"
+        self.assertEqual(
+            MODULE.best_journal({"container-title": [raw]}),
+            "Environmental Science & Technology",
+        )
+
+    def test_validator_decodes_generated_scalars_and_quoted_titles(self):
+        title = 'Ocean "color" observations'
+        journal = "Environmental Science &amp;\nTechnology"
+        issue = (
+            f'    - title: {MODULE.q(title)}\n'
+            f'      journal: {MODULE.q(journal)}\n'
+            '      doi: "10.1021/acs.est.6c09405"\n'
+        )
+        papers = VALIDATOR.parse_papers(issue)
+        self.assertEqual(len(papers), 1)
+        self.assertEqual(papers[0]["title"], title)
+        self.assertTrue(VALIDATOR.journal_matches(
+            papers[0]["journal"], "Environmental Science & Technology"
+        ))
+        self.assertFalse(VALIDATOR.journal_matches(papers[0]["journal"], "Nature"))
+
+
 class DuplicateIssueTests(unittest.TestCase):
     def test_existing_issue_skips_duplicate_generation(self):
         argv = [

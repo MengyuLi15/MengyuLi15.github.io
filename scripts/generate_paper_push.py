@@ -985,7 +985,7 @@ def is_focused_team_item(item: dict) -> bool:
 
 def best_journal(item: dict) -> str:
     titles = item.get("container-title") or []
-    return text_value(titles).strip()
+    return clean_text(text_value(titles))
 
 
 def normalize_journal(value: str) -> str:

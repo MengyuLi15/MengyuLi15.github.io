@@ -97,6 +97,13 @@ html[data-theme="dark"] .conf-badge {
 <div class="conf-year">2026</div>
 
 <div class="conf-card">
+  <div class="conf-title">Ocean Optics XXVII</div>
+  <div class="conf-meta">Ghent, Belgium · 13–18 Sep 2026 <span class="conf-badge">Oral presentation</span></div>
+  <div class="conf-authors"><strong>Li, M.</strong>, Bellacicco, M., Kulk, G., Jönsson, B., Rodriguez, M., Buongiorno Nardelli, B., Sun, X., La Forgia, G., Organelli, E.</div>
+  <div class="conf-paper"><a href="https://oceanopticsconference.org/abstract-li-m/">Linking Dissolved Organic Carbon Production to Carbon Sequestration in the North Atlantic Subtropical Gyre</a></div>
+</div>
+
+<div class="conf-card">
   <div class="conf-title">2026 Ocean Sciences Meeting (AGU)</div>
   <div class="conf-meta">Glasgow, Scotland · 22–27 Feb 2026 <span class="conf-badge">Poster</span></div>
   <div class="conf-authors"><strong>Li, M.</strong>, Bellacicco, M., Kulk, G., Jönsson, B., Rodriguez, M., Buongiorno Nardelli, B., Organelli, E.</div>

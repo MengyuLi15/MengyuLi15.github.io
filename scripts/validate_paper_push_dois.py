@@ -68,7 +68,9 @@ def person_name_keys(value: str) -> set[str]:
 
 
 def yaml_unquote(value: str) -> str:
-    return value.replace(r"\"", '"').replace(r"\\", "\\")
+    # The generator writes JSON-escaped strings, which are valid YAML scalars.
+    # Decode all escapes (including newlines), not just quotes and backslashes.
+    return json.loads('"' + value + '"')
 
 
 def issue_blocks(text: str) -> list[tuple[str, str]]:
@@ -91,7 +93,7 @@ def issue_flag(block: str, name: str) -> bool:
 
 def parse_papers(issue: str) -> list[dict[str, str]]:
     papers = []
-    pattern = re.compile(r'(?ms)^    - title: "([^"]*)"\r?\n(.*?)(?=^    - title: |\Z)')
+    pattern = re.compile(r'(?ms)^    - title: "((?:\\.|[^"\\])*)"\r?\n(.*?)(?=^    - title: |\Z)')
     for index, match in enumerate(pattern.finditer(issue), start=1):
         block = match.group(2)
         papers.append(
