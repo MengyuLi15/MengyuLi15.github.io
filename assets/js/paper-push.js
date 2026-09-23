@@ -276,10 +276,16 @@
     }
   });
 
-  document.addEventListener("DOMContentLoaded", function () {
+  function initializePage() {
     applyLanguage(currentLanguage());
     syncButtons();
     renderFavorites();
     renderCumulativeChart();
-  });
+  }
+  document.addEventListener("site:load", initializePage);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializePage, { once: true });
+  } else {
+    initializePage();
+  }
 })();

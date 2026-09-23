@@ -277,7 +277,8 @@ html[data-theme="dark"] a {
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+(function () {
+  function startTyping() {
   const phrases = [
     "Marine bio-optics",
     "BGC-Argo observations",
@@ -292,6 +293,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let deleting = false;
 
   function typeLoop() {
+    if (!target || !target.isConnected) return;
     const currentPhrase = phrases[phraseIndex];
 
     if (!deleting) {
@@ -317,7 +319,13 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   typeLoop();
-});
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", startTyping, { once: true });
+  } else {
+    startTyping();
+  }
+})();
 </script>
 
 ## Research Focus
