@@ -339,3 +339,46 @@ button[title*="Theme"],
     display: none !important;
   }
 }
+
+/* Adjacent daily issues; shared by existing and future paper-push pages. */
+.paper-push-date-navigation {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: stretch;
+  gap: 0.75rem;
+  margin: 1rem 0 1.5rem;
+}
+.paper-push-date-link,
+.paper-push-current-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  padding: 0.7rem 0.8rem;
+  text-align: center;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+.paper-push-date-link {
+  border: 1px solid rgba(127, 199, 255, 0.3);
+  border-radius: 10px;
+  background: rgba(127, 199, 255, 0.08);
+  text-decoration: none !important;
+}
+.paper-push-date-link:hover,
+.paper-push-date-link:focus-visible {
+  background: rgba(127, 199, 255, 0.18);
+  border-color: #7fc7ff;
+}
+.paper-push-date-navigation time {
+  display: block;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.paper-push-current-date time { font-size: 1.05rem; }
+.paper-push-date-link.is-disabled { opacity: 0.45; }
+@media (max-width: 480px) {
+  .paper-push-date-navigation { grid-template-columns: 1fr 1fr; }
+  .paper-push-current-date { grid-column: 1 / -1; grid-row: 1; }
+}

@@ -1,0 +1,46 @@
+{% assign navigation_date = page.url | remove: '/activities/paper-push/' | remove: '/' %}
+{% assign navigation_issue = site.data.paper_pushes | where: 'date', navigation_date | first %}
+{% if navigation_issue %}
+  {% assign previous_issue = nil %}
+  {% assign next_issue = nil %}
+  {% assign ordered_issues = site.data.paper_pushes | sort: 'date' %}
+  {% for candidate in ordered_issues %}
+    {% unless candidate.temporary %}
+      {% assign candidate_url = '/activities/paper-push/' | append: candidate.date | append: '/' %}
+      {% assign candidate_page = site.pages | where: 'url', candidate_url | first %}
+      {% if candidate_page %}
+        {% if candidate.date < navigation_date %}
+          {% assign previous_issue = candidate %}
+        {% elsif candidate.date > navigation_date and next_issue == nil %}
+          {% assign next_issue = candidate %}
+        {% endif %}
+      {% endif %}
+    {% endunless %}
+  {% endfor %}
+  <nav class="paper-push-date-navigation" aria-label="Paper push dates">
+    {% if previous_issue %}
+      <a class="paper-push-date-link" rel="prev" href="{{ base_path }}/activities/paper-push/{{ previous_issue.date }}/">
+        <span data-paper-i18n="zh">← 上一期</span><span data-paper-i18n="en">← Previous</span>
+        <time datetime="{{ previous_issue.date }}">{{ previous_issue.date }}</time>
+      </a>
+    {% else %}
+      <span class="paper-push-date-link is-disabled" aria-disabled="true">
+        <span data-paper-i18n="zh">已是最早一期</span><span data-paper-i18n="en">First issue</span>
+      </span>
+    {% endif %}
+    <div class="paper-push-current-date" aria-current="page">
+      <span data-paper-i18n="zh">当前推送日期</span><span data-paper-i18n="en">Current issue</span>
+      <time datetime="{{ navigation_date }}">{{ navigation_date }}</time>
+    </div>
+    {% if next_issue %}
+      <a class="paper-push-date-link" rel="next" href="{{ base_path }}/activities/paper-push/{{ next_issue.date }}/">
+        <span data-paper-i18n="zh">下一期 →</span><span data-paper-i18n="en">Next →</span>
+        <time datetime="{{ next_issue.date }}">{{ next_issue.date }}</time>
+      </a>
+    {% else %}
+      <span class="paper-push-date-link is-disabled" aria-disabled="true">
+        <span data-paper-i18n="zh">已是最新一期</span><span data-paper-i18n="en">Latest issue</span>
+      </span>
+    {% endif %}
+  </nav>
+{% endif %}
