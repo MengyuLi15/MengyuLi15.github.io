@@ -290,7 +290,7 @@
 
   function updateBackToTop() {
     var button = document.querySelector("[data-paper-back-to-top]");
-    if (button) button.hidden = window.scrollY < 400;
+    if (button) button.hidden = !document.querySelector(".paper-push-date-navigation") || window.scrollY < 400;
   }
   window.addEventListener("scroll", updateBackToTop, { passive: true });
 
