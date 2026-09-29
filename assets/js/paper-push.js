@@ -233,6 +233,18 @@
   }
 
   document.addEventListener("click", function (event) {
+    if (event.target.closest("[data-paper-back-to-top]")) {
+      var navigation = document.querySelector(".paper-push-date-navigation");
+      if (navigation) {
+        navigation.setAttribute("tabindex", "-1");
+        navigation.focus({ preventScroll: true });
+      }
+      window.scrollTo({
+        top: 0,
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"
+      });
+      return;
+    }
     var button = event.target.closest("[data-favorite-paper]");
     if (button) {
       var paper = buttonPaper(button);
@@ -276,7 +288,14 @@
     }
   });
 
+  function updateBackToTop() {
+    var button = document.querySelector("[data-paper-back-to-top]");
+    if (button) button.hidden = window.scrollY < 400;
+  }
+  window.addEventListener("scroll", updateBackToTop, { passive: true });
+
   function initializePage() {
+    updateBackToTop();
     applyLanguage(currentLanguage());
     syncButtons();
     renderFavorites();
