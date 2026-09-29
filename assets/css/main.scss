@@ -361,6 +361,8 @@ button[title*="Theme"],
   line-height: 1.4;
 }
 .paper-push-date-link {
+  flex-direction: row;
+  gap: 0.5rem;
   border: 1px solid rgba(127, 199, 255, 0.3);
   border-radius: 10px;
   background: rgba(127, 199, 255, 0.08);

@@ -19,27 +19,26 @@
   {% endfor %}
   <nav class="paper-push-date-navigation" aria-label="Paper push dates">
     {% if previous_issue %}
-      <a class="paper-push-date-link" rel="prev" href="{{ base_path }}/activities/paper-push/{{ previous_issue.date }}/">
-        <span data-paper-i18n="zh">← 上一期</span><span data-paper-i18n="en">← Previous</span>
+      <a class="paper-push-date-link" rel="prev" aria-label="Previous issue: {{ previous_issue.date }}" href="{{ base_path }}/activities/paper-push/{{ previous_issue.date }}/">
+        <span aria-hidden="true">←</span>
         <time datetime="{{ previous_issue.date }}">{{ previous_issue.date }}</time>
       </a>
     {% else %}
-      <span class="paper-push-date-link is-disabled" aria-disabled="true">
-        <span data-paper-i18n="zh">已是最早一期</span><span data-paper-i18n="en">First issue</span>
+      <span class="paper-push-date-link is-disabled" aria-disabled="true" aria-label="No previous issue">
+        <span aria-hidden="true">←</span>
       </span>
     {% endif %}
-    <div class="paper-push-current-date" aria-current="page">
-      <span data-paper-i18n="zh">当前推送日期</span><span data-paper-i18n="en">Current issue</span>
+    <div class="paper-push-current-date" aria-current="page" aria-label="Current issue">
       <time datetime="{{ navigation_date }}">{{ navigation_date }}</time>
     </div>
     {% if next_issue %}
-      <a class="paper-push-date-link" rel="next" href="{{ base_path }}/activities/paper-push/{{ next_issue.date }}/">
-        <span data-paper-i18n="zh">下一期 →</span><span data-paper-i18n="en">Next →</span>
+      <a class="paper-push-date-link" rel="next" aria-label="Next issue: {{ next_issue.date }}" href="{{ base_path }}/activities/paper-push/{{ next_issue.date }}/">
         <time datetime="{{ next_issue.date }}">{{ next_issue.date }}</time>
+        <span aria-hidden="true">→</span>
       </a>
     {% else %}
-      <span class="paper-push-date-link is-disabled" aria-disabled="true">
-        <span data-paper-i18n="zh">已是最新一期</span><span data-paper-i18n="en">Latest issue</span>
+      <span class="paper-push-date-link is-disabled" aria-disabled="true" aria-label="No next issue">
+        <span aria-hidden="true">→</span>
       </span>
     {% endif %}
   </nav>
