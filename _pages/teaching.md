@@ -177,6 +177,7 @@ html[data-theme="dark"] .activity-video-box {
     <li><a href="https://www.sciencedirect.com/journal/progress-in-oceanography"><i>Progress in Oceanography</i></a></li>
     <li><a href="https://bg.copernicus.org/"><i>Biogeosciences</i></a></li>
     <li><a href="https://essd.copernicus.org/"><i>Earth System Science Data (ESSD)</i></a></li>
+    <li><a href="https://aslopubs.onlinelibrary.wiley.com/journal/23782242"><i>Limnology and Oceanography Letters</i></a></li>
   </ul>
 
   <br>

@@ -179,11 +179,8 @@ html[data-theme="dark"] .pub-thumb img {
       <a href="https://doi.org/10.3389/fmars.2026.1822929"
          target="_blank" rel="noopener noreferrer">
          DOI
-      </a>
-    </p>
-
-    <p class="pub-note">
-      Published 17 June 2026
+      </a> ·
+      <a href="https://mailchi.mp/1ff888e84979/biogeochemical-argo-newsletter-6751508" target="_blank" rel="noopener noreferrer">BGC-Argo Newsletter</a>
     </p>
   </div>
 </div>
