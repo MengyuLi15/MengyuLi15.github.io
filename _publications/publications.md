@@ -146,6 +146,15 @@ html[data-theme="dark"] .pub-thumb img {
 <div class="pub-section-title">First-author publications</div>
 
 <div class="pub-card">
+  <div class="pub-content">
+    <p class="pub-authors"><strong>Li, M.</strong>, Bellacicco, M., Kulk, G., Jönsson, B. F., Rodriguez, M., Buongiorno Nardelli, B., Sun, X., La Forgia, G., &amp; Organelli, E. (2026)</p>
+    <p class="pub-title">Dissolved organic carbon production enhances carbon sequestration in a subtropical gyre</p>
+    <p class="pub-journal">Nature Communications</p>
+    <p class="pub-note">Accepted</p>
+  </div>
+</div>
+
+<div class="pub-card">
   <div class="pub-thumb">
     <img src="/images/2026FrontiersFigure1.png" alt="A global re-assessment of surface bio-optical properties in Case 1 waters using Biogeochemical-Argo profiles">
   </div>
